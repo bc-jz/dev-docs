@@ -366,7 +366,7 @@
 <td><strong>X-Retry-After</strong></td>
 <td>An integer</td>
 <td>Rate limited response, indicating the number of seconds before the quota refreshes. See the <a href="#rate-limits_oauth">OAuth rate limits documentation</a> for more information.</td>
-<td>15</td>
+<td><code class="prettyprint">15</code></td>
 </tr>
 <tr>
 <td><strong>X-BC-ApiLimit-Remaining</strong></td>
@@ -424,9 +424,9 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 
 <h3 id="response-structure"><span class="jumptarget"> Response Structure</span></h3>
 
-<p>Responses are structured similarly to requests. If a request returns a single object then the response will contain a single object containing the fields for that resource:</p>
+<p>Responses are structured similarly to requests. If a request returns a single object, then the response will contain a single object, containing the fields for that resource.</p>
 
-<p>The response will contain links to any sub-resource – for example, <code class="prettyprint">images</code> on the product below:</p>
+<p>The response will also contain links to any sub-resource – for example, <code class="prettyprint">images</code> on the product below:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Shuffle"</span><span class="p">,</span><span class="w">
@@ -613,14 +613,14 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 
 <h3 id="request-structure"><span class="jumptarget"> Request Structure</span></h3>
 
-<p>The body of an XML request should first contain an element that is named according to the resource in singular form, such as product for the products resource:</p>
+<p>The body of an XML request should first contain an element that is named according to the resource, in singular form, such as <code class="prettyprint">product</code> for the <code class="prettyprint">products</code> resource:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;product&gt;</span> 
 <span class="nt">&lt;/product&gt;</span>
 
 </code></pre>
 
-<p>The resource element should then contain a set of elements that match the fields described in that resources&rsquo; documentation:</p>
+<p>The resource element should then contain a set of elements that match the fields described in that resource&rsquo;s documentation:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;product&gt;</span>
     <span class="nt">&lt;id&gt;</span>5<span class="nt">&lt;/id&gt;</span>
@@ -632,16 +632,18 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 
 <h3 id="response-structure"><span class="jumptarget"> Response Structure</span></h3>
 
-<p>To receive an XML response, the request URI should include a .xml extension:</p>
+<p>To receive an XML response, the request URI should include an .xml extension, as shown here:</p>
+<pre class="highlight plaintext"><code>GET /customers/1.xml
+</code></pre>
 
-<p><code class="prettyprint">GET /customers/1.xml</code></p>
+<p>Here is a corresponding response:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;customer&gt;</span>
   <span class="nt">&lt;id&gt;</span>1<span class="nt">&lt;/id&gt;</span>
   <span class="nt">&lt;company&gt;</span>BigCommerce<span class="nt">&lt;company&gt;</span>
-  <span class="nt">&lt;first_name&gt;</span>Philip<span class="nt">&lt;/first_name&gt;</span>
-  <span class="nt">&lt;last_name&gt;</span>Muir<span class="nt">&lt;/last_name&gt;</span>
-  <span class="nt">&lt;email&gt;</span>phil.muir@bigcommerce.com<span class="nt">&lt;/email&gt;</span>
+  <span class="nt">&lt;first_name&gt;</span>Mister<span class="nt">&lt;/first_name&gt;</span>
+  <span class="nt">&lt;last_name&gt;</span>Big<span class="nt">&lt;/last_name&gt;</span>
+  <span class="nt">&lt;email&gt;</span>mister.big@bigcommerce.com<span class="nt">&lt;/email&gt;</span>
   <span class="nt">&lt;phone&gt;&lt;/phone&gt;</span>
   <span class="nt">&lt;date_created&gt;</span>Tue, 16 Aug 2011 23:15:07 +0000<span class="nt">&lt;/date_created&gt;</span>
   <span class="nt">&lt;date_modified&gt;</span>Tue, 16 Aug 2011 23:16:37 +0000<span class="nt">&lt;/date_modified&gt;</span>
@@ -656,15 +658,15 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 
 </code></pre>
 
-<p>If the request returns more than one result, then the response will consist of an element named according to the resource in plural form, which contains a set of objects for each result:</p>
+<p>If the request returns more than one result, then the response will consist of an element named according to the resource, in plural form, which contains a set of objects for each result:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;customers&gt;</span>
   <span class="nt">&lt;customer&gt;</span>
     <span class="nt">&lt;id&gt;</span>1<span class="nt">&lt;/id&gt;</span>
     <span class="nt">&lt;company&gt;</span>BigCommerce<span class="nt">&lt;/company&gt;</span>
-    <span class="nt">&lt;first_name&gt;</span>Philip<span class="nt">&lt;/first_name&gt;</span>
-    <span class="nt">&lt;last_name&gt;</span>Muir<span class="nt">&lt;/last_name&gt;</span>
-    <span class="nt">&lt;email&gt;</span>phil.muir@bigcommerce.com<span class="nt">&lt;/email&gt;</span>
+    <span class="nt">&lt;first_name&gt;</span>Mister<span class="nt">&lt;/first_name&gt;</span>
+    <span class="nt">&lt;last_name&gt;</span>Big<span class="nt">&lt;/last_name&gt;</span>
+    <span class="nt">&lt;email&gt;</span>mister.big@bigcommerce.com<span class="nt">&lt;/email&gt;</span>
     <span class="nt">&lt;phone&gt;&lt;/phone&gt;</span>
     <span class="nt">&lt;date_created&gt;</span>Tue, 16 Aug 2011 23:15:07 +0000<span class="nt">&lt;/date_created&gt;</span>
     <span class="nt">&lt;date_modified&gt;</span>Tue, 16 Aug 2011 23:16:37 +0000<span class="nt">&lt;/date_modified&gt;</span>
@@ -827,7 +829,7 @@ Following the creation of a webhook, it can take up to one minute for BigCommerc
 
 <p>In the callback, we send a light payload with only minimum details regarding the event that&rsquo;s been triggered. This gives you maximum flexibility as to how you want to handle the notification in your application. For instance, if you subscribe to the <code class="prettyprint">store/product/update</code> event, we&rsquo;ll send you the product ID when it&rsquo;s been updated, and you might want to handle it by fetching the product via a request to the <a href="/api/v2/#get-a-product">Products resource</a>.</p>
 
-<p>An example payload follows.</p>
+<p>An example payload follows:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="nt">"store_id"</span><span class="p">:</span><span class="mi">11111</span><span class="p">,</span><span class="nt">"producer"</span><span class="p">:</span><span class="s2">"stores/abcde"</span><span class="p">,</span><span class="nt">"scope"</span><span class="p">:</span><span class="s2">"store/order/statusUpdated"</span><span class="p">,</span><span class="nt">"data"</span><span class="p">:{</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order"</span><span class="p">,</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">173331</span><span class="p">},</span><span class="nt">"hash"</span><span class="p">:</span><span class="s2">"3f9ea420af83450d7ef9f78b08c8af25b2213637"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 

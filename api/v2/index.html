@@ -9661,7 +9661,7 @@ The Delete All Categories operation will not succeed unless the store has zero p
 
           <h1 id="store-content-reference"><span class="jumptarget"> Store Content Reference </span></h1>
 
-<p>Store Content APIs help merchants edit and publish blog posts and Web pages, improve SEO, and drive traffic to stores. They include Blog Posts and Redirects.</p>
+<p>Store Content APIs help merchants edit and publish blog posts and Web pages, improve SEO, and drive traffic to stores. They include Blog Posts, Blog Tags, Redirects, and Pages.</p>
 
 <h2 id="blog-posts"><span class="jumptarget"> Blog Posts </span></h2>
 
@@ -10137,6 +10137,381 @@ The Delete All Categories operation will not succeed unless the store has zero p
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+
+          <h2 id="pages"><span class="jumptarget"> Pages </span></h2>
+
+<p>A static Web page on the storefront.</p>
+
+<h3 id="page-object-properties"><span class="jumptarget"> Page Object – Properties </span></h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Unique ID of this Web page.</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>int</td>
+<td>ID of any parent Web page.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>enum</td>
+<td>Enum identifying this page&rsquo;s type, with the following possible values:<br> <code class="prettyprint">page</code>: free-text page;<br> <code class="prettyprint">link</code>: link to another Web address;<br> <code class="prettyprint">rss_feed</code>: syndicated content from an RSS feed;<br> <code class="prettyprint">contact_form</code>: a contact form;<br> <code class="prettyprint">raw</code>: a page that allows for raw HTML to be entered into the body. (Note: No template is used when rendering the page.)</td>
+</tr>
+<tr>
+<td>contact_fields</td>
+<td>object</td>
+<td>Where the page&rsquo;s type is a contact form: object whose members are the fields enabled (in the control panel) for storefront display. Possible members are:<br> <code class="prettyprint">fullname</code>: full name of the customer submitting the form;<br> <code class="prettyprint">phone</code>: customer&rsquo;s phone number, as submitted on the form;<br> <code class="prettyprint">companyname</code>: customer&rsquo;s submitted company name;<br> <code class="prettyprint">orderno</code>: customer&rsquo;s submitted order number;<br> <code class="prettyprint">rma</code>: customer&rsquo;s submitted RMA (Return Merchandise Authorization) number.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Where the page&rsquo;s type is a contact form: email address that receives messages sent via the form.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Page name, as displayed on the storefront.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Relative URL on the storefront for this page.</td>
+</tr>
+<tr>
+<td>meta_description</td>
+<td>text</td>
+<td>Description contained within this page&rsquo;s <code class="prettyprint">&lt;meta&gt;</code> element.</td>
+</tr>
+<tr>
+<td>body</td>
+<td>text</td>
+<td>HTML or variable that populates this page&rsquo;s <code class="prettyprint">&lt;body&gt;</code> element, in default/desktop view.</td>
+</tr>
+<tr>
+<td>mobile_body</td>
+<td>text</td>
+<td>HTML or variable that populates this page&rsquo;s <code class="prettyprint">&lt;body&gt;</code> element, in mobile view.</td>
+</tr>
+<tr>
+<td>has_mobile_version</td>
+<td>boolean</td>
+<td>If <code class="prettyprint">true</code>, this page has a mobile version.</td>
+</tr>
+<tr>
+<td>is_visible</td>
+<td>boolean</td>
+<td>If <code class="prettyprint">true</code>, this page appears in the storefront&rsquo;s navigation menu.</td>
+</tr>
+<tr>
+<td>is_homepage</td>
+<td>boolean</td>
+<td>If <code class="prettyprint">true</code>, this page is the storefront&rsquo;s home page.</td>
+</tr>
+<tr>
+<td>meta_title</td>
+<td>string</td>
+<td>Text specified for this page&rsquo;s <code class="prettyprint">&lt;title&gt;</code> element. (If empty, the value of the <code class="prettyprint">name</code> property is used.)</td>
+</tr>
+<tr>
+<td>layout_file</td>
+<td>string</td>
+<td>Layout template for this page.</td>
+</tr>
+<tr>
+<td>sort_order</td>
+<td>int</td>
+<td>Order in which this page should display on the storefront. (Lower integers specify earlier display.)</td>
+</tr>
+<tr>
+<td>meta_title</td>
+<td>string</td>
+<td>Text contained within this page&rsquo;s <code class="prettyprint">&lt;title&gt;</code> element.</td>
+</tr>
+<tr>
+<td>search_keywords</td>
+<td>string</td>
+<td>Comma-separated list of keywords that shoppers can use to locate this page when searching the store.</td>
+</tr>
+<tr>
+<td>meta_keywords</td>
+<td>string</td>
+<td>Comma-separated list of SEO-relevant keywords to include in the page&rsquo;s <code class="prettyprint">&lt;meta&gt;</code> element.</td>
+</tr>
+<tr>
+<td>link</td>
+<td>string</td>
+<td>Where the page&rsquo;s type is a link: this is the target link.</td>
+</tr>
+<tr>
+<td>feed</td>
+<td>string</td>
+<td>Where the page&rsquo;s type is an RSS feed: the feed to syndicate.</td>
+</tr>
+</tbody></table>
+
+          <table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Manages</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OAuth Scopes</strong></td>
+<td>store_v2_content</td>
+</tr>
+<tr>
+<td></td>
+<td>store_v2_content_read_only</td>
+</tr>
+</tbody></table>
+
+<h3 id="list-pages"><span class="jumptarget"> List Pages </span></h3>
+
+<p>Gets the collection of pages. (Default sorting is by auto-generated ID. This usually generates an order of oldest-to-newest)</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">GET /stores/{store_hash}/v2/pages/</code></li>
+<li>  Basic Auth
+<code class="prettyprint">GET /api/v2/pages</code></li>
+</ul>
+
+<h4 id="pagination"><span class="jumptarget"> Pagination </span></h4>
+
+<p>Parameters can be added to the URL query string to paginate the collection. If a limit isn’t provided, up to 50 pages are returned by default.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Page</td>
+<td>int</td>
+<td>/stores/{store_hash}/v2/pages?page={number}</td>
+</tr>
+<tr>
+<td>Limit</td>
+<td>int</td>
+<td>/stores/{store_hash}/v2/pages?limit={count}</td>
+</tr>
+</tbody></table>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSS Syndication"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%%Syndicate%%"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"layout_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/mens/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shipping &amp; Returns"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"To edit this page, simply log in to the control panel, click the &lt;strong style=\"font-weight: 400\"&gt;Website Content&lt;/strong&gt; tab, and choose the &lt;strong style=\"font-weight: 400\"&gt; View Web Pages&lt;/strong&gt; option. Click &lt;strong style=\"font-weight: 400\"&gt;Edit&lt;/strong&gt; next to the &lt;strong style=\"font-weight: 400\"&gt;Shipping &amp; Returns&lt;/strong&gt; page, and you can change this text. A sample returns policy is shown below, which you can edit as needed. &lt;br/&gt;&lt;br/&gt; &lt;em style=\"font-style: normal\"&gt;&lt;strong&gt;Returns Policy&lt;/strong&gt;&lt;/em&gt;&lt;strong style=\"font-weight: 400\"&gt;&lt;/em&gt;&lt;/em&gt;&lt;em style=\"font-style: normal\"&gt;&lt;br/&gt;&lt;br/&gt;&lt;/em&gt;You may return most new, unopened items within 30 days of delivery for a full refund. We'll also pay the return shipping costs if the return is a result of our error (you received an incorrect or defective item, etc.).&lt;br/&gt;&lt;br/&gt;You should expect to receive your refund within four weeks of giving your package to the return shipper, however, in many cases you will receive a refund more quickly. This time period includes the transit time for us to receive your return from the shipper (5 to 10 business days), the time it takes us to process your return once we receive it (3 to 5 business days), and the time it takes your bank to process our refund request (5 to 10 business days).&lt;br/&gt;&lt;br/&gt;If you need to return an item, please &lt;a href=\"/contact-us/\"&gt;Contact Us&lt;/a&gt; with your order number and details about the product you would like to return. We will respond quickly with instructions for how to return items from your order.&lt;br/&gt;&lt;br/&gt;&lt;/strong&gt;&lt;strong&gt;Shipping&lt;/em&gt;&lt;/em&gt;&lt;/em&gt;&lt;/strong&gt;&lt;strong style=\"font-weight: 400\"&gt;&lt;em style=\"font-style: normal\"&gt;&lt;br/&gt;&lt;br/&gt;&lt;/em&gt;We can ship to virtually any address in the world. Note that there are restrictions on some products, and some products cannot be shipped to international destinations.&lt;br/&gt;&lt;br/&gt;When you place an order, we will estimate shipping and delivery dates for you based on the availability of your items and the shipping options you choose. Depending on the shipping provider you choose, shipping date estimates may appear on the shipping quotes page.&lt;br/&gt;&lt;br/&gt;Please also note that the shipping rates for many items we sell are weight-based. The weight of any such item can be found on its detail page. To reflect the policies of the shipping companies we use, all weights will be rounded up to the next full pound.&lt;/strong&gt;&lt;br/&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"layout_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page.html"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/shoes/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blog_index"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contact Us"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We're happy to answer questions or help you with returns.&lt;br/&gt;Please fill out the form below if you need assistance."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact_form"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contact_fields"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fullname,phone,orderno"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"meta_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"layout_file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page.html"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/contact-us/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Raw Test Page"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;html&gt;&lt;head&gt;&lt;title&gt;Raw Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;This page type can store raw HTML&lt;/body&gt;&lt;/html&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raw"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;html&gt;&lt;head&gt;&lt;title&gt;Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Mobile Content can be raw as well&lt;/body&gt;&lt;/html&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Raw-Body-Test-Page/"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="get-a-page"><span class="jumptarget"> Get a Page </span></h3>
+
+<p>Gets a page.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">GET /stores/{store_hash}/v2/pages/{id}</code></li>
+<li>  Basic Auth
+<code class="prettyprint">GET /api/v2/pages/{id}</code></li>
+</ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blog_index"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="create-a-page"><span class="jumptarget"> Create a Page </span></h3>
+
+<p>Creates a new page.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">POST /stores/{store_hash}/v2/pages</code></li>
+<li>  Basic Auth
+<code class="prettyprint">POST /api/v2/pages</code></li>
+</ul>
+
+<h4 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h4>
+
+<p>The following property of the page is read-only. If it is included in the request, the request will be rejected:</p>
+
+<ul>
+<li>  id</li>
+</ul>
+
+<h4 id="requirements"><span class="jumptarget"> Requirements </span></h4>
+
+<p>The following properties of the page are required. The request won’t be fulfilled unless these properties are valid:</p>
+
+<ul>
+<li>  type</li>
+<li>  name</li>
+<li>  link (for a page of <code class="prettyprint">type: link</code>)</li>
+<li>  feed (for a page of <code class="prettyprint">type: rss_feed</code>)</li>
+<li>  body (for a page of <code class="prettyprint">type: raw</code>)</li>
+</ul>
+
+<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
+
+<p>Although the <code class="prettyprint">is_homepage</code> property is writeable, setting it to <code class="prettyprint">true</code> does not (currently) reset other instances of this property. When setting this property, please keep this known issue in mind.</p>
+
+<h4 id="request"><span class="jumptarget"> Request </span></h4>
+
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raw"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404 Page for Cats"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/404-meow/"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;html&gt;&lt;head&gt;&lt;title&gt;Hairball! Not Found&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Sorry! You can not haz cheeseburger.&lt;/body&gt;&lt;/html&gt;"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dead, missing, broken"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404 Page for Cats"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;html&gt;&lt;head&gt;&lt;title&gt;Hairball! Not Found&lt;/title&gt;&lt;/head&gt;&lt;body&gt;Sorry! You can not haz cheeseburger.&lt;/body&gt;&lt;/html&gt;"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"is_visible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raw"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"is_homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"is_customers_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dead, missing, broken"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"has_mobile_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"mobile_body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/404-meow/"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="delete-a-page"><span class="jumptarget"> Delete a Page </span></h3>
+
+<p>Deletes a page.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">DELETE /stores/{store_hash}/v2/pages/{id}</code></li>
+<li>  Basic Auth
+<code class="prettyprint">DELETE /api/v2/pages/{id}</code></li>
+</ul>
 
           <h2 id="redirects"><span class="jumptarget"> Redirects </span></h2>
 

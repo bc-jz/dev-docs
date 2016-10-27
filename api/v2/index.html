@@ -107,6 +107,8 @@
       });
     });
 </script>
+    <link href="../../stylesheets/jquery.feedback_me.css" rel="stylesheet" media="screen">
+<script src="../../javascripts/lib/jquery.feedback_me.js"></script>
   </head>
 
   <body class="api api_v2 api_v2_index twocolumn">
@@ -11175,6 +11177,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  date_modified</li>
 <li>  accepts_marketing</li>
 <li>  addresses</li>
+<li>  form_fields</li>
 </ul>
 
 <h4 id="requirements"><span class="jumptarget"> Requirements </span></h4>
@@ -15140,5 +15143,21 @@ Where a store is configured to use automatic taxes, data inside the <code>tax_cl
             }
         });
     </script>
+    <script>
+
+    var custom_wufoo_html = '<iframe height="450" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none"  src="https://bigcommercedevelopers.wufoo.com/embed/z2p1a040b1ing3/"><a href="https://bigcommercedevelopers.wufoo.com/forms/z2p1a040b1ing3/">Fill out my Wufoo form!</a></iframe>';
+
+    //set up some basic options for the feedback_me plugin
+    fm_options = {
+        position: "right-top",
+        title_label : "",
+        show_form: false,
+        show_asterisk_for_required: true,
+        custom_html: custom_wufoo_html
+    };
+    //init feedback_me plugin
+    fm.init(fm_options);
+
+</script>
   </body>
 </html>

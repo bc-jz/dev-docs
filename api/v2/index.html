@@ -10911,6 +10911,8 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <h3 id="customer-events"><span class="jumptarget"> Customer Events </span></h3>
 
+<p>The following customer events are available:</p>
+
 <h4 id="customer-created"><span class="jumptarget"> Customer Created </span></h4>
 
 <p><code class="prettyprint">store/customer/created</code></p>
@@ -11043,7 +11045,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 </tr>
 </tbody></table>
 
-<h3 id="pagination"><span class="jumptarget"> Pagination </span></h3>
+<h4 id="pagination"><span class="jumptarget"> Pagination </span></h4>
 
 <p>Parameters can be added to the URL query string to paginate the collection. The maximum limit is 250. If a limit isn’t provided, up to 50 customers are returned by default.</p>
 
@@ -11065,6 +11067,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <td>/api/v2/customers?limit={count}</td>
 </tr>
 </tbody></table>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -11119,6 +11125,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/customers/{id}</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -11151,6 +11161,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/customers/count</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -11199,33 +11213,33 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <h4 id="updating-passwords"><span class="jumptarget"> Updating Passwords </span></h4>
 
 <p>To manually update a customer password in the same way as the control panel, supply a value for the password field:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-        "password": "12w69Y217PYR96J"
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h4 id="confirming-passwords"><span class="jumptarget"> Confirming Passwords </span></h4>
 
 <p>An additional optional <code class="prettyprint">password_confirmation</code> field can also be sent, providing password confirmation as a service:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-       "password": "12w69Y217PYR96J",
-       "password_confirmation": "12w69Y217PYR96J"
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"password_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h4 id="forcing-password-resets"><span class="jumptarget"> Forcing Password Resets </span></h4>
 
 <p>To force a customer to reset their password upon their next login attempt, give the <code class="prettyprint">force_reset</code> field a value of true, as shown here:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-        "force_reset": true
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"force_reset"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="update-a-customer"><span class="jumptarget"> Update a Customer </span></h3>
 
@@ -11263,33 +11277,33 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <h4 id="updating-passwords"><span class="jumptarget"> Updating Passwords </span></h4>
 
 <p>To manually update a customer password in the same way as the control panel, supply a value for the <code class="prettyprint">password</code> field:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-        "password": "12w69Y217PYR96J"
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h4 id="confirming-passwords"><span class="jumptarget"> Confirming Passwords </span></h4>
 
 <p>An additional optional <code class="prettyprint">password_confirmation</code> field can also be sent, providing password confirmation as a service:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-       "password": "12w69Y217PYR96J"
-       "password_confirmation": "12w69Y217PYR96J"
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="w">
+       </span><span class="s2">"password_confirmation"</span><span class="err">:</span><span class="w"> </span><span class="s2">"12w69Y217PYR96J"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h4 id="forcing-password-resets"><span class="jumptarget"> Forcing Password Resets </span></h4>
 
 <p>To force a customer to reset their password upon their next login attempt, give the <code class="prettyprint">force_reset</code> field a value of true, as shown here:</p>
-<pre class="highlight plaintext"><code>{
-    "_authentication": {
-        "force_reset": true
-    }
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"_authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"force_reset"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="delete-a-customer"><span class="jumptarget"> Delete a Customer </span></h3>
 
@@ -11317,7 +11331,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <p>Postal address belonging to a customer.</p>
 
-<h3 id="customer-addresss-object-properties"><span class="jumptarget"> Customer Addresss Object - Properties </span></h3>
+<h3 id="customer-address-object-properties"><span class="jumptarget"> Customer Address Object – Properties </span></h3>
 
 <table><thead>
 <tr>
@@ -12377,6 +12391,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <td>/api/v2/countries?limit={count}</td>
 </tr>
 </tbody></table>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -12411,6 +12429,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/countries/{id}</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">226</span><span class="p">,</span><span class="w">
   </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
@@ -12433,6 +12455,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/countries/count</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">243</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -12779,6 +12805,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <td>/api/v2/coupons?limit={count}</td>
 </tr>
 </tbody></table>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -12917,6 +12947,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &ldquo;&gt;<code class="prettyprint">GET /api/v2/coupons/{id}</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5% off order total"</span><span class="p">,</span><span class="w">
@@ -12950,6 +12984,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/coupons/count</code></li>
 </ul>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -12968,7 +13006,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <h4 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h4>
 
-<p>The following properties of the coupon are read-only. If one or more of these properties are included in the request, it will be rejected.</p>
+<p>The following properties of the coupon are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
 
 <ul>
 <li>  id</li>
@@ -12977,7 +13015,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <h4 id="requirements"><span class="jumptarget"> Requirements </span></h4>
 
-<p>The following properties of the coupon are required. The request won’t be fulfilled unless these properties are valid.</p>
+<p>The following properties of the coupon are required. The request won’t be fulfilled unless these properties are valid:</p>
 
 <ul>
 <li>  name</li>
@@ -13048,7 +13086,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <h4 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h4>
 
-<p>The following properties of the coupon are read-only. If one or more of these properties are included in the request, it will be rejected.</p>
+<p>The following properties of the coupon are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
 
 <ul>
 <li>  id</li>
@@ -13057,7 +13095,17 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <h4 id="requirements"><span class="jumptarget"> Requirements </span></h4>
 
-<p>The following properties of the coupon are required. The request won’t be fulfilled unless these properties are valid.</p>
+<p>The following property of the coupon is required. If it is not included in the <code class="prettyprint">PUT</code> request, its existing value on the coupon will be cleared:</p>
+
+<ul>
+<li>  applies_to</li>
+</ul>
+
+<p>Note that if the <code class="prettyprint">applies_to</code> value is cleared, you can restore it to the coupon by reapplying the <code class="prettyprint">applies_to</code> value in a new PUT request.</p>
+
+<h4 id="response"><span class="jumptarget"> Response </span></h4>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5% off order total"</span><span class="p">,</span><span class="w">
@@ -15145,7 +15193,7 @@ Where a store is configured to use automatic taxes, data inside the <code>tax_cl
     </script>
     <script>
 
-    var custom_wufoo_html = '<iframe height="450" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none"  src="https://bigcommercedevelopers.wufoo.com/embed/z2p1a040b1ing3/"><a href="https://bigcommercedevelopers.wufoo.com/forms/z2p1a040b1ing3/">Fill out my Wufoo form!</a></iframe>';
+    var custom_wufoo_html = '<iframe height="500" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none"  src="https://bigcommercedevelopers.wufoo.com/embed/z2p1a040b1ing3/"><a href="https://bigcommercedevelopers.wufoo.com/forms/z2p1a040b1ing3/">Fill out my Wufoo form!</a></iframe>';
 
     //set up some basic options for the feedback_me plugin
     fm_options = {

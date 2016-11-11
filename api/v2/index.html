@@ -10826,7 +10826,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <tr>
 <td>is_default</td>
 <td>boolean</td>
-<td>Specifies whether this is the store&rsquo;s default currency display format. Read-only.</td>
+<td>Specifies whether this is the store&rsquo;s default currency display format. Read-only. (To change the store&rsquo;s default currency via the BigCommerce control panel, please see <a href="https://support.bigcommerce.com/articles/Public/Managing-Currencies/?q=currency&amp;l=en_US&amp;fs=Search&amp;pn=1#default">this support article</a>.)</td>
 </tr>
 <tr>
 <td>date_created</td>
@@ -10896,50 +10896,6 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <code class="prettyprint">GET /api/v2/currencies</code></li>
 </ul>
 
-<h3 id="filters"><span class="jumptarget"> Filters </span></h3>
-
-<p>Filter parameters can be added to the URL query string to select specific currencies in the collection.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>min_id</td>
-<td>int</td>
-<td>/api/v2/currencies?min_id={value}</td>
-</tr>
-<tr>
-<td>max_id</td>
-<td>int</td>
-<td>/api/v2/currencies?max_id={value}</td>
-</tr>
-</tbody></table>
-
-<p>Parameters can be added to the URL query string to paginate the collection. The maximum limit is 250. If a limit isn&rsquo;t provided, up to 50 currencies are returned by default.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>int</td>
-<td>/api/v2/currencies?page={number}</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>int</td>
-<td>/api/v2/currencies?limit={count}</td>
-</tr>
-</tbody></table>
-
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
@@ -10948,13 +10904,13 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
         </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
-            </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -10963,13 +10919,13 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-            </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -10978,13 +10934,13 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="w">
-            </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7500000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -11012,13 +10968,13 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
-    </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -11049,6 +11005,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>date_modified</li>
 </ul>
 
+<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
+
+<p>The <code class="prettyprint">is_default</code> property cannot be set programmatically. To change the store&rsquo;s default currency via the BigCommerce control panel, please see <a href="https://support.bigcommerce.com/articles/Public/Managing-Currencies/?q=currency&amp;l=en_US&amp;fs=Search&amp;pn=1#default">this support article</a>.</p>
+
 <h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
 
 <p>The following properties of the currency are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
@@ -11069,10 +11029,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
-    </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -11107,10 +11067,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
-    </span><span class="s2">"currency_code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
@@ -13006,7 +12966,7 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <tr>
 <td>enabled</td>
 <td>boolean</td>
-<td>True, if coupon is enabled. False otherwise.</td>
+<td>This field&rsquo;s value is <code class="prettyprint">true</code> if the coupon is enabled, otherwise <code class="prettyprint">false</code>.</td>
 </tr>
 <tr>
 <td>code</td>

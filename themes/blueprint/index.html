@@ -8190,6 +8190,314 @@ url(//mystore.com/content/images/foo.jpg")
 </tr>
 </tbody></table>
 
+          <h1 id="checkout-styling"><span class="jumptarget"> Checkout Styling</span></h1>
+
+<p>To support stores that enable BigCommerce&rsquo;s Optimized One-Page Checkout feature, you can customize the Optimized Checkout page&rsquo;s styling within your theme. You do this by adding custom CSS to the <code class="prettyprint">optimized-checkout-webdav.css</code> template file that we provide. You can download the template as a <a href="../../assets/optimized-checkout-webdav.css.zip">.zip file here</a>, or copy the CSS <a href="uco-css-skeleton">below</a>.</p>
+
+<h2 id="customization-options-restrictions"><span class="jumptarget"> Customization Options/Restrictions </span></h2>
+
+<p>As a theme developer, you are free to change classes&rsquo; contents – but do not nest elements, nor change any class names. </p>
+
+<p>The structure and class naming are reserved because each class here maps to multiple Optimized Checkout elements. So renaming would break updates available in future Optimized Checkout enhancements.</p>
+
+<h2 id="configuring-the-desktop-viewport"><span class="jumptarget"> Configuring the Desktop Viewport </span></h2>
+
+<p>Within the CSS file, to set up Optimized Checkout&rsquo;s responsive features, you should configure the following breakpoint to define your preferred desktop viewport size:</p>
+<pre class="highlight css"><code>    <span class="o">//</span> <span class="nt">TODO</span><span class="o">:</span>
+    <span class="o">//</span> <span class="nt">Configure</span> <span class="nt">media</span> <span class="nt">query</span> <span class="nt">to</span> <span class="nt">be</span> <span class="err">'</span><span class="nt">desktop</span><span class="err">'</span> <span class="nt">breakpoint</span> <span class="nt">size</span>
+    <span class="o">//</span> <span class="nt">-----------------------------------------------------------------------------</span>
+    <span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">801px</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="n">stencilString</span><span class="p">(</span><span class="s1">"optimizedCheckout-logo-position"</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p>For other customization options, please see the class descriptions <a href="#uco-classes">below</a>.</p>
+
+<h2 id="deploying-custom-css"><span class="jumptarget"> Deploying Custom CSS </span></h2>
+
+<p>To deploy your custom CSS to a BigCommerce store, you will need to upload your <code class="prettyprint">optimized-checkout-webdav.css</code> file (once customized) via WebDAV. </p>
+
+<p>For a general overview of the process, please see <a href="https://support.bigcommerce.com/articles/Public/Accessing-and-Customizing-Template-Files/">this support article</a>. Place your customized <code class="prettyprint">optimized-checkout-webdav.css</code> file directly within WebDAV&rsquo;s <code class="prettyprint">/content/</code> folder.</p>
+
+<p>For details on interacting with WebDAV, please see <a href="https://support.bigcommerce.com/articles/Public/Connecting-to-WebDav">this article</a>.</p>
+
+<h2 id="classes-provided"><span class="jumptarget" id="uco-classes"> Classes Provided </span></h2>
+
+<p>Below is a summary of the classes provided in the template CSS, with corresponding page elements that they style. (These class names and mappings are subject to change, so please see the inline comments embedded in the file itself.)</p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Styles This Optimized One-Page Checkout Element:</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>.optimizedCheckout-header</td>
+<td>Page header.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-headingPrimary</td>
+<td>Top-level headings.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-headingSecondary</td>
+<td>Certain lower-level elements, such as descriptions of cart items.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-overlay</td>
+<td>Shipping Method box.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-contentPrimary</td>
+<td>Body text in the desktop <code class="prettyprint">Order Summary</code>/<code class="prettyprint">Order Confirmation</code> (cart contents); drop-down-list items; and text that summarizes completed steps.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-contentSecondary</td>
+<td>Text labels on check boxes, and lower-level text in the desktop Order Summary.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-button&ndash;primary</td>
+<td><code class="prettyprint">CONTINUE</code> button and final <code class="prettyprint">PAY</code> button.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-button&ndash;secondary</td>
+<td><code class="prettyprint">Edit</code> buttons.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-orderSummary</td>
+<td>Colors in the <code class="prettyprint">Order Summary</code> mobile drawer/modal.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-step</td>
+<td>Large step-number indicators on the page&rsquo;s left side.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-form-label</td>
+<td>Styles form fields like <code class="prettyprint">Email Address</code> – the field&rsquo;s text-label color.</td>
+</tr>
+<tr>
+<td>.optimizedCheckout-form-input</td>
+<td>Styles form fields like <code class="prettyprint">Email Address</code> – the entry box&rsquo;s background and border colors.</td>
+</tr>
+</tbody></table>
+
+<h2 id="css-skeleton"><span class="jumptarget" id="uco-css-skeleton"> CSS Skeleton </span></h2>
+
+<p>You can copy and modify the template <code class="prettyprint">optimized-checkout-webdav.css</code> file&rsquo;s current contents directly from this documentation, below: </p>
+<pre class="highlight css"><code><span class="c">/* 
+// =============================================================================
+// Stencil Checkout - Customize the Optimized Single-Page Checkout experience
+// =============================================================================
+*/</span>
+
+<span class="c">/*
+// =============================================================================
+//
+// IMPORTANT DISCLAIMER
+// Please do not nest elements within class selectors, and do not use class selectors other than those given below.
+// Future support is guaranteed only if class selectors' structure and naming are left unchanged.
+//
+// =============================================================================
+*/</span>
+
+
+<span class="c">/*
+// Header Section
+// Background, Logo Position
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-header</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-header-backgroundColor"</span><span class="p">);</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(stencilImage('optimizedCheckout-backgroundImage', 'optimizedCheckout-backgroundImage-size')</span><span class="p">);</span>
+    <span class="nl">background-size</span><span class="p">:</span> <span class="n">cover</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// TODO:
+// Configure media query to be 'desktop' breakpoint size
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">801px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.optimizedCheckout-header</span> <span class="p">{</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="n">stencilString</span><span class="p">(</span><span class="s1">"optimizedCheckout-logo-position"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Primary and Secondary Headings
+// Text Color &amp; Typography
+//
+// .optimizedCheckout-headingPrimary styles top-level headings.
+//
+// .optimizedCheckout-headingSecondary styles certain lower-level elements, such as descriptions of cart items.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-headingPrimary</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingPrimary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingPrimary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingPrimary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-headingSecondary</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingSecondary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingSecondary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-headingSecondary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Body
+// Background &amp; Shipping Method Overlay
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-body-backgroundColor"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-overlay</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-body-backgroundColor"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Primary &amp; Secondary Content
+// Text Color &amp; Typography
+//
+// .optimizedCheckout-contentPrimary styles body text in the Order Summary/Order Confirmation; 
+// drop-down-list items; and text summarizing completed steps.
+//
+// .optimizedCheckout-contentSecondary styles check boxes' text labels, 
+// and lower-level text in the Order Summary.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-contentPrimary</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentPrimary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentPrimary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentPrimary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-contentSecondary</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentSecondary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentSecondary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-contentSecondary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Primary Button
+// Background &amp; Border &amp; Text Color &amp; Typography
+//
+// Styles the CONTINUE button for each step, &amp; the final confirmation button.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-buttonPrimary</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-backgroundColor"</span><span class="p">);</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-borderColor"</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-buttonPrimary</span><span class="nd">:focus</span><span class="o">,</span>
+<span class="nc">.optimizedCheckout-buttonPrimary</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-backgroundColorHover"</span><span class="p">);</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-borderColorHover"</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-colorHover"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-buttonPrimary</span><span class="nd">:active</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-backgroundColorActive"</span><span class="p">);</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-borderColorActive"</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonPrimary-colorActive"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Secondary Button
+// Background &amp; Border &amp; Text Color &amp; Typography
+//
+// Styles the EDIT button for each step.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-buttonSecondary</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonSecondary-backgroundColor"</span><span class="p">);</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonSecondary-borderColor"</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonSecondary-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonSecondary-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-buttonSecondary-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Links
+// Text Color &amp; Typography
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nt">a</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-link-color"</span><span class="p">);</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">stencilFontFamily</span><span class="p">(</span><span class="s1">"optimizedCheckout-link-font"</span><span class="p">),</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">font-weight</span><span class="p">:</span> <span class="n">stencilFontWeight</span><span class="p">(</span><span class="s1">"optimizedCheckout-link-font"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Order Summary (Mobile Drawer &amp; Modal)
+// Background
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-orderSummary</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-orderSummary-backgroundColor"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Checkout Steps
+// Background &amp; Text Color
+//
+// Styles the large step-number indicators on the page's left side.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-step</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-step-backgroundColor"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-step</span><span class="nd">::before</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-step-text"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.optimizedCheckout-step</span> <span class="nt">svg</span> <span class="p">{</span>
+    <span class="py">fill</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-step-text"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Form Labels
+// Text Color
+//
+// Styles text labels on form fields.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-form-label</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-form-text"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c">/*
+// Form Input
+// Background &amp; Border Color
+//
+// Styles form fields.
+// -----------------------------------------------------------------------------
+*/</span>
+
+<span class="nc">.optimizedCheckout-form-input</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="n">stencilString</span><span class="p">(</span><span class="s1">"optimizedCheckout-formField-backgroundColor"</span><span class="p">);</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="n">stencilColor</span><span class="p">(</span><span class="s1">"optimizedCheckout-formField-borderColor"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+
       </div>
     </div>
     <script>

@@ -924,7 +924,7 @@ With clever use of this API, you can automate various commerce, business, and pu
 
 <ul>
 <li>  Existing products can be added to the order with a reference to their <code class="prettyprint">product_id</code>.</li>
-<li>  Custom products can be added to the order using the <code class="prettyprint">products array</code>.</li>
+<li>  Custom products can be added to the order using the <a href="#order-products-array"><code class="prettyprint">products array</code></a>.</li>
 <li>  If price is not specified, it will automatically pick up the price from the store’s product catalog. However, you can override this via <code class="prettyprint">price_inc_tax</code> and <code class="prettyprint">price_ex_tax</code>.</li>
 <li>  If <code class="prettyprint">price_inc_tax</code> and <code class="prettyprint">price_ex_tax</code> are specified, price and rulesets are ignored, and the <code class="prettyprint">price_inc_tax</code> or <code class="prettyprint">price_ex_tax</code> are written to <code class="prettyprint">base_price</code> according to the store settings.</li>
 <li>  When the store is subscribed to Avalara Premium, a value of <code class="prettyprint">API Tax Override</code> is written to the Order Tax object&rsquo;s <code class="prettyprint">name</code> field.</li>
@@ -1626,6 +1626,136 @@ Any attempts to <code>DELETE</code> an order on a store with automatic tax enabl
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/orders/{order_id}/messages/{id}</code></li>
 </ul>
+
+          <!-- Gnarly links are reset; reset the easy ones. Link from "Create an Order" endpoint. Stuff this into docs tree below Orders endpoints – between "Delete All Orders" and "Order Coupons". -->
+
+<h2 id="order-products-array"><span class="jumptarget"> Order Products Array </span></h2>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Managed by</td>
+<td><a href="#orders">Orders Resource</a></td>
+</tr>
+</tbody></table>
+
+<p>Nested inside the <a href="/api/objects/v2/#orders"><code class="prettyprint">order</code></a> object, the <code class="prettyprint">products</code> object/array allows you to achieve several goals:</p>
+
+<ul>
+<li><p>When retrieving order(s) using a <code class="prettyprint">GET</code>, the <code class="prettyprint">products</code> array provides JSON and XML summaries of the product(s) in the order. For an example of the syntax, see the sample code in <a href="#list-orders">List Orders</a>.</p></li>
+<li><p>When sending order(s) using a <code class="prettyprint">POST</code> or <code class="prettyprint">PUT</code>, the <code class="prettyprint">products</code> array allows you to add either a product that already exists in the store, or a product that does not exist in the store. For an example of the syntax, see the sample code in <a href="#create-an-order">Create an Order</a>.</p></li>
+</ul>
+
+<aside class="warning">
+<span class="aside-warning-hd">Updates Are Additive</span><br><br>
+Values passed for the <code>products</code> array to a <code>PUT</code> are appended to any existing values. You cannot use a <code>PUT</code> to overwrite existing <code>products</code> values.
+</aside>
+
+<h3 id="retrieving-product-information-using-get"><span class="jumptarget"> Retrieving Product Information using GET </span></h3>
+
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>url</td>
+    <td>string</td>
+    <td>The URI of a JSON object containing the product details.</td>
+  </tr>
+  <tr>
+    <td>resource</td>
+    <td>string</td>
+    <td>A context path that provides an alternate means of retrieving the data (for example, if you prefer XML).</td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="adding-an-existing-product-that-already-exists-in-the-store-to-the-order"><span class="jumptarget"> Adding an Existing Product (that Already Exists in the Store) to the Order </span></h3>
+
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>product_id</td>
+    <td>int</td>
+    <td>The ID of the product that you want to add to the order (required).</td>
+  </tr>
+  <tr>
+    <td>quantity</td>
+    <td>int</td>
+    <td>How many products of this type to add to the order (required).</td>
+  </tr>
+  <tr>
+    <td>product_options</td>
+    <td>array</td>
+    <td>These values might be required, depending on how the product&rsquo;s options are set up. If the options are required, pass in the <a href="#options-object-properties"><code>id</code></a> of the product option (not the option itself) and the <a href="#option-value-object-properties"><code>value</code></a>  of the option (not the product).</td>
+  </tr>
+  <tr>
+    <td>price_inc_tax</td>
+    <td>int</td>
+    <td>If you include a value here, it will overwrite the price (including tax) already specified for the product. This property is optional, but if you do include a value for <code>price_inc_tax</code>, you must also include a value for <code>price_ex_tax</code>.</td>
+  </tr>
+  <tr>
+    <td>price_ex_tax</td>
+    <td>int</td>
+    <td>If you include a value here, it will overwrite the price (excluding tax) already specified for the product. This property is optional, but if you do include a value for <code>price_ex_tax</code>, you must also include a value for <code>price_inc_tax</code>.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="adding-a-new-product-that-does-not-already-exist-in-the-store-to-the-order"><span class="jumptarget" id="custom-product"> Adding a New Product (that Does Not Already Exist in the Store) to the Order </span></h3>
+
+<table>
+  <thead>
+   <tr>
+     <th style="width: 100px;">Name</th>
+     <th style="width: 50px;">Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr class="mandatory">
+        <td>name</td>
+        <td>int</td>
+        <td>The name of the custom product tax. (Required.)</td>
+    </tr>
+    <tr class="mandatory">
+        <td>quantity</td>
+        <td>int</td>
+        <td>The quantity of the purchase for this custom product tax. (Required. Can be positive or negative. Cannot be zero.)</td>
+    </tr>
+    <tr class="mandatory">
+        <td>price_inc_tax</td>
+        <td>decimal</td>
+        <td>The price of the custom product, including tax. (Required.)</td>
+    </tr>
+    <tr class="mandatory">
+        <td>price_ex_tax</td>
+        <td>decimal</td>
+        <td>The price of the custom product, excluding tax. (Required.)</td>
+    </tr>
+    <tr>
+        <td>sku</td>
+        <td>text</td>
+        <td>The SKU of the custom product. (Optional.)</td>
+    </tr>
+  </tbody>
+</table>
 
           <h2 id="order-products"><span class="jumptarget"> Order Products </span></h2>
 

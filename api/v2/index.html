@@ -924,7 +924,7 @@ With clever use of this API, you can automate various commerce, business, and pu
 
 <ul>
 <li>  Existing products can be added to the order with a reference to their <code class="prettyprint">product_id</code>.</li>
-<li>  Custom products can be added to the order using the <a href="#order-products-array"><code class="prettyprint">products array</code></a>.</li>
+<li>  Custom products can be added to the order using the <a href="#order-products-array"><code class="prettyprint">products</code> array</a>.</li>
 <li>  If price is not specified, it will automatically pick up the price from the store’s product catalog. However, you can override this via <code class="prettyprint">price_inc_tax</code> and <code class="prettyprint">price_ex_tax</code>.</li>
 <li>  If <code class="prettyprint">price_inc_tax</code> and <code class="prettyprint">price_ex_tax</code> are specified, price and rulesets are ignored, and the <code class="prettyprint">price_inc_tax</code> or <code class="prettyprint">price_ex_tax</code> are written to <code class="prettyprint">base_price</code> according to the store settings.</li>
 <li>  When the store is subscribed to Avalara Premium, a value of <code class="prettyprint">API Tax Override</code> is written to the Order Tax object&rsquo;s <code class="prettyprint">name</code> field.</li>

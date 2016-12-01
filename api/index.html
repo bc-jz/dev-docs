@@ -211,42 +211,54 @@
 
 <h2 id="1-join-the-technology-partner-program"><span class="jumptarget"> 1. Join the Technology Partner Program </span></h2>
 
-<p>Before you begin, you&rsquo;ll need a sandbox store. BigCommerce offers app developers free sandbox stores through its Technology Partner Program. To get your sandbox store, <a href="https://www.bigcommerce.com/partners/signup" target="_blank">apply to become a BigCommerce Technology Partner</a>. To be approved as a partner, you will need:</p>
+<p>Before you&rsquo;ll be ready to submit an app for the BigCommerce Marketplace, you must become an official Partner. BigCommerce offers app developers free sandbox stores through its Technology Partner Program. You can <a href="https://www.bigcommerce.com/partners/signup" target="_blank">apply for a technology partnership here</a>. To be approved as a partner, you will need:</p>
 
 <ul>
 <li>A website.</li>
-<li>The ability to support users of your app.</li>
-<li>A PayPal account – if you want to get paid for referring people to BigCommerce (optional).</li>
+<li>Intent to offer your app publicly.</li>
+<li>Ability to support users of your app.</li>
+<li>Evidence of expertise in app development.</li>
 </ul>
 
-<p>NOTE: The email address you use in this form must be the same email address as you use to log into your sandbox store, and to log into <a href="//devtools.bigcommerce.com" target="_blank">My&#160;Apps</a>.</p>
+<aside class="notice">
+<span class="aside-notice-hd">Notes</span><br>
+  <ul>
+    <li>If you are an existing BigCommerce partner, you do <em>not</em> need to re-apply for the Technology Partner Program.</li>
+    <li>The email address you use in the partnership application form must be the same email address as you use to log into your sandbox store, and to log into <a href="//devtools.bigcommerce.com" target="_blank">My&#160;Apps</a>.</li>
+  </ul>
+</aside>
 
-<p>Once approved, you will receive one or more emails containing:</p>
+<p>Once approved, you will receive one or more emails containing your partner credentials and next steps. Your Partner username and ID will be required to submit your app for <a href="https://developer.bigcommerce.com/" target="_blank">App Store</a> consideration.</p>
 
-<ul>
-<li><strong>Your Partner ID</strong>: required to submit an app for <a href="https://www.bigcommerce.com/apps/" target="_blank">App Store</a> consideration.</li>
-<li><strong>Temporary Partner Portal credentials</strong>: change your password immediately after logging in.</li>
-</ul>
-
-<p>NOTE: If you do not receive your Partner ID by email, contact <a href="mailto:partnersupport@bigcommerce.com">partnersupport@bigcommerce.com</a>.</p>
+<aside class="notice">
+<span class="aside-notice-hd">Note</span>
+<br><br>
+ If you do not receive these credentials by email, contact <a href="mailto:appstore@bigcommerce.com">appstore@bigcommerce.com</a>.
+</aside>
 
 <h2 id="2-get-a-sandbox-store"><span class="jumptarget"> 2. Get a Sandbox Store </span></h2>
 
-<p>To get into your sandbox store, log into the Partner Portal, then click <strong>Create a Trial Store</strong>. When you log into your store, use the same email that you used when applying to become a Technology Partner.</p>
+<p>To open your sandbox store, log into the Partner Portal, then click <strong>Create a Trial Store</strong>. When you log into your store, use the same email that you used when applying to become a Technology Partner.</p>
 
 <p>NOTE: Although the <strong>Create a Trial Store</strong> option&rsquo;s name indicates that the store might be temporary, it is actually permanent.</p>
 
-<h2 id="3-get-your-keys"><span class="jumptarget">3. Get Your Keys </span></h2>
+<h2 id="3-create-your-draft-app"><span class="jumptarget">3. Create your Draft App </span></h2>
 
-<p>This step works differently for OAuth versus Basic-Auth apps:</p>
+<p>Once you’re ready to start on your app, navigate to the Developer Portal home page, click the <strong>My Apps</strong> link, and log in using the same email address you&rsquo;ve used for your sandbox store.</p>
 
-<h3 id="oauth-apps"><span class="jumptarget"> OAuth Apps </span></h3>
+<p>The <strong>My Apps</strong> page is where you will add, edit, and manage any of your BigCommerce Single-Click Apps. Start by clicking <strong>Create an app now</strong>, and initiating <a href="https://developer.bigcommerce.com/api/registration">registration of your app</a> - you can always come back to edit this later!</p>
 
-<p>OAuth apps (also known as <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> or public apps) can be listed in the App Store for easy installation in all BigCommerce stores. They use OAuth to obtain an access token and communicate with the central BigCommerce API endpoint. Building a public app is the recommended approach in almost all cases. Before you start, we suggest reviewing the <a href="#app-store-approval-requirements">App Store acceptance requirements</a>. To start making API requests, you&rsquo;ll need a <a href="#app-registration">Client ID and Client Secret</a>, and an <a href="#app-installation-and-update-sequence">OAuth token</a>.</p>
+<p>Once your draft app is created, you will be able to install and test it privately in your sandbox store.</p>
 
-<h3 id="basic-auth-apps"><span class="jumptarget"> Basic-Auth Apps </span></h3>
+<aside class="notice">
+<span class="aside-notice-hd">Note</span>
+    <br><br>
+To access your draft app in the store, the email address used for your sandbox store’s Owner user must be identical to the address that you use for the BigCommerce Developer Portal. </ul>
+</aside>
 
-<p>Basic Auth apps require the manual creation of an API token for each store, and are most useful for custom integrations for a single BigCommerce store. They use HTTP Basic Authentication, and communicate directly with the store&rsquo;s API endpoints. From the control panel of your sandbox store, you can <a href="#building-basic-auth-apps">get the base path, user ID, and API token</a> that you need to start making calls.</p>
+<h2 id="4-submit-your-app"><span class="jumptarget"> 4. Submit Your App </span></h2>
+
+<p>Once your app is fully functional and meets all of BigCommerce’s <a href="#app-store-approval-requirements">approval requirements</a>, submit the app from <strong>My Apps</strong>. We will get back to you as soon as we have reviewed your submission.</p>
 
 <h2 id="about-client-libraries"><span class="jumptarget"> About Client Libraries </span></h2>
 
@@ -1059,7 +1071,12 @@ Following the creation of a webhook, it can take up to one minute for BigCommerc
 
 <p>Building an OAuth app is the recommended approach in almost all cases. BigCommerce plans to deprecate the alternative Basic Auth mechanism that currently supports <a href="/api/#building-basic-auth-apps">private apps</a> for individual stores.</p>
 
-<p>Before you start, we suggest reviewing the <a href="#app-store-approval-requirements">App Store acceptance requirements</a>. To start making API requests, you&rsquo;ll need a <a href="#app-registration">Client ID and Client&#160;Secret</a>, and an <a href="#app-installation-and-update-sequence">OAuth token</a>. </p>
+<p>Before you start building an app for the App Store, we suggest reviewing the <a href="#app-store-approval-requirements">App Store acceptance requirements</a>. To start making API requests, you&rsquo;ll need a <a href="#app-registration">Client ID and Client&#160;Secret</a>, and an <a href="#app-installation-and-update-sequence">OAuth token</a>. </p>
+
+<aside class="notice">
+<span class="aside-notice-hd">Draft App Option</span><br><br>
+You can also create a “Draft” version of a Single-Click App, for use only in your store. You don&rsquo;t need to submit this Draft app for publishing in the App Store.
+</aside>
 
 <h3 id="api-endpoint"><span class="jumptarget"> API Endpoint </span></h3>
 
@@ -1092,7 +1109,9 @@ Following the creation of a webhook, it can take up to one minute for BigCommerc
 
 <h3 id="monetizing-your-app"><span class="jumptarget"> Monetizing Your App </span></h3>
 
-<p>If you want to charge merchants for your app, please note that BigCommerce expects you to handle the billing aspects of the transaction. Your app needs to take care of collecting the fee from the merchant. Under the standard contract, within thirty days of collecting this revenue, you must send BigCommerce 20% and retain the remaining 80% for yourself. Reporting should be sent monthly to <a href = "mailto:partnerpayments@bigcommerce.com">partnerpayments@bigcommerce.com</a>.</p>
+<p>If you want to charge merchants for your app, please note that BigCommerce expects you to handle the billing aspects of the transaction. Your app needs to take care of collecting the fee from the merchant. </p>
+
+<p>Under the standard contract, within 30 days of collecting this revenue, you must send BigCommerce 20% and retain the remaining 80% for yourself. Once your app is published, a mandatory revenue-share reporting form will be sent to the primary contact on your partner account, at the beginning of each month.</p>
 
           <h2 id="app-registration"><span class="jumptarget"> <a name="registration"></a> App Registration </span></h2>
 
@@ -2066,19 +2085,25 @@ To limit the vulnerability of your app to <a href="http://codahale.com/a-lesson-
 
           <h2 id="app-store-approval-requirements"><span class="jumptarget" id="approval"> App Store Approval Requirements </span></h2>
 
-<p>Our submission guidelines aim to protect the merchant experience, and to provide enough structure for you to develop apps efficiently and effectively:</p>
+<p>Our submission guidelines aim to protect the merchant experience, and to provide enough structure for you to develop apps efficiently and effectively.</p>
+
+<p>Before submitting your app, please be sure to carefully review it against the following requirements, to avoid having your app rejected and needing to re-submit it:</p>
+
+<h3 id="app-approval-requirements"><span class="jumptarget" id="approval"> App Approval Requirements </span></h3>
 
 <ul>
 <li><p>Apps must perform as described.</p></li>
-<li><p>All information supplied as part of the app submission process must be genuine and accurate.</p></li>
+<li><p>All information supplied in the app submission process must be genuine and accurate.</p></li>
 <li><p>Apps must provide pricing information – including pricing for starting a new service, and the cost of services after the free trial.</p></li>
 <li><p>All API requests must be made using OAuth authentication.</p></li>
+<li><p>Apps must be compatible with both the <a href="/themes/blueprint/" target="_blank">Blueprint theme framework</a> and the <a href="https://stencil.bigcommerce.com/docs/" target="_blank">Stencil theme framework</a>, for any storefront components.</p></li>
+<li><p>Apps must include contact information should a merchant need support on the app. Any relevant reference docs or media should also be included or linked.</p></li>
 <li><p>Apps must be production-ready and free of defects.
 <aside class="warning">
 <span class="aside-warning-hd">Test before Submitting </span><br>
 Install and test your app thoroughly prior to submission. Be sure to install and run your app inside of your sandbox store, as a draft area to conduct your tests.
 </aside></p></li>
-<li><p>Apps must function properly on all <a href="#supported-browsers">supported browsers</a>, and must conform to the <a href="#ui-constraints">user interface constraints</a> – including P3P policies as necessary, and no mixed content.</p></li>
+<li><p>Apps must function properly on all <a href="#supported-browsers">supported browsers</a>, and must conform to the <a href="#ui-constraints">user-interface constraints</a> – including P3P policies as necessary, and no mixed content.</p></li>
 <li><p>The entire app should operate within the iframe that opens when the user clicks on your app icon in the control panel&rsquo;s launch bar. Exceptions may be made for apps that need to authenticate to other services using OAuth – as long as they open a new tab to do so.</p></li>
 <li><p>Apps must be easy to use.</p></li>
 <li><p>Whenever possible, apps must use the API resources to auto-fill and obtain information, rather than prompting the user. BigCommerce will reject apps requesting information that can be auto-filled.</p>
@@ -2192,7 +2217,9 @@ Install and test your app thoroughly prior to submission. Be sure to install and
 
 <aside class="warning">
 <span class="aside-warning-hd">Check for Complete Information</span><br><br>
-The wizard validates for your Partner user name and ID, as well as for correctly formatted URLs. However, additional information is required to get your app accepted into the App Store. If you submit your app without the required information and files discussed in this section, it will be rejected.
+The wizard validates for your Partner username and ID, as well as for correctly formatted URLs. However, additional information is required to get your app accepted into the App Store.<br><br> 
+
+If you submit your app without the required information and files identified in this section, it will be rejected.
 </aside>
 
 <h3 id="app-summary"><span class="jumptarget"> App Summary</h3>
@@ -2200,12 +2227,20 @@ The wizard validates for your Partner user name and ID, as well as for correctly
 <p>The required fields in the <code class="prettyprint">App Summary</code> panel are identified and discussed below:</p>
 
 <ul>
-<li><p><code class="prettyprint">Username</code>: your Partner Portal user name.</p></li>
-<li><p><code class="prettyprint">Partner ID</code>: your Partner Portal ID.</p></li>
+<li><p><code class="prettyprint">Username</code>: your Partner account user name.</p></li>
+<li><p><code class="prettyprint">Partner ID</code>: your Partner account ID.</p></li>
 <li><p><code class="prettyprint">Logo</code>: upload the image that you want to be displayed in the <a href="https://www.bigcommerce.com/apps/" target="_blank">App Store</a>. To ensure optimal quality, you should use your image processing software to size it to 340 by 160 pixels before uploading.</p></li>
-<li><p><code class="prettyprint">Price</code>: defaults to <code class="prettyprint">Free</code>. If you do not want to receive any monies for your app, you can leave this in place. Otherwise, select the price that you want to charge merchants. NOTE: if you select <code class="prettyprint">Free Trial</code>, make sure that you select a price to charge at the end of the trial period.</p></li>
-<li><p><code class="prettyprint">Summary</code>: a brief description of your app (your value proposition) to show alongside the logo in the <a href="https://www.bigcommerce.com/apps/" target="_blank">App Store</a>.</p></li>
-<li><p><code class="prettyprint">Category</code>: select at least one.</p></li>
+<li><p><code class="prettyprint">Price</code>: defaults to <code class="prettyprint">Free</code>. If you do not want to receive any payment for your app, you can leave this in place. Otherwise, select the price that you want to charge merchants. NOTE: if you select <code class="prettyprint">Free Trial</code>, make sure that you select a price to charge at the end of the trial period.</p></li>
+</ul>
+
+<aside class="notice">
+<span class="aside-notice-hd">Free-Trial Templates</span><br><br>
+The App Summary price setting offers several predefined formats that include an optional Free Trial. Where possible, we suggest using these, to offer merchants uniform formatting in the App Store.
+</aside>
+
+<ul>
+<li><p><code class="prettyprint">Summary</code>: A brief description of your app (your value proposition) to show alongside the logo in the <a href="https://www.bigcommerce.com/apps/" target="_blank">App Store</a>. Maximum length is 140 characters.</p></li>
+<li><p><code class="prettyprint">Category</code>: Select a minimum of one, maximum of two.</p></li>
 </ul>
 
 <h3 id="details"><span class="jumptarget"> Details </span></h3>
@@ -2213,25 +2248,28 @@ The wizard validates for your Partner user name and ID, as well as for correctly
 <p>All of the fields in the <code class="prettyprint">Details</code> panel are required. Each is discussed below:</p>
 
 <ul>
-<li><p><code class="prettyprint">App Details</code>: provide a bulleted list of features or benefits, as well as which payment gateways/options the app supports.</p></li>
-<li><p><code class="prettyprint">App Screenshots</code>: at least one is required. You can include up to four. Screenshots should be 860 by 560 pixels.</p></li>
+<li><p><code class="prettyprint">App Details</code>: Provide a helpful description to promote your app (maximum 250 words). We recommend including an introduction video, bullet points, short paragraphs, and any restrictions (countries, browsers, payment methods, etc). </p></li>
+<li><p><code class="prettyprint">App Screenshots</code>: You must include at least one, and may include up to four. Each screenshot should be 860 by 560 pixels.</p></li>
 </ul>
 
 <h3 id="launch-bar"><span class="jumptarget"> Launch Bar </span></h3>
 
 <p>You must provide an app icon. To ensure optimal quality, you should use your image processing software to size it to 100 by 100 pixels before uploading. Your app icon will appear in the merchant&rsquo;s control panel once your app has been installed.</p>
 
-<p>BigCommerce also provides the option to provide &ldquo;deep links,&rdquo; which are shown as a menu of options when the user hovers over your app icon. This allows the merchant quick access to the main areas of your app. These are not required.</p>
-
 <h3 id="technical"><span class="jumptarget"> Technical </span></h3>
 
-<p>You will have already provided much of the information during the initial <a href="#app-registration">app registration</a>. However, before submitting, review the information that you provided initially to make sure that all of the URIs are publicly available, fully qualified, and served over TLS/SSL. In addition, ensure that your app is requesting all of the scopes that it needs now, as well as the scopes that you anticipate needing in the future. Currently, we do not offer the ability to refresh tokens.</p>
+<p>You will have already provided much of the information during the initial <a href="#app-registration">app registration</a>. However, before submitting your app, please review the information that you initially provided, to make sure that all of the URIs are publicly available, fully qualified, and served over TLS/SSL. In addition, ensure that your app is requesting all of the scopes that it needs now, as well as the scopes that you anticipate needing in the future.</p>
 
-<p>You must also provide detailed testing instructions as well as test accounts prior to submission.</p>
+<p>Prior to submission, you must also provide detailed testing instructions, as well as test accounts.</p>
+
+<aside class="warning">
+<span class="aside-warning-hd">Scope Changes</span><br><br>
+Changing scopes once your app has been launched will require all of your current users to re-authorize the app before they can launch it again.
+</aside>
 
 <h3 id="submitting-your-app"><span class="jumptarget"> Submitting your App </span></h3>
 
-<p>You can submit your app from the last panel. A fee of $99 is required for each submission. If your app is rejected and you need to resubmit it, you will be charged again, so be sure that it&rsquo;s ready for review before submitting. Updates to the app will not require an additional submission fee.</p>
+<p>You can submit your app from the last panel. A fee of $99 is required for each submission. If your app is rejected and you need to resubmit it, <em>you will be charged again,</em> so be sure that it&rsquo;s ready for review before submitting. Updates to the app will not require an additional submission fee.</p>
 
 <p>After receiving the submission, BigCommerce will use the information that you have provided to interact with, evaluate, and test your app.</p>
 
@@ -2319,13 +2357,24 @@ The wizard validates for your Partner user name and ID, as well as for correctly
 
           <h1 id="building-basic-auth-apps"><span class="jumptarget"> Building Basic-Auth Apps </span></h1>
 
-          <p>Basic-Auth (or &ldquo;Private&rdquo;) apps require the manual creation of an API token for each store. They are most useful for custom integrations for a single BigCommerce store. They use HTTP Basic Authentication, and communicate directly with the store&rsquo;s API endpoints.</p>
+          <p>Basic-Auth (or &ldquo;Private&rdquo;) apps require the manual creation of an API token for each store. They are most useful for custom integrations for a single BigCommerce store. They generally use HTTP Basic Authentication (with the exception of <a href="#private-apps-with-oauth">Draft apps</a>), and communicate directly with the store&rsquo;s API endpoints.</p>
 
 <aside class="warning">
 <span class="aside-warning-hd">Limited Support for Basic Auth </span><br><br>
 BigCommerce is gradually deprecating Basic Authentication. Apps must use <a href="#building-oauth-apps">OAuth</a> to access our v3 API.   
-Even within the v2 API, apps relying on Basic Authentication cannot access some features: For example, the Webhooks resource requires OAuth.
+Even within the v2 API, apps relying on Basic Authentication cannot access some features. For example, the Webhooks resource requires OAuth.
 </aside>
+
+<h2 id="private-apps-with-oauth"><span class="jumptarget"> Private Apps with OAuth? </span></h2>
+
+<p>A few private apps use OAuth. These exceptions must meet the following restrictions:</p>
+
+<ul>
+<li><p>To create a private app that uses OAuth, you must create it as a Draft app, on a per-user basis. This Draft app will be accessible only to stores belonging to the user who created the app in the Developer Portal.</p></li>
+<li><p>OAuth Draft apps are currently not shareable, unless they are approved and published in the App Store.</p></li>
+</ul>
+
+<p>The remainder of this &ldquo;Building Basic-Auth/Private Apps&rdquo; section applies only to Basic Authentication apps.</p>
 
 <h2 id="making-requests"><span class="jumptarget"> Making Requests </span></h2>
 
@@ -2667,7 +2716,7 @@ X-BC-ApiLimit-Remaining: 0
 
 <aside class="notice">
 <span class="aside-notice-hd">Private Apps Exempted</span><br><br>
-Private apps <em>not</em> in the App Store can continue to use Basic Authentication, and are not subject to a sunset. We do not currently provide a means of keeping OAuth apps private.
+Private apps <em>not</em> in the App Store can continue to use Basic Authentication, and are not subject to a sunset. We do not currently provide a means of keeping OAuth apps private, other than creating them as Draft apps for your stores only.
 </aside>
 
 <p>OAuth allows you to authenticate and access the Stores API on behalf of any merchant who authorizes your app. Merchants no longer have to bounce between multiple browser tabs or cut and paste API keys to install apps.</p>
@@ -2677,7 +2726,7 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <ul>
 <li><p>Improved <a href="#rate-limits_oauth">Rate Limits</a>. For apps that access the API using OAuth, we’re able to offer quota-based limits and the possibility to increase the overall volume of requests for stores on higher plans.</p></li>
 <li><p>Ability to set and receive <a href="#webhooks-overview">webhook</a> callbacks.</p></li>
-<li><p>Privileged access to new capabilities.</p></li>
+<li><p>Privileged access to new capabilities, such as multi-user support and streamlined permissions updates.</p></li>
 </ul>
 
 <h3 id="how-to-migrate"><span class="jumptarget"> How to Migrate </span></h3>
@@ -2690,6 +2739,7 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <li> Update your app so that it can process the <a href="#processing-the-signed-payload">signed payloads</a> that BigCommerce sends when a merchant loads your app.</li>
 <li> <a href="#base-paths">Change your base paths</a>.</li>
 <li> Update your app to observe the <a href="#rate-limits_oauth">OAuth rate limits</a>.</li>
+<li> Prepare your app&rsquo;s UI to run within the BigCommerce iframe, once installed.</li>
 </ol>
 
 <h3 id="change-your-base-paths"><span class="jumptarget id="base-paths"> Change Your Base Paths </span></h3>

@@ -1,0 +1,3508 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>BigCommerce API Documentation</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+
+    <link href="../stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" media="print" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="../javascripts/all.js"></script>
+    <script>
+    //This is Google's default GA code
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-47823747-2', 'auto');
+    ga('send', 'pageview');
+    // Used for navlink tracking (https://github.com/tripit/slate/issues/209)
+    $(document).ready(function() {
+      $('.tocify-item a').on('click', function(){
+        ga('send', 'pageview', {'page': location.pathname + location.search  + location.hash});
+      });
+    });
+</script>
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel.com"});</script><!-- end Mixpanel -->
+    <link href="../stylesheets/jquery.feedback_me.css" rel="stylesheet" media="screen">
+<script src="../javascripts/lib/jquery.feedback_me.js"></script>
+  </head>
+
+  <body class="drafts drafts_index twocolumn">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar.png" />
+      </span>
+    </a>
+
+<header role="banner">
+  <div class="topBar-container topBar-container--fixed">
+  <nav class="top-bar ng-isolate-scope" ng-transclude="" top-bar="" style="height: 81px;">
+    <ul class="title-area ng-scope">
+      <li class="name"><a href="/"><img src="../images/developer.png" /></a></li>
+    </ul>
+    <section class="top-bar-section ng-scope">
+      <ul class="menuItems">
+        <li><a href="/api/" title="API">API</a></li>
+        <li><a href="/themes/" title="Themes">Themes</a></li>
+        <li><a href="/changelog/" title="Changelog">Changelog</a></li>
+        <li><a href="/support/" title="Help and Support">Support</a></li>
+      </ul>
+    </section>
+    <div class="top-bar-actions ng-scope">
+      <div class="optional"><a href="https://devtools.bigcommerce.com/">My Apps</a></div>
+      <div class="optional">
+    <a href="https://login.bigcommerce.com/signup"><button class="button button--action button--small">Create Account</button></a>
+  </div>
+    </div>
+  </nav>
+</div>
+
+</header>
+
+    <div class="tocify-wrapper">
+      <div class="separator separator-top"></div>
+      <div class="api-nav">
+        <div class="nav-label">API Docs</div>
+        <div class="api-selector btn-group">
+          <a href="/api/" class="btn btn-default" data-page-name="home">Basics</a>
+          <a href="/api/v2/" class="btn btn-default" data-page-name="V2">V2</a>
+          <a href="https://github.com/bigcommerce/api/blob/master/docs/v3-catalog.md" target="_blank" class="btn btn-default" data-page-name="V3">V3</a>
+          <a href="/themes/" class="btn btn-default" data-page-name="Themes">Themes</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+        <div class="search">
+          <form>
+            <input type="text" class="search" required id="input-search" placeholder="Search">
+            <input type="reset" class="reset-form" value="X">
+          </form>
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href="/">Home</a></li>
+            <li><a href="/api/">API - Basics</a></li>
+            <li><a href="/themes/">Themes</a></li>
+            <li><a href="https://stencil.bigcommerce.com/docs/" target="_blank"> &nbsp;  Stencil Themes</a></li>
+            <li><a href="/themes/blueprint/"> &nbsp; Blueprint Themes</a></li>
+            <li><a href="http://goo.gl/forms/380FmYFlaJ05CL3q2" target="_blank">Sign Up for the Developer Newsletter</a></li>
+            <li><a href="http://github.com/tripit/slate" target="_blank">Site Built with Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="content">
+        
+          <h1 id="bigcommerce-catalog-api">BigCommerce Catalog API</h1>
+
+<p>A Swagger Document for the BigCommmerce API V3.</p>
+
+<p><strong>Version:</strong> 3.0.0b</p>
+
+<p><strong>Terms of service:</strong><br>
+http://www.bigcommerce.com/terms</p>
+
+<h3 id="catalog-products">/catalog/products</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a paginated collection of <code class="prettyprint">Products</code> objects from the BigCommerce Catalog.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>query</td>
+<td>Field name to sort by. Values: id, name, sku, price, date_modified, date_last_imported, inventory_level, is_visible.</td>
+<td>No</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of products and meta data</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates a <code class="prettyprint">Product</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Product</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product</td>
+</tr>
+<tr>
+<td>409</td>
+<td><code class="prettyprint">Product</code> was in conflict with another product. This is the result of duplicate unique values such as name or SKU; a missing or invalid category id, brand id, or tax_class id; or a conflicting <code class="prettyprint">bulk_pricing_rule</code>.</td>
+</tr>
+<tr>
+<td>422</td>
+<td><code class="prettyprint">Product</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Deletes one or more <code class="prettyprint">Product</code> objects from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id">/catalog/products/{product_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a <code class="prettyprint">Product</code> from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Updates a <code class="prettyprint">Product</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>product</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Product</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>409</td>
+<td><code class="prettyprint">Product</code> was in conflict with another product. This is the result of duplicate unique values such as name or SKU, a missing category, brand, or tax_class that the product is being associate to, or a conflicting bulk pricing rule.</td>
+</tr>
+<tr>
+<td>422</td>
+<td><code class="prettyprint">Product</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Deletes a <code class="prettyprint">Product</code> object from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-images">/catalog/products/{product_id}/images</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets all images on a product. </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>List of product images and meta</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates an image on a product. Publically accessible URLs and files (form post) are valid parameters.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>productImage</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">ProductImage</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product image</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-images-image_id">/catalog/products/{product_id}/images/{image_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets image on a product. </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Image</code> the image is being operated on.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of product images and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Updates an image on a product. Publically accessible URLs and files (form post) are valid parameters.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Image</code> the image is being operated on.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>productImage</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">ProductImage</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product image</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">ProductImage</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Image</code> the image is being operated on.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-videos">/catalog/products/{product_id}/videos</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets all videos on a product.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the video is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>List of product videos and meta</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates an video on a product using a video ID from Youtube</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the video is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>productVideo</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">ProductVideo</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product video</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-videos-video_id">/catalog/products/{product_id}/videos/{video_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets video on a product.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the video is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>video_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Video</code> the video is being operated on.</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of product videos and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Updates an video on a product.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the video is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>video_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Video</code> the video is being operated on.</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+<tr>
+<td>productVideo</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">ProductVideo</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A product video</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">ProductVideo</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the video is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>video_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Video</code> the video is being operated on.</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-variants">/catalog/products/{product_id}/variants</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a <code class="prettyprint">Variant</code> object list from the BigCommerce Catalog.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of variants and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Create a <code class="prettyprint">Variant</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>Variant</td>
+<td>body</td>
+<td><code class="prettyprint">Variant</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A variant and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-variants-variant_id">/catalog/products/{product_id}/variants/{variant_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Get a <code class="prettyprint">Variant</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>variant_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Variant</code>.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A variant and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update a <code class="prettyprint">Variant</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>variant_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Variant</code>.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>Variant</td>
+<td>body</td>
+<td><code class="prettyprint">Variant</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A variant and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">Variant</code></p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>variant_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Variant</code>.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-variants-variant_id-image">/catalog/products/{product_id}/variants/{variant_id}/image</h3>
+
+<hr>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>variant_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Variant</code>.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>image_file</td>
+<td>formData</td>
+<td>An image file. Support MIME types include GIF, JPEG, and PNG.</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A ResourceImage and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Image was not valid. This is the result of missing image_file field or incorrect file type. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-options">/catalog/products/{product_id}/options</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Get an array of <code class="prettyprint">Option</code> objects.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of options and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Create an <code class="prettyprint">Option</code>.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>Option</td>
+<td>body</td>
+<td><code class="prettyprint">Option</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An option object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Option was in conflict with another option. This is the result of duplicate unique fields such as name.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Option was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-options-option_id">/catalog/products/{product_id}/options/{option_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets <code class="prettyprint">Option</code> object by product id and option id.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Option</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>option_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Option</code>.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A Option object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update a Product&rsquo;s <code class="prettyprint">Option</code> based on the product_id and option_id.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Option</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>option_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Option</code>.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>option</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Option</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An option object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Option</code> was in conflict with another option. This is the result of duplicate unique fields such as name.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Option</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a Product&rsquo;s <code class="prettyprint">Option</code> based on the product_id and option_id.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Option</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>option_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Option</code>.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-modifiers">/catalog/products/{product_id}/modifiers</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Get an array of <code class="prettyprint">Modifier</code> objects.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of modifiers and meta data</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Create a <code class="prettyprint">Modifier</code>.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>Modifier</td>
+<td>body</td>
+<td><code class="prettyprint">Modifier</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A modifier object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Modifier</code> was in conflict with another option. This is the result of duplicate unique fields such as name.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Modifier</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-modifiers-modifier_id">/catalog/products/{product_id}/modifiers/{modifier_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Get a <code class="prettyprint">Modifier</code> by product_id and modifier_id</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>modifier_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A modifier object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update an Product&rsquo;s <code class="prettyprint">Modifier</code> based on the product_id and modifier_id.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>modifier_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>modifier</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Modifier</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A modifier object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Modifier</code> was in conflict with another modifier or option. This is the result of duplicate unique fields such as name.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Modifier</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a Product&rsquo;s <code class="prettyprint">Modifier</code> based on the product_id and modifier_id.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>modifier_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-product_id-modifiers-modifier_id-values-value_id-image">/catalog/products/{product_id}/modifiers/{modifier_id}/values/{value_id}/image</h3>
+
+<hr>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Add an image to a modifier value that will show on the storefront when it’s selected</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>modifier_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>value_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_file</td>
+<td>formData</td>
+<td>An image file. Support MIME types include GIF, JPEG, and PNG.</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A ResourceImage and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Modifier image was not valid. This is the result of missing image_file fields or non-url for image_file field. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete the image applied to show when the modifier value is selected</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Product</code> the <code class="prettyprint">Modifier</code> belongs to.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>modifier_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>value_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Modifier</code></td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>Image cleared for the modifier value</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-categories">/catalog/categories</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a paginated categories collection from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array category objects and meta data</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates a <code class="prettyprint">Category</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Category</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A category object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Category</code> was in conflict with another category. This is the result of duplicate unique values such as name or custom_url.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Category</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a product or products from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-categories-category_id">/catalog/categories/{category_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a <code class="prettyprint">Category</code> from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Category</code> requested</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A category object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update a <code class="prettyprint">Category</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Category</code> requested</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>category</td>
+<td>body</td>
+<td>A BigCommerce <code class="prettyprint">Category</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A category object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Category</code> was in conflict with another category. This is the result of duplicate unique values such as name or custom_url.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Category</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete one or more <code class="prettyprint">Category</code> objects from the BigCommerce catalog.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Category</code> requested</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-categories-category_id-image">/catalog/categories/{category_id}/image</h3>
+
+<hr>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates an image on a category. Publically accessible URLs and files (form post) are valid parameters.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Category</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_file</td>
+<td>formData</td>
+<td>An image file. Support MIME types include GIF, JPEG, and PNG.</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A ResourceImage and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Image was not valid. This is the result of missing image_file field or incorrect file type. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">Category</code> image the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Category</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-categories-tree">/catalog/categories/tree</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns the categories tree, a nested lineage of the categories with parent-&gt;child relationship. The <code class="prettyprint">Category</code> objects returned are a simplified version of the category objects returned in the rest of this API.</p>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A array of nested category tree objects and meta data</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-brands">/catalog/brands</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets <code class="prettyprint">Brand</code> objects.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of brand objects and meta</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Create a <code class="prettyprint">Brand</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Brand</td>
+<td>body</td>
+<td><code class="prettyprint">Brand</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A brand object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Brand was in conflict with another brand. This is the result of duplicate unique fields such as name.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Brand was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete one or more <code class="prettyprint">Brand</code> objects from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-brands-brand_id">/catalog/brands/{brand_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets <code class="prettyprint">Brand</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Brand</code> requested</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A brand object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update a <code class="prettyprint">Brand</code> in the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Brand</code> requested</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>body</td>
+<td>Returns a <code class="prettyprint">Brand</code> from the BigCommerce Catalog</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A brand object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Brand</code> was in conflict with another product. This is the result of duplicate unique value such as name</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Brand</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">Brand</code> from the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Brand</code> requested</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-brands-brand_id-image">/catalog/brands/{brand_id}/image</h3>
+
+<hr>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates an image on a <code class="prettyprint">Brand</code>. Publically accessible URLs and files (form post) are valid parameters.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Brand</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>image_file</td>
+<td>formData</td>
+<td>An image file. Support MIME types include GIF, JPEG, and PNG.</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A ResourceImage and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Image was not valid. This is the result of missing image_file field or incorrect file type. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">Brand</code> image the BigCommerce Catalog</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Brand</code> the image is being attached to.</td>
+<td>Yes</td>
+<td>integer</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>Image cleared for the brand</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-products-variants">/catalog/products/variants</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a <code class="prettyprint">Variant</code> object list from the BigCommerce Catalog.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of variants and meta data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h3 id="catalog-summary">/catalog/summary</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a lightweight inventory summary from the BigCommerce Catalog.</p>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of catalog summary and meta data</td>
+</tr>
+</tbody></table>
+
+<h3 id="customers-subscribers">/customers/subscribers</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Returns a paginated Subscribers collection.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>An array of subscriber objects and meta data</td>
+</tr>
+</tbody></table>
+
+<h5 id="post"><strong><em>POST</em></strong></h5>
+
+<p><strong>Description:</strong> Creates a <code class="prettyprint">Subscriber</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subscriber</td>
+<td>body</td>
+<td><code class="prettyprint">Subscriber</code> object</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A Subscriber object</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Subscriber</code> was in conflict with another subscriber. This is the result of duplicate unique values such as email</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Subscriber</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a subscriber or subscribers from BigCommerce Customers.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+<h3 id="customers-subscribers-subscriber_id">/customers/subscribers/{subscriber_id}</h3>
+
+<hr>
+
+<h5 id="get"><strong><em>GET</em></strong></h5>
+
+<p><strong>Description:</strong> Gets <code class="prettyprint">Subscriber</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subscriber_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Subscriber</code> requested.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A Subscriber object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+</tbody></table>
+
+<h5 id="put"><strong><em>PUT</em></strong></h5>
+
+<p><strong>Description:</strong> Update a <code class="prettyprint">Subscriber</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subscriber_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Subscriber</code> requested.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+<tr>
+<td>subscriber</td>
+<td>body</td>
+<td>Returns a <code class="prettyprint">Subscriber</code> object.</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>A Subscriber object</td>
+</tr>
+<tr>
+<td>404</td>
+<td>The resource was not found</td>
+</tr>
+<tr>
+<td>409</td>
+<td>The <code class="prettyprint">Subscriber</code> was in conflict with another subscriber. This is the result of duplicate unique value such as email</td>
+</tr>
+<tr>
+<td>422</td>
+<td>The <code class="prettyprint">Subscriber</code> was not valid. This is the result of missing required fields or invalid data. See the response for more details.</td>
+</tr>
+</tbody></table>
+
+<h5 id="delete"><strong><em>DELETE</em></strong></h5>
+
+<p><strong>Description:</strong> Delete a <code class="prettyprint">Subscriber</code> object.</p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subscriber_id</td>
+<td>path</td>
+<td>The id of the <code class="prettyprint">Subscriber</code> requested.</td>
+<td>Yes</td>
+<td>number (int)</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>An empty response</td>
+</tr>
+</tbody></table>
+
+      </div>
+    </div>
+    <script>
+    // This script reveals jump/link targets beneath a persistent header - tweaked for FF/IE:
+    var container = $('.page-wrapper .content');
+    var headerHeightPixels = 85;
+
+    container.on('click', function(event) {
+        var target = $(event.target);
+
+        if (target.is('a') && target.attr('href').charAt(0) === '#') {
+            setTimeout(function() {
+                $(window).scrollTop($(window).scrollTop() - headerHeightPixels)
+            }, 10);
+        }
+    });
+</script>
+
+    <script>
+
+    var custom_wufoo_html = '<iframe height="500" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none"  src="https://bigcommercedevelopers.wufoo.com/embed/z2p1a040b1ing3/"><a href="https://bigcommercedevelopers.wufoo.com/forms/z2p1a040b1ing3/">Fill out my Wufoo form!</a></iframe>';
+
+    //set up some basic options for the feedback_me plugin
+    fm_options = {
+        position: "right-top",
+        title_label : "",
+        show_form: false,
+        show_asterisk_for_required: true,
+        custom_html: custom_wufoo_html
+    };
+    //init feedback_me plugin
+    fm.init(fm_options);
+
+</script>
+  </body>
+</html>

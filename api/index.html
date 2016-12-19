@@ -113,7 +113,7 @@ for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElemen
 mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel.com"});</script><!-- end Mixpanel -->
       <script>
         $(function() {
-          setupLanguages(["php","shell"]);
+          setupLanguages(["json--request","json--response"]);
         });
       </script>
     <link href="../stylesheets/jquery.feedback_me.css" rel="stylesheet" media="screen">
@@ -165,8 +165,8 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
         </div>
         <div class="clear"></div>
         <div class="lang-selector">
-              <a href="#" data-language-name="php">php</a>
-              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="json--request">json--request</a>
+              <a href="#" data-language-name="json--response">json--response</a>
         </div>
     </div>
         <div class="search">
@@ -256,7 +256,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Once you’re ready to start on your app, navigate to the Developer Portal home page, click the <strong>My Apps</strong> link, and log in using the same email address you&rsquo;ve used for your sandbox store.</p>
 
-<p>The <strong>My Apps</strong> page is where you will add, edit, and manage any of your BigCommerce Single-Click Apps. Start by clicking <strong>Create an app now</strong>, and initiating <a href="https://developer.bigcommerce.com/api/registration">registration of your app</a> - you can always come back to edit this later!</p>
+<p>The <strong>My Apps</strong> page is where you will add, edit, and manage any of your BigCommerce Single-Click Apps. Start by clicking <strong>Create an app now</strong>, and initiating <a href="/api/#app-registration">registration of your app</a> - you can always come back to edit this later!</p>
 
 <p>Once your draft app is created, you will be able to install and test it privately in your sandbox store.</p>
 
@@ -2785,6 +2785,282 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <li><p><strong>Time to wait before retries</strong>: The old rate limiting scheme used a fixed hourly limit, regardless of who was accessing the API and how many requests were made per app or per user. This value was returned in the <code class="prettyprint">X-BC-ApiLimit-Remaining</code> header. The <code class="prettyprint">X-BC-ApiLimit-Remaining</code> header is not sent to OAuth apps. When an OAuth client is rate limited, the header <code class="prettyprint">X-Retry-After</code> signals the number of seconds that a client should wait before retrying the request.</p></li>
 <li><p><strong>More information</strong>: Further information can be found on the <a href="#rate-limits_oauth">OAuth rate limits page</a> and the <a href="#response-headers">Response Headers page</a>.</p></li>
 </ul>
+
+          <h1 id="building-storefront-apps"><span class="jumptarget"> <a name="storefront-apps-intro"></a> Building Storefront Apps </span></h1>
+
+<p>Storefront apps interact directly with the storefront. They use JWT (JSON Web Token) authentication, rather than OAuth or Basic Auth.</p>
+
+          <h2 id="customer-login-api"><span class="jumptarget"> Customer Login API </span></h2>
+
+<p>The Customer Login API enables single sign-on (SSO). It allows your apps to generate a token to programmatically log in a storefront customer, by using the login entry point  at <code class="prettyprint">/login/token/{token}</code>. Here, <code class="prettyprint">{token}</code> must be a JSON Web Token (JWT) containing the parameters for the customer login request in its payload, and must be signed by your <a href="/api/#building-oauth-apps" target="_blank">OAuth application</a>&rsquo;s <a href="/api/#app-registration" target="_blank">client secret</a>.</p>
+
+<p>For a full overview of the JWT standard, please see <a href="https://jwt.io/" target="_blank">JWT.IO</a>, where you will find links to client libraries (in many languages) that facilitate the generation and verification of JWT tokens. BigCommerce also supplies helper methods for generating login tokens in our API <a href="/api/#client-libraries" target="_blank">Client Libraries</a>.</p>
+
+<h3 id="customer-login-token"><span class="jumptarget"> Customer Login Token </span></h3>
+
+<p>A valid JWT token is a string composed of three parts, separated by periods (&ldquo;.&rdquo;). Please refer to <a href="https://jwt.io/" target="_blank">JWT.IO</a> and <a href="https://tools.ietf.org/html/rfc7519" target="_blank">RFC 7519</a> for more details on the format.</p>
+
+<h4 id="example-url"><span class="jumptarget"> Example URL </span></h4>
+<pre class="highlight plaintext"><code>https://storedomain.com/login/token/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9
+.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+</code></pre>
+
+<h4 id="header"><span class="jumptarget"> Header </span></h4>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HS256"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h4 id="payload"><span class="jumptarget"> Payload </span></h4>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;application_client_id&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;issued_at&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;unique_string&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer_login"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;store_hash&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;customer_id&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"redirect_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;relative_path (optional)&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"request_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ipv4_address (optional)&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h4 id="fields"><span class="jumptarget"> Fields </span></h4>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iss</td>
+<td>string</td>
+<td>Indicates the token&rsquo;s issuer. This is your application&rsquo;s client ID, which is obtained during application registration in Developer Portal.</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>integer</td>
+<td>Time when the token was generated. This is a numeric value indicating the number of seconds since the <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>.</td>
+</tr>
+<tr>
+<td>jti</td>
+<td>string</td>
+<td>Request ID string that must be unique across all requests made by your app. A UUID or other random string would be an appropriate value.</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>enum</td>
+<td>Must contain the string &ldquo;customer_login&rdquo;.</td>
+</tr>
+<tr>
+<td>store_hash</td>
+<td>string</td>
+<td>Store hash identifying the store you are logging into.</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>integer</td>
+<td>ID of the customer you are logging in, as obtained through the Customer API.</td>
+</tr>
+<tr>
+<td>redirect_to</td>
+<td>string</td>
+<td>Optional field containing a relative path for the shopper&rsquo;s destination after login. Will default to <code class="prettyprint">/account.php</code>.</td>
+</tr>
+<tr>
+<td>request_ip</td>
+<td>string</td>
+<td>Optional field containing the expected IP address for the request.</td>
+</tr>
+</tbody></table>
+
+<h4 id="signature"><span class="jumptarget"> Signature </span></h4>
+
+<p>The headers and payload must be signed using HS256 (HMAC-SHA256) and the application’s client secret.</p>
+
+<h3 id="sample-code"><span class="jumptarget"> Sample Code </span></h3>
+
+<p>Code to generate a valid JWT token for a storefront login request is provided in our API <a href="/api/#client-libraries" target="_blank">Client Libraries</a>. (The headings below are linked to the live code, which might have been updated since publication:)</p>
+
+<h4 id="php-sample"><a href="https://github.com/bigcommerce/bigcommerce-api-php/blob/master/src/Bigcommerce/Api/Client.php#L421"><span class="jumptarget"> PHP Sample</a> </span></h4>
+<pre class="highlight php"><code>    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getCustomerLoginToken</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$redirectUrl</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="nv">$requestIp</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$client_secret</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">'Cannot sign customer login tokens without a client secret'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$payload</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'iss'</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$client_id</span><span class="p">,</span>
+            <span class="s1">'iat'</span> <span class="o">=&gt;</span> <span class="nb">time</span><span class="p">(),</span>
+            <span class="s1">'jti'</span> <span class="o">=&gt;</span> <span class="nb">bin2hex</span><span class="p">(</span><span class="nx">random_bytes</span><span class="p">(</span><span class="mi">32</span><span class="p">)),</span>
+            <span class="s1">'operation'</span> <span class="o">=&gt;</span> <span class="s1">'customer_login'</span><span class="p">,</span>
+            <span class="s1">'store_hash'</span> <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$store_hash</span><span class="p">,</span>
+            <span class="s1">'customer_id'</span> <span class="o">=&gt;</span> <span class="nv">$id</span>
+        <span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$redirectUrl</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$payload</span><span class="p">[</span><span class="s1">'redirect_to'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$redirectUrl</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$requestIp</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$payload</span><span class="p">[</span><span class="s1">'request_ip'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$requestIp</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">JWT</span><span class="o">::</span><span class="na">encode</span><span class="p">(</span><span class="nv">$payload</span><span class="p">,</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$client_secret</span><span class="p">,</span> <span class="s1">'HS256'</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+
+<h4 id="python-sample"><span class="jumptarget"> <a href="https://github.com/bigcommerce/bigcommerce-api-python/blob/master/bigcommerce/customer_login_token.py">Python Sample</a> </span></h4>
+<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">jwt</span>
+
+
+<span class="k">class</span> <span class="nc">CustomerLoginTokens</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">redirect_url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">request_ip</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="c"># Get the client_secret needed to sign tokens from the environment</span>
+        <span class="c"># Intended to play nice with the Python Hello World sample app</span>
+        <span class="c"># https://github.com/bigcommerce/hello-world-app-python-flask</span>
+        <span class="n">client_secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">'APP_CLIENT_SECRET'</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">client_secret</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">AttributeError</span><span class="p">(</span><span class="s">'No OAuth client secret specified in the environment, '</span>
+                                 <span class="s">'please specify an APP_CLIENT_SECRET'</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">client_id</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">client_id</span>
+            <span class="n">store_hash</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">store_hash</span>
+        <span class="k">except</span> <span class="nb">AttributeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">AttributeError</span><span class="p">(</span><span class="s">'Store hash or client ID not found in the connection - '</span>
+                                 <span class="s">'make sure an OAuth API connection is configured. Basic auth is not supported.'</span><span class="p">)</span>
+
+        <span class="n">payload</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">iss</span><span class="o">=</span><span class="n">client_id</span><span class="p">,</span>
+                       <span class="n">iat</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()),</span>
+                       <span class="n">jti</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="nb">hex</span><span class="p">,</span>
+                       <span class="n">operation</span><span class="o">=</span><span class="s">'customer_login'</span><span class="p">,</span>
+                       <span class="n">store_hash</span><span class="o">=</span><span class="n">store_hash</span><span class="p">,</span>
+                       <span class="n">customer_id</span><span class="o">=</span><span class="nb">id</span>
+                       <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">redirect_url</span><span class="p">:</span>
+            <span class="n">payload</span><span class="p">[</span><span class="s">'redirect_url'</span><span class="p">]</span> <span class="o">=</span> <span class="n">redirect_url</span>
+
+        <span class="k">if</span> <span class="n">request_ip</span><span class="p">:</span>
+            <span class="n">payload</span><span class="p">[</span><span class="s">'request_ip'</span><span class="p">]</span> <span class="o">=</span> <span class="n">request_ip</span>
+
+        <span class="n">token</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">client_secret</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s">'HS256'</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">token</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create_url</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">redirect_url</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">request_ip</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">secure_url</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Store</span><span class="o">.</span><span class="nb">all</span><span class="p">()[</span><span class="s">'secure_url'</span><span class="p">]</span>
+        <span class="n">login_token</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">redirect_url</span><span class="p">,</span> <span class="n">request_ip</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">'</span><span class="si">%</span><span class="s">s/login/token/</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">secure_url</span><span class="p">,</span> <span class="n">login_token</span><span class="p">)</span>
+
+</code></pre>
+
+<h4 id="ruby-sample"><span class="jumptarget"> <a href="https://github.com/bigcommerce/bigcommerce-api-ruby/blob/master/examples/customers/customer_login.rb">Ruby Sample</a> </span></h4>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'bigcommerce'</span>
+
+<span class="no">Bigcommerce</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">store_hash</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BC_STORE_HASH'</span><span class="p">]</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">client_id</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BC_CLIENT_ID'</span><span class="p">]</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">client_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BC_CLIENT_SECRET'</span><span class="p">]</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">access_token</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BC_ACCESS_TOKEN'</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="c1"># Get a customer</span>
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Bigcommerce</span><span class="o">::</span><span class="no">Customer</span><span class="p">.</span><span class="nf">all</span><span class="p">(</span><span class="ss">page: </span><span class="mi">1</span><span class="p">).</span><span class="nf">first</span>
+
+<span class="c1"># Generate token login url</span>
+<span class="nb">puts</span> <span class="n">customer</span><span class="p">.</span><span class="nf">login_token</span>
+</code></pre>
+
+<h3 id="oauth-scope"><span class="jumptarget"> OAuth Scope </span></h3>
+
+<p>In order to use this feature, your app must be installed in the store, and must have the <code class="prettyprint">store_v2_customers_login</code> scope.</p>
+
+<h3 id="redirection"><span class="jumptarget"> Redirection </span></h3>
+
+<p>For flexibility in navigation after login, we support an optional redirect parameter (<code class="prettyprint">redirect_to</code>), which in turn supports relative URLs. If the parameter is not specified, the storefront customer will land on their My Account page at <code class="prettyprint">/account.php</code>. </p>
+
+<h3 id="notes"><span class="jumptarget"> Notes </span></h3>
+
+<p>Tokens will be valid for a very short timeframe after they are first generated, so tokens should not be generated in advance. Instead, the application should generate the token and then immediately redirect the user’s browser to <code class="prettyprint">/login/token/{token}</code>.</p>
+
+<p>Once a request has been made with a given <code class="prettyprint">jti</code>, it cannot be made again. This parameter is used to prevent replay attacks by malicious actors intercepting the request or obtaining it after the fact.</p>
+
+<p>The <code class="prettyprint">request_ip</code> field can be used as an additional security precaution, to prevent a malicious actor from intercepting the request and making it from another browser or system before you do. If you supply this value, BigCommerce will check the incoming request to ensure that it is being made from the stated IP address – and will otherwise fail the request. We strongly encourage setting this IP address value; but doing so is optional, to support those cases where this information is not available.</p>
+
+          <h2 id="identifying-logged-in-customers-securely"><span class="jumptarget"> Identifying Logged-In Customers Securely </span></h2>
+
+<p>If your application interacts dynamically with the BigCommerce storefront, and conveys information that is specific to a particular logged-in customer, you must confirm that customer’s identity within the insecure environment of the user’s browser.</p>
+
+<h3 id="current-customer-api"><span class="jumptarget"> Current Customer API </span></h3>
+
+<p>To address this need, BigCommerce provides a Current Customer endpoint, which your app can access via JavaScript on the storefront. This endpoint returns a <a href="https://jwt.io/" target="_blank">JWT (JSON Web Token)</a> with identifying details about the customer. The information is signed with your <a href="/api/#building-oauth-apps>OAuth </a> <a href="/api/#app-registration>client secret</a>.</p>
+
+<h4 id="example-javascript"><span class="jumptarget"> Example JavaScript </span></h4>
+
+<p>Below is example JavaScript that will access this JWT. To test the JWT functionality, you can install this JavaScript on your sandbox BigCommerce store. Your application’s Client ID must be included in the request (to identify the requesting application):</p>
+<pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span>
+<span class="kd">function</span> <span class="nx">customerJWT</span><span class="p">()</span> <span class="p">{</span>  
+    <span class="kd">var</span> <span class="nx">appClientId</span> <span class="o">=</span> <span class="s2">"**BC_CLIENT_ID**"</span><span class="p">;</span> <span class="c1">// TODO: Fill this in with your app's client ID</span>
+    <span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">DONE</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">alert</span><span class="p">(</span><span class="s1">'Customer JWT:\n'</span> <span class="o">+</span> <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">alert</span><span class="p">(</span><span class="s1">'Not logged in!'</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="nx">alert</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
+           <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/customer/current.jwt?app_client_id="</span><span class="o">+</span><span class="nx">appClientId</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">customerJWT</span><span class="p">();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+
+<p>If you are logged into the storefront with a customer account, the above JavaScript should alert to the browser with a JWT token. If no customer is logged in, BigCommerce will return a 404 response, and you will see an error message.</p>
+
+<p>The JWT returned from this endpoint (example below) can be decoded on <a href="https://jwt.io/" target="_blank">JWT.IO</a>, or via any of <a href="https://jwt.io/#libraries-io" target="_blank"> these libraries</a>. </p>
+
+<h4 id="example-output"><span class="jumptarget"> Example Output </span></h4>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4927</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc/apps"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480831863</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480832763</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tfx3j5gsopm42ss5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tasdgr2b5hs5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_customer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>By design, your application should send this token to the application’s server, validate it against your client secret, and then use it as a trusted indication of the logged-in customer’s identity, before displaying confidential information to them.</p>
+
+<p>An end-to-end example, which displays a customer’s recently purchased products, is available in our <a href="https://github.com/bigcommerce/hello-world-app-ruby-sinatra/" target="_blank">Ruby</a> and <a href="https://github.com/bigcommerce/hello-world-app-php-silex/" target="_blank">PHP</a> sample apps. 
+.</p>
 
           <h1 id="supported-browsers"><span class="jumptarget"> Supported Browsers </span></h1>
 

@@ -12699,6 +12699,69 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 
 <p>The <code class="prettyprint">request_ip</code> field can be used as an additional security precaution, to prevent a malicious actor from intercepting the request and making it from another browser or system before you do. If you supply this value, BigCommerce will check the incoming request to ensure that it is being made from the stated IP address – and will otherwise fail the request. We strongly encourage setting this IP address value; but doing so is optional, to support those cases where this information is not available.</p>
 
+          <h2 id="identifying-logged-in-customers-securely"><span class="jumptarget"> Identifying Logged-In Customers Securely </span></h2>
+
+<p>If your application interacts dynamically with the BigCommerce storefront, and conveys information that is specific to a particular logged-in customer, you must confirm that customer’s identity within the insecure environment of the user’s browser.</p>
+
+<h3 id="current-customer-api"><span class="jumptarget"> Current Customer API </span></h3>
+
+<p>To address this need, BigCommerce provides a Current Customer endpoint, which your app can access via JavaScript on the storefront. This endpoint returns a <a href="https://jwt.io/" target="_blank">JWT (JSON Web Token)</a> with identifying details about the customer. The information is signed with your <a href="/api/#building-oauth-apps>OAuth </a> <a href="/api/#app-registration>client secret</a>.</p>
+
+<h4 id="example-javascript"><span class="jumptarget"> Example JavaScript </span></h4>
+
+<p>Below is example JavaScript that will access this JWT. To test the JWT functionality, you can install this JavaScript on your sandbox BigCommerce store. Your application’s Client ID must be included in the request (to identify the requesting application):</p>
+<pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;</span>
+<span class="kd">function</span> <span class="nx">customerJWT</span><span class="p">()</span> <span class="p">{</span>  
+    <span class="kd">var</span> <span class="nx">appClientId</span> <span class="o">=</span> <span class="s2">"**BC_CLIENT_ID**"</span><span class="p">;</span> <span class="c1">// TODO: Fill this in with your app's client ID</span>
+    <span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">DONE</span> <span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">alert</span><span class="p">(</span><span class="s1">'Customer JWT:\n'</span> <span class="o">+</span> <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">alert</span><span class="p">(</span><span class="s1">'Not logged in!'</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="k">else</span> <span class="p">{</span>
+               <span class="nx">alert</span><span class="p">(</span><span class="s1">'Something went wrong'</span><span class="p">);</span>
+           <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/customer/current.jwt?app_client_id="</span><span class="o">+</span><span class="nx">appClientId</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">customerJWT</span><span class="p">();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+
+<p>If you are logged into the storefront with a customer account, the above JavaScript should alert to the browser with a JWT token. If no customer is logged in, BigCommerce will return a 404 response, and you will see an error message.</p>
+
+<p>The JWT returned from this endpoint (example below) can be decoded on <a href="https://jwt.io/" target="_blank">JWT.IO</a>, or via any of <a href="https://jwt.io/#libraries-io" target="_blank"> these libraries</a>. </p>
+
+<h4 id="example-output"><span class="jumptarget"> Example Output </span></h4>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4927</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc/apps"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480831863</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480832763</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tfx3j5gsopm42ss5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tasdgr2b5hs5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_customer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>By design, your application should send this token to the application’s server, validate it against your client secret, and then use it as a trusted indication of the logged-in customer’s identity, before displaying confidential information to them.</p>
+
+<p>An end-to-end example, which displays a customer’s recently purchased products, is available in our <a href="https://github.com/bigcommerce/hello-world-app-ruby-sinatra/" target="_blank">Ruby</a> and <a href="https://github.com/bigcommerce/hello-world-app-php-silex/" target="_blank">PHP</a> sample apps. 
+.</p>
+
           <h1 id="geography-reference"><span class="jumptarget"> Geography Reference </span></h1>
 
 <p>Geography APIs handle geographic information resources. They include Countries and States.</p>

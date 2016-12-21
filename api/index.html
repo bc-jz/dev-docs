@@ -3062,6 +3062,72 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <p>An end-to-end example, which displays a customer’s recently purchased products, is available in our <a href="https://github.com/bigcommerce/hello-world-app-ruby-sinatra/" target="_blank">Ruby</a> and <a href="https://github.com/bigcommerce/hello-world-app-php-silex/" target="_blank">PHP</a> sample apps. 
 .</p>
 
+          <h2 id="add-to-cart-urls"><span class="jumptarget"> Add-to-Cart URLs </span></h2>
+
+<p>Your apps can use a product&rsquo;s or variant&rsquo;s <a href="https://support.bigcommerce.com/articles/Public/Product-SKUs" target="_blank">SKU</a> to create custom product URLs in order to perform specific actions, like:</p>
+
+<ul>
+<li>Pre-select a specific SKU’s product-option values when loading a product detail page.</li>
+<li>Add a specific SKU to the cart.</li>
+<li>Add a specific SKU to the cart and go directly to checkout.</li>
+<li>Add a specific SKU to the cart, go directly to checkout, and include a source parameter for analytics and conversion tracking.</li>
+</ul>
+
+<aside class="warning">
+<span class="aside-warning-hd">Limitation: One Item per URL</span><br><br>
+Each of the custom links described here can add only a single item (quantity 1) to the cart at a time.
+</aside>
+
+<h3 id="select-specific-sku-product-variant-on-product-detail-page"><span class="jumptarget"> Select Specific SKU (Product/Variant) on Product Detail Page </span></h3>
+
+<p>To link to a specific product variant, append <code class="prettyprint">?sku=INSERT-SKU-HERE</code> to the product URL, as shown below. This will link to the product page, with the variant&rsquo;s options already selected.</p>
+
+<h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
+<pre class="highlight plaintext"><code>site.com/sample-test-product-w-options/?sku=INSERT-SKU-HERE
+</code></pre>
+
+<h4 id="example"><span class="jumptarget"> Example: </span></h4>
+<pre class="highlight plaintext"><code>myawesomestore.com/shirt/?sku=SHIRT-SM-RED
+</code></pre>
+
+<h3 id="add-specific-sku-to-cart"><span class="jumptarget"> Add Specific SKU to Cart </span></h3>
+
+<p>To automatically add a product or variant to a shopper&rsquo;s cart and take them directly to the cart page, append<br>
+<code class="prettyprint">cart.php?action=add&amp;sku=INSERT-SKU-HERE</code> to the store&rsquo;s domain.</p>
+
+<h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
+<pre class="highlight plaintext"><code>site.com/cart.php?action=add&amp;sku=INSERT-SKU-HERE
+</code></pre>
+
+<h4 id="example"><span class="jumptarget"> Example: </span></h4>
+<pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=add&amp;sku=SHIRT-SM-RED
+</code></pre>
+
+<h3 id="add-specific-sku-to-cart-and-go-directly-to-checkout"><span class="jumptarget"> Add Specific SKU to Cart and Go Directly to Checkout </span></h3>
+
+<p>To automatically add a product or variant to a shopper&rsquo;s cart and forward them directly to checkout, append<br>
+<code class="prettyprint">cart.php?action=buy&amp;sku=INSERT-SKU-HERE</code> to the store&rsquo;s domain.</p>
+
+<h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
+<pre class="highlight plaintext"><code>site.com/cart.php?action=buy&amp;sku=INSERT-SKU-HERE
+</code></pre>
+
+<h4 id="example"><span class="jumptarget"> Example: </span></h4>
+<pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=buy&amp;sku=SHIRT-SM-RED
+</code></pre>
+
+<h3 id="add-specific-sku-go-to-checkout-and-include-source"><span class="jumptarget"> Add Specific SKU, Go to Checkout, and Include Source </span></h3>
+
+<p>To automatically add a product or variant to a shopper&rsquo;s cart, forward them to checkout, and also include a source parameter for analytics/conversion tracking, append <code class="prettyprint">cart.php?action=buy&amp;sku=INSERT-SKU-HERE&amp;source=SOURCE-HERE</code> to the store&rsquo;s domain. (The&#160;source parameter can be any string.)</p>
+
+<h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
+<pre class="highlight plaintext"><code>site.com/cart.php?action=buy&amp;sku=INSERT-SKU-HERE&amp;source=SOURCE-HERE
+</code></pre>
+
+<h4 id="example"><span class="jumptarget"> Example: </span></h4>
+<pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=buy&amp;sku=SHIRT-SM-RED&amp;source=JULY-EMAIL-NEWSLETTER
+</code></pre>
+
           <h1 id="supported-browsers"><span class="jumptarget"> Supported Browsers </span></h1>
 
 <p>Below are the browsers supported for the BigCommerce control panel. We drop support when a version falls below 2% of usage. The browsers are sorted by popularity, with the most popular browsers at the top.</p>

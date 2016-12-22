@@ -182,6 +182,270 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     <div class="page-wrapper">
       <div class="content">
         
+          <h1 id="shipping-zone-reference"><span class="jumptarget"> Shipping Zone Reference </span></h1>
+
+<p>The Shipping Zone object and endpoints manage shipping zones within countries.</p>
+
+<h2 id="shipping-zone-object-properties"><span class="jumptarget"> Shipping Zone Object – Properties </span></h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Zone ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Zone name.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Type of zone – one or more countries, a list of states, a list of ZIP/postal codes, or <code class="prettyprint">global</code>. A value of <code class="prettyprint">global</code> is treated as &ldquo;rest of the world&rdquo;. If type is <code class="prettyprint">global</code>, then <code class="prettyprint">name</code> and <code class="prettyprint">locations</code> are not mandatory.</td>
+</tr>
+<tr>
+<td>locations</td>
+<td>array</td>
+<td>Array of zone locations, each of which contains the following elements:<br> <code class="prettyprint">id</code>: location&rsquo;s ID (integer);<br> <code class="prettyprint">zip</code>: location&rsquo;s ZIP/postal code (string);<br> <code class="prettyprint">country_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the country (string);<br> <code class="prettyprint">state_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the state (string). <code class="prettyprint">[Link is wrong – do ISO-2 codes really exist for states/provinces?]</code></td>
+</tr>
+<tr>
+<td>free_shipping</td>
+<td>object</td>
+<td>You can limit free shipping to orders exceeding a certain subtotal value. You can make products with fixed-price shipping ineligible for free shipping, but such products&rsquo; prices will still count toward the minimum order threshold. This object contains the following elements: <br> <code class="prettyprint">enabled</code>: whether free shipping is enabled for this zone (boolean);<br> <code class="prettyprint">minimum_sub_total</code>: order subtotal that establishes threshold for free shipping (number);<br> <code class="prettyprint">exclude_fixed_shipping_products</code>: whether products with a fixed shipping cost are ineligible for free shipping (boolean).</td>
+</tr>
+<tr>
+<td>handling_fees</td>
+<td>object</td>
+<td>Handling-fee information for this zone. Contains the following elements: <br> <code class="prettyprint">fixed_surcharge</code>: the handling fee (number);<br> <code class="prettyprint">display_separately</code>: whether to display the handling fee separately at checkout (boolean).</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>Whether this shipping zone is enabled.</td>
+</tr>
+</tbody></table>
+
+          <h2 id="list-shipping-zones"><span class="jumptarget"> List Shipping Zones </span></h2>
+
+<p>Gets all shipping zones.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">GET /api/v2/shipping/zones</code><br></li>
+</ul>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7500000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-a-currency"><span class="jumptarget"> Get a Currency </span></h2>
+
+<p>Retrieves a specified currency.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">GET /stores/{store_hash}/v2/currencies/{id}</code></li>
+<li>  Basic Auth
+<code class="prettyprint">GET /api/v2/currencies/{id}</code></li>
+</ul>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="create-a-currency"><span class="jumptarget"> Create a Currency </span></h2>
+
+<p>Creates a new currency.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">POST /stores/{store_hash}/v2/currencies</code></li>
+<li>  Basic Auth
+<code class="prettyprint">POST /api/v2/currencies</code></li>
+</ul>
+
+<h3 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h3>
+
+<p>The following properties of the currency are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
+
+<ul>
+<li>id</li>
+<li>is_default</li>
+<li>date_created</li>
+<li>date_modified</li>
+</ul>
+
+<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
+
+<p>The <code class="prettyprint">is_default</code> property cannot be set programmatically. To change the store&rsquo;s default currency via the BigCommerce control panel, please see <a href="https://support.bigcommerce.com/articles/Public/Managing-Currencies/?q=currency&amp;l=en_US&amp;fs=Search&amp;pn=1#default">this support article</a>.</p>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the currency are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>country_iso2</li>
+<li>currency_code</li>
+<li>currency_exchange_rate</li>
+<li>auto_update</li>
+<li>location</li>
+<li>token</li>
+<li>decimal_token</li>
+<li>thousands_token</li>
+<li>decimal_places</li>
+</ul>
+
+<h3 id="request"><span class="jumptarget"> Request </span></h3>
+
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="update-a-currency"><span class="jumptarget"> Update a Currency </span></h2>
+
+<p>Updates an existing currency.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">PUT /stores/{store_hash}/v2/currencies/{ID}</code></li>
+<li>  Basic Auth
+<code class="prettyprint">PUT /api/v2/currencies/{ID}</code></li>
+</ul>
+
+<h3 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h3>
+
+<p>The following properties of the currency are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
+
+<ul>
+<li>id</li>
+<li>is_default</li>
+<li>date_created</li>
+<li>date_modified</li>
+</ul>
+
+<h3 id="request"><span class="jumptarget"> Request </span></h3>
+
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="delete-a-currency"><span class="jumptarget"> Delete a Currency </span></h2>
+
+<p>Deletes a specified currency. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">DELETE /stores/{store_hash}/v2/currencies/{id}</code></li>
+<li>  Basic Auth
+<code class="prettyprint">DELETE /api/v2/currencies/{id}</code></li>
+</ul>
+
+<h2 id="delete-all-currencies"><span class="jumptarget"> Delete All Currencies </span></h2>
+
+<p>Deletes all currencies associated with the store. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">DELETE /stores/{store_hash}/v2/currencies</code></li>
+<li>  Basic Auth
+<code class="prettyprint">DELETE /api/v2/currencies</code> </li>
+</ul>
+
           <h1 id="bigcommerce-catalog-api">BigCommerce Catalog API</h1>
 
 <p>A Swagger Document for the BigCommmerce API V3.</p>

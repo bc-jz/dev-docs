@@ -181,8 +181,9 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     </div>
     <div class="page-wrapper">
       <div class="content">
-        
-          <h1 id="shipping-zone-reference"><span class="jumptarget"> Shipping Zone Reference </span></h1>
+        <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
+
+          <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
 
 <p>The Shipping Zone object and endpoints manage shipping zones within countries.</p>
 
@@ -213,7 +214,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 <tr>
 <td>locations</td>
 <td>array</td>
-<td>Array of zone locations, each of which contains the following elements:<br> <code class="prettyprint">id</code>: location&rsquo;s ID (integer);<br> <code class="prettyprint">zip</code>: location&rsquo;s ZIP/postal code (string);<br> <code class="prettyprint">country_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the country (string);<br> <code class="prettyprint">state_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the state (string). <code class="prettyprint">[Link is wrong – do ISO-2 codes really exist for states/provinces?]</code></td>
+<td>Array of zone locations, each of which contains the following elements:<br> <code class="prettyprint">id</code>: location&rsquo;s ID (integer);<br> <code class="prettyprint">zip</code>: location&rsquo;s ZIP/postal code (string);<br> <code class="prettyprint">country_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the country (string, see <a href="#zoneobjnote">Notes</a> below);<br> <code class="prettyprint">state_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the state (string, see <a href="#zoneobjnote">Notes</a> below). <code class="prettyprint">[Link is wrong – do ISO-2 codes really exist for states/provinces?]</code></td>
 </tr>
 <tr>
 <td>free_shipping</td>
@@ -232,6 +233,20 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 </tr>
 </tbody></table>
 
+<h3 id="notes"><span class="jumptarget" id="zoneobjnote"> Notes </span></h3>
+
+<p>For the <code class="prettyprint">locations</code> property listed above, you can look up all <code class="prettyprint">country_iso2</code> codes supported by BigCommerce by using the <a href="/api/v2/#list-countries">List Countries</a> endpoint, with a request of the following form: </p>
+<pre class="highlight html"><code>https://{store_hash}/api/v2/countries?limit=250
+</code></pre>
+
+<p>To look up all <code class="prettyprint">state_iso2</code> codes supported by BigCommerce, you can use the <a href="/api/v2/#list-countries">List States</a> endpoint, with a request of the following form. (To&#160;supply its <code class="prettyprint">{country_id}</code> parameter, query the <a href="/api/v2/#list-states">List Countries</a> endpoint as described just above.)</p>
+<pre class="highlight html"><code>https://{store_hash}/api/v2/countries/{country_id}/states
+</code></pre>
+
+<p>For example, to look up codes for all U.S. states and territories, you would use a request of the following form:</p>
+<pre class="highlight html"><code>https://{store_hash}/api/v2/countries/226/states?limit=100
+</code></pre>
+
           <h2 id="list-shipping-zones"><span class="jumptarget"> List Shipping Zones </span></h2>
 
 <p>Gets all shipping zones.</p>
@@ -244,206 +259,452 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
-<pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAD"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7500000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<h2 id="get-a-currency"><span class="jumptarget"> Get a Currency </span></h2>
+<h2 id="get-a-shipping-zone"><span class="jumptarget"> Get a Shipping Zone </span></h2>
 
-<p>Retrieves a specified currency.</p>
+<p>Retrieves a specified shipping zone by zone ID.</p>
 
 <ul>
 <li>  OAuth
-<code class="prettyprint">GET /stores/{store_hash}/v2/currencies/{id}</code></li>
-<li>  Basic Auth
-<code class="prettyprint">GET /api/v2/currencies/{id}</code></li>
+<code class="prettyprint">GET /api/v2/shipping/zones/{id}</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>id</li>
 </ul>
 
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 11 Sep 2014 17:10:12 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thu, 08 Jan 2015 15:12:48 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="create-a-currency"><span class="jumptarget"> Create a Currency </span></h2>
+<h2 id="create-a-shipping-zone"><span class="jumptarget"> Create a Shipping Zone </span></h2>
 
-<p>Creates a new currency.</p>
+<p>Creates a new shipping zone.</p>
 
 <ul>
 <li>  OAuth
-<code class="prettyprint">POST /stores/{store_hash}/v2/currencies</code></li>
-<li>  Basic Auth
-<code class="prettyprint">POST /api/v2/currencies</code></li>
+<code class="prettyprint">POST /api/v2/shipping/zones</code></li>
 </ul>
 
-<h3 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h3>
+<h3 id="request"><span class="jumptarget"> Request </span></h3>
 
-<p>The following properties of the currency are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testzone12345"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+     </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NM"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+ </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nt">"fixed_surcharge"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">12.00</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"display_separately"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="update-a-shipping-zone"><span class="jumptarget"> Update a Shipping Zone </span></h2>
+
+<p>Updates an existing shipping zone.</p>
 
 <ul>
-<li>id</li>
-<li>is_default</li>
-<li>date_created</li>
-<li>date_modified</li>
+<li>  OAuth
+<code class="prettyprint">PUT /api/v2/shipping/zones/{id}</code></li>
 </ul>
-
-<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
-
-<p>The <code class="prettyprint">is_default</code> property cannot be set programmatically. To change the store&rsquo;s default currency via the BigCommerce control panel, please see <a href="https://support.bigcommerce.com/articles/Public/Managing-Currencies/?q=currency&amp;l=en_US&amp;fs=Search&amp;pn=1#default">this support article</a>.</p>
 
 <h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
 
-<p>The following properties of the currency are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
-
-<ul>
-<li>country_iso2</li>
-<li>currency_code</li>
-<li>currency_exchange_rate</li>
-<li>auto_update</li>
-<li>location</li>
-<li>token</li>
-<li>decimal_token</li>
-<li>thousands_token</li>
-<li>decimal_places</li>
-</ul>
-
-<h3 id="request"><span class="jumptarget"> Request </span></h3>
-
-<p>Example request object:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h2 id="update-a-currency"><span class="jumptarget"> Update a Currency </span></h2>
-
-<p>Updates an existing currency.</p>
-
-<ul>
-<li>  OAuth
-<code class="prettyprint">PUT /stores/{store_hash}/v2/currencies/{ID}</code></li>
-<li>  Basic Auth
-<code class="prettyprint">PUT /api/v2/currencies/{ID}</code></li>
-</ul>
-
-<h3 id="read-only-properties"><span class="jumptarget"> Read-only Properties </span></h3>
-
-<p>The following properties of the currency are read-only. If one or more of these properties are included in the request, it will be rejected:</p>
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
 
 <ul>
 <li>id</li>
-<li>is_default</li>
-<li>date_created</li>
-<li>date_modified</li>
 </ul>
 
 <h3 id="request"><span class="jumptarget"> Request </span></h3>
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"currency_exchange_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3885600000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"auto_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"thousands_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"decimal_places"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New test zone"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="delete-a-currency"><span class="jumptarget"> Delete a Currency </span></h2>
+<h2 id="delete-a-shipping-zone"><span class="jumptarget"> Delete a Shipping Zone </span></h2>
 
-<p>Deletes a specified currency. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
+<p>Deletes a specified shipping zone. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
 
 <ul>
 <li>  OAuth
-<code class="prettyprint">DELETE /stores/{store_hash}/v2/currencies/{id}</code></li>
-<li>  Basic Auth
-<code class="prettyprint">DELETE /api/v2/currencies/{id}</code></li>
+<code class="prettyprint">DELETE /api/v2/shipping/zones/{id}</code></li>
 </ul>
 
-<h2 id="delete-all-currencies"><span class="jumptarget"> Delete All Currencies </span></h2>
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
 
-<p>Deletes all currencies associated with the store. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>id</li>
+</ul>
+
+          <h1 id="shipping-methods-reference"><span class="jumptarget"> Shipping Methods Reference </span></h1>
+
+<p>The Shipping Methods object and endpoints help manage the shipping of physical items from merchant to shopper.</p>
+
+<h2 id="shipping-method-object-properties"><span class="jumptarget"> Shipping Method Object – Properties </span></h2>
+
+<p>A Shipping Method object represents a shipping method enabled within the store.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Shipping-method ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Display name for shipping method.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Shipping-method type. Possible static/fixed shipping quote types are <code class="prettyprint">perorder</code>, <code class="prettyprint">peritem</code>, <code class="prettyprint">weight</code>, or <code class="prettyprint">total</code>. Possible dynamic/real-time shipping quote types are: <code class="prettyprint">auspost</code>, <code class="prettyprint">canadapost</code>, <code class="prettyprint">endicia</code>, <code class="prettyprint">usps</code>, <code class="prettyprint">fedex</code>, <code class="prettyprint">royalmail</code>, <code class="prettyprint">ups</code>, <code class="prettyprint">upsready</code>, <code class="prettyprint">upsonline</code>, or <code class="prettyprint">shipperhq</code>.</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>object</td>
+<td>[Depends on type.]</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>Whether or not this shipping-zone method is enabled.</td>
+</tr>
+<tr>
+<td>handling_fee</td>
+<td>int</td>
+<td>Set handling fee for this method, if the zone&rsquo;s handling-fee type is defined as <code class="prettyprint">method</code>.</td>
+</tr>
+<tr>
+<td>handling_fees</td>
+<td>object</td>
+<td>Handling-fee information for this method, if the zone&rsquo;s handling-fee type is <em>not</em> <code class="prettyprint">method</code>. This object contains the following elements: <br> <code class="prettyprint">fixed_surcharge</code>: the handling fee;<br> <code class="prettyprint">display_separately</code>: Whether to display the handling fee separately at checkout.</td>
+</tr>
+</tbody></table>
+
+<p><strike> ### <span class="jumptarget"> Note to Reviewers </span></p>
+
+<p>Undocumented here (so far) are shipper-specific &ldquo;models&rdquo; in the Swagger like this one:</p>
+
+<p><img alt="Undocumented objects" src="../images/ship-zone-method-models-undocumented.png" /> </strike></p>
+
+          <h2 id="list-shipping-methods"><span class="jumptarget"> List Shipping Methods </span></h2>
+
+<p>Gets all configured shipping methods, by zone ID. (Default sorting is by shipping-method ID, from lowest to highest.)</p>
 
 <ul>
 <li>  OAuth
-<code class="prettyprint">DELETE /stores/{store_hash}/v2/currencies</code></li>
-<li>  Basic Auth
-<code class="prettyprint">DELETE /api/v2/currencies</code> </li>
+&gt;<code class="prettyprint">GET {store_hash}/api/v2/shipping/zones/{zone_id}/methods</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>zone_id</li>
+</ul>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ship by Weight"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-a-shipping-method"><span class="jumptarget"> Get a Shipping Method </span></h2>
+
+<p>Gets a shipping method, specified by zone ID and method ID.</p>
+
+<ul>
+<li>  OAuth
+&gt;<code class="prettyprint">GET {store_hash}/api/v2/shipping/zones/{zone_id}/methods/{method_id}</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>zone_id</li>
+<li>method_id</li>
+</ul>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="create-a-shipping-method"><span class="jumptarget"> Create a Shipping Method </span></h2>
+
+<p>Creates a new method in the specificed shipping zone.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">POST {store_hash}/api/v2/shipping/zones/{zone_id}/methods</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>zone_id</li>
+</ul>
+
+<h3 id="request"><span class="jumptarget"> Request </span></h3>
+
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="update-a-shipping-method"><span class="jumptarget"> Update a Shipping Method </span></h2>
+
+<p>Updates an existing shipping method.</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">{store_hash}/api/v2/shipping/zones/{zone_id}/methods/{method_id}</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>zone_id</li>
+<li>method_id</li>
+</ul>
+
+<h3 id="request"><span class="jumptarget"> Request </span></h3>
+
+<p>Example request object:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">  
+</span></code></pre>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="delete-a-shipping-method"><span class="jumptarget"> Delete a Shipping Method </span></h2>
+
+<p>Deletes a specified shipping method. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
+
+<ul>
+<li>  OAuth
+<code class="prettyprint">{store_hash}/api/v2/shipping/zones/{zone_id}/methods/{id}</code></li>
+</ul>
+
+<h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
+
+<p>The following properties of the shipping zone are required. The request won&rsquo;t be fulfilled unless these properties are valid.</p>
+
+<ul>
+<li>zone_id</li>
+<li>method_id</li>
 </ul>
 
           <h1 id="bigcommerce-catalog-api">BigCommerce Catalog API</h1>

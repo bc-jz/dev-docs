@@ -3254,10 +3254,6 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <li>  shipping_address</li>
 </ul>
 
-<h4 id="requirements"><span class="jumptarget"> Requirements </span></h4>
-
-<p>The following properties of the shipment are required. The request won’t be fulfilled unless these properties are valid.</p>
-
 <h4 id="request"><span class="jumptarget"> Request </span></h4>
 
 <p>Example request object:</p>
@@ -14648,11 +14644,20 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <td>/api/v2/shipping/methods?limit={count}</td>
 </tr>
 </tbody></table>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia Post"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipping_auspost"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Canada Post"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipping_canpost"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -14667,6 +14672,10 @@ The <code>path</code>, <code>forward.type</code>, and <code>forward.ref</code> f
 <li>  Basic Auth
 &gt;<code class="prettyprint">GET /api/v2/shipping/methods/{id}</code></li>
 </ul>
+
+<h3 id="response"><span class="jumptarget"> Response </span></h3>
+
+<p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia Post"</span><span class="p">,</span><span class="w">

@@ -127,8 +127,24 @@
     </ul>
     <section class="top-bar-section ng-scope">
       <ul class="menuItems">
-        <li><a href="/api/" title="API">API</a></li>
-        <li><a href="/themes/" title="Themes">Themes</a></li>
+        <li class="dropdown">
+          <div class="dropbtn" title="API">API</div>
+          <div class="dropdown-content">
+            <a href="/api">Basics</a>
+            <a href="/api/v2">API V2</a>
+            <a href="https://github.com/bigcommerce/api/blob/master/docs/v3-catalog.md">API V3</a>
+          </div>
+        </li>
+        <li>
+          <li class="dropdown">
+          <div class="dropbtn" title="Themes">THEMES</div>
+          <div class="dropdown-content">
+            <a href="/themes">Basics</a>
+            <a href="http://stencil.bigcommerce.com/docs">Stencil</a>
+            <a href="/themes/blueprint">Blueprint</a>
+          </div>
+        </li>
+        </li>
         <li><a href="/changelog/" title="Changelog">Changelog</a></li>
         <li><a href="/support/" title="Help and Support">Support</a></li>
       </ul>

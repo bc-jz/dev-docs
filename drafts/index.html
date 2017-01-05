@@ -513,7 +513,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
           <h2 id="list-shipping-methods"><span class="jumptarget"> List Shipping Methods </span></h2>
 
-<p>Gets all configured shipping methods, by zone ID. (Default sorting is by shipping-method ID, from lowest to highest.)</p>
+<p>Gets all configured shipping methods, by <code class="prettyprint">zone_id</code>. (Default sorting is by shipping-method <code class="prettyprint">id</code>, from lowest to highest.)</p>
 
 <ul>
 <li>  OAuth
@@ -574,11 +574,11 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="get-a-shipping-method"><span class="jumptarget"> Get a Shipping Method </span></h2>
 
-<p>Gets a shipping method, specified by zone ID and method ID.</p>
+<p>Gets a shipping method, specified by <code class="prettyprint">zone_id</code> and method <code class="prettyprint">id</code>.</p>
 
 <ul>
 <li>  OAuth
-&gt;<code class="prettyprint">GET {store_hash}/api/v2/shipping/zones/{zone_id}/methods/{method_id}</code></li>
+&gt;<code class="prettyprint">GET {store_hash}/api/v2/shipping/zones/{zone_id}/methods/{id}</code></li>
 </ul>
 
 <h3 id="requirements"><span class="jumptarget"> Requirements </span></h3>
@@ -587,7 +587,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <ul>
 <li>zone_id</li>
-<li>method_id</li>
+<li>[method] id</li>
 </ul>
 
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
@@ -672,7 +672,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <ul>
 <li>zone_id</li>
-<li>method_id</li>
+<li>[method] id</li>
 </ul>
 
 <h3 id="request"><span class="jumptarget"> Request </span></h3>
@@ -720,7 +720,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <ul>
 <li>zone_id</li>
-<li>method_id</li>
+<li>[method] id</li>
 </ul>
 
           <h1 id="bigcommerce-catalog-api">BigCommerce Catalog API</h1>

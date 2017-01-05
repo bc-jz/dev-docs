@@ -2844,7 +2844,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 
           <h2 id="shipments"><span class="jumptarget"> Shipments </span></h2>
 
-<p>Tracks a package consignment from an order, shipped from the seller to the buyer.</p>
+<p>Tracks a package consignment from an order that is shipped from the seller to the buyer.</p>
 
 <h3 id="shipment-object-properties"><span class="jumptarget"> Shipment Object – Properties </span></h3>
 
@@ -2858,67 +2858,67 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>id</td>
 <td>int</td>
-<td></td>
+<td>Shipment ID.</td>
 </tr>
 <tr>
 <td>order_id</td>
 <td>int</td>
-<td></td>
+<td>ID of the order associated with this shipment.</td>
 </tr>
 <tr>
 <td>customer_id</td>
 <td>int</td>
-<td></td>
+<td>ID of this order&rsquo;s customer.</td>
 </tr>
 <tr>
 <td>order_address_id</td>
 <td>int</td>
-<td>ID of the order address with which this shipment is associated</td>
+<td>ID of the associated order address.</td>
 </tr>
 <tr>
 <td>date_created</td>
 <td>date</td>
-<td></td>
+<td>Creation date for the shipment.</td>
 </tr>
 <tr>
 <td>tracking_number</td>
 <td>string</td>
-<td>Tracking number of the shipment</td>
+<td>Tracking number of the shipment.</td>
 </tr>
 <tr>
 <td>shipping_method</td>
 <td>string</td>
-<td></td>
+<td>Extra detail to describe the shipment, with values like: <code class="prettyprint">Standard</code>, <br> <code class="prettyprint">My Custom Shipping Method Name</code>, etc. Can also be used for live quotes from some shipping providers.</td>
 </tr>
 <tr>
 <td>shipping_provider</td>
 <td>string</td>
-<td>Enum of the BigCommerce shipping-carrier integration/module</td>
+<td>Enum of the BigCommerce shipping-carrier integration/module. <br>  (<strong>Note:</strong> This property should be included in a POST request to create a shipment object. If it is omitted from the request, the property&rsquo;s value will default to <code class="prettyprint">custom</code>, and no tracking link will be generated in the email. To avoid this behavior, you can pass the property as an empty string.)</td>
 </tr>
 <tr>
 <td>tracking_carrier</td>
 <td>string</td>
-<td>Enum of the delivery service fulfilling the shipment</td>
+<td>Enum of the delivery service fulfilling the shipment.</td>
 </tr>
 <tr>
 <td>comments</td>
 <td>text</td>
-<td>Comments the shipper wishes to add</td>
+<td>Comments the shipper wishes to add.</td>
 </tr>
 <tr>
 <td>billing_address</td>
 <td>object</td>
-<td></td>
+<td>Billing address for this order&rsquo;s customer.</td>
 </tr>
 <tr>
 <td>shipping_address</td>
 <td>object</td>
-<td></td>
+<td>Shipping address for this order&rsquo;s customer.</td>
 </tr>
 <tr>
 <td>items</td>
 <td>object_array</td>
-<td>The items in the shipment. This is an object; see the items table. A sample value might be: [{&ldquo;order_product_id&rdquo;:15,&ldquo;quantity&rdquo;:2}]</td>
+<td>The items in the shipment. This object has the following members, all integer: <code class="prettyprint">order_product_id</code> (required), <code class="prettyprint">quantity</code> (required), <code class="prettyprint">product_id</code> (read-only). A sample <code class="prettyprint">items</code> value might be: <code class="prettyprint">[ {&quot;order_product_id&quot;:16,&quot;product_id&quot;: 0,&quot;quantity&quot;:2} ]</code></td>
 </tr>
 </tbody></table>
 
@@ -3166,6 +3166,15 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <ul>
 <li>  order_address_id</li>
 <li>  items</li>
+<li>  shipping_provider</li>
+</ul>
+
+<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
+
+<ul>
+<li>For the <code class="prettyprint">shipping_provider</code> property, acceptable values are an empty string (<code class="prettyprint">&quot;&quot;</code>), or one of these valid BigCommerce shipping-provider values: <code class="prettyprint">auspost</code>, <code class="prettyprint">canadapost</code>, <code class="prettyprint">endicia</code>, <code class="prettyprint">usps</code>, <code class="prettyprint">fedex</code>, <code class="prettyprint">royalmail</code>, <code class="prettyprint">ups</code>, <code class="prettyprint">upsready</code>, <code class="prettyprint">upsonline</code>, or <code class="prettyprint">shipperhq</code>.</li>
+<li>If your POST request does not include <code class="prettyprint">shipping_provider</code> – at least as an empty string, as shown in the example request below – this property&rsquo;s value will default to <code class="prettyprint">custom</code>, and no tracking link will be generated in the email. </li>
+<li><code class="prettyprint">tracking_carrier</code> is optional, but if you include it, its value must refer/map to the same carrier service as the <code class="prettyprint">shipping_provider</code> value. Acceptable values for <code class="prettyprint">tracking_carrier</code> are an empty string (<code class="prettyprint">&quot;&quot;</code>), or one of the valid tracking-carrier values viewable <a href="https://docs.google.com/spreadsheets/d/1w9c_aECSCGyf-oOrvGeUniDl-ARGKemfZl0qSsav8D4/pubhtml?gid=0&amp;single=true">here</a> and downloadable as a .CSV file <a href="https://docs.google.com/spreadsheets/d/1mTueEynfcEmwsU2y2Jd2MX-8GKwNZrmlRMBcIElg9aY/pub?gid=0&amp;single=true&amp;output=csv">here</a>.</li>
 </ul>
 
 <h4 id="request"><span class="jumptarget"> Request </span></h4>
@@ -3175,6 +3184,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
   </span><span class="nt">"tracking_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EJ958083578US"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ready to go..."</span><span class="p">,</span><span class="w">
   </span><span class="nt">"order_address_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"shipping_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"order_product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
@@ -3235,15 +3245,6 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
-
-<p>The following properties of the shipments are optional, but if you provide both values, they must refer/map to the same carrier service: </p>
-
-<ul>
-<li><code class="prettyprint">shipping_provider</code>: Acceptable values are an empty string (<code class="prettyprint">&quot;&quot;</code>), or one of these valid BigCommerce shipping- provider values: <code class="prettyprint">auspost</code>, <code class="prettyprint">canadapost</code>, <code class="prettyprint">endicia</code>, <code class="prettyprint">usps</code>, <code class="prettyprint">fedex</code>, <code class="prettyprint">royalmail</code>, <code class="prettyprint">ups</code>, <code class="prettyprint">upsready</code>, <code class="prettyprint">upsonline</code>, or <code class="prettyprint">shipperhq</code>.</li>
-<li><code class="prettyprint">tracking_carrier</code>: Acceptable values are an empty string (<code class="prettyprint">&quot;&quot;</code>), or one of the valid tracking-carrier values viewable <a href="https://docs.google.com/spreadsheets/d/1w9c_aECSCGyf-oOrvGeUniDl-ARGKemfZl0qSsav8D4/pubhtml?gid=0&amp;single=true">here</a> and downloadable as a .CSV file <a href="https://docs.google.com/spreadsheets/d/1mTueEynfcEmwsU2y2Jd2MX-8GKwNZrmlRMBcIElg9aY/pub?gid=0&amp;single=true&amp;output=csv">here</a>.</li>
-</ul>
 
 <h3 id="update-a-shipment"><span class="jumptarget"> Update a Shipment </span></h3>
 
@@ -9869,13 +9870,13 @@ The Delete All Categories operation will not succeed unless the store has zero p
 </tr>
 <tr>
 <td>published_date</td>
-<td>object</td>
-<td>Members are <code class="prettyprint">date</code> (date string), <code class="prettyprint">timezone_type</code> (integer), and <code class="prettyprint">timezone</code> (string representing an hours:minutes offset, in the format <code class="prettyprint">&quot;+hh:mm&quot;</code> or <code class="prettyprint">&quot;-hh:mm&quot;</code>).</td>
+<td>date string, or object</td>
+<td>When including the blog post&rsquo;s <code class="prettyprint">published_date</code> in <code class="prettyprint">PUT</code> or <code class="prettyprint">POST</code> requests, supply it as a flat date string in valid <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format. <br> <br> In GET requests, the <code class="prettyprint">published_date</code> is returned as an object, whose members are: <code class="prettyprint">date</code> (date string); <code class="prettyprint">timezone_type</code> (integer); and <code class="prettyprint">timezone</code> (string representing an hours:minutes offset, in the format <code class="prettyprint">&quot;+hh:mm&quot;</code> or <code class="prettyprint">&quot;-hh:mm&quot;</code>).</td>
 </tr>
 <tr>
 <td>published_date_iso8601</td>
 <td>date string</td>
-<td></td>
+<td>Published date in <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format.</td>
 </tr>
 <tr>
 <td>meta_description</td>
@@ -10129,9 +10130,11 @@ The Delete All Categories operation will not succeed unless the store has zero p
 
 <h4 id="notes"><span class="jumptarget"> Notes </span></h4>
 
-<p>Blog posts default to draft status. Set <code class="prettyprint">is_published</code> to true to publish posts to the storefront.</p>
-
-<p>If a custom url is not provided, the post’s URL will be generated based on the value of <code class="prettyprint">title</code>.</p>
+<ul>
+<li><p>When including <code class="prettyprint">published_date</code> in a request, supply it as a flat date string (not an object) in valid <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format. The&#160;example request below includes a <code class="prettyprint">published_date</code> in RFC 2822 format.</p></li>
+<li><p>Blog posts default to draft status. To publish blog posts to the storefront, set their <code class="prettyprint">is_published</code> property to <code class="prettyprint">true</code>.</p></li>
+<li><p>If a custom URL is not provided, the post’s URL will be generated based on the value of <code class="prettyprint">title</code>.</p></li>
+</ul>
 
 <h4 id="request"><span class="jumptarget"> Request </span></h4>
 
@@ -10141,6 +10144,7 @@ The Delete All Categories operation will not succeed unless the store has zero p
   </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;This is a blog post.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Author Name"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"thumbnail_path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cdn.example.com/sample-post.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"published_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mon, 09 May 2015 16:20:04 +0400"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"is_published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"Blog"</span><span class="p">,</span><span class="w">
@@ -10169,12 +10173,19 @@ The Delete All Categories operation will not succeed unless the store has zero p
 <li>  preview_url</li>
 </ul>
 
+<h4 id="notes"><span class="jumptarget"> Notes </span></h4>
+
+<ul>
+<li>When including <code class="prettyprint">published_date</code> in a request, supply it as a flat date string (not an object) in valid <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format. The&#160;example request below includes a <code class="prettyprint">published_date</code> in RFC 2822 format.</li>
+</ul>
+
 <h4 id="request"><span class="jumptarget"> Request </span></h4>
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New: A Sample Blog Post"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blog/sample-post"</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/blog/sample-post"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"published_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wed, 01 Jan 2017 15:33:33 +0400"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 

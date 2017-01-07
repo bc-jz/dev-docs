@@ -222,15 +222,89 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Core API, supporting all currently exposed resources via Basic Auth or OAuth.</p>
 
-          <h1 id="api-apps-first-steps"><span class="jumptarget"> API/Apps First Steps </span></h1>
+          <h1 id="api-apps-first-steps"><span class="jumptarget" id="apiquickstart"> API/Apps First Steps </span></h1>
+
+<p>The following sections list initial steps for two different development scenarios:</p>
+
+<ul>
+<li><p>Developing private apps for a particular BigCommerce store: You can follow the <a href="#apicred">Apps Quick Start</a> procedure, which has no administrative requirements.</p></li>
+<li><p>Developing <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> for sale to/installation on any BigCommerce store. for a particular BigCommerce store: See the <a href="#joinappmkt">Joining the BigCommerce App Marketplace</a> procedure, which requires applying to become a BigCommerce partner.</p></li>
+</ul>
+
+<p>These two scenarios are not mutually exclusive – some developers will work under both scenarios – but some of their instructions are redundant. Please use the links above to jump to the section that best matches your immediate scenario.</p>
+
+<h1 id="apps-quick-start-obtaining-api-credentials"><span class="jumptarget" id="apicred"> Apps Quick Start: Obtaining API Credentials</span></h1>
+
+<aside class="notice">
+<span class="aside-notice-hd"> Private or Saleable Apps? </span><br><br>
+This section is intended for developers who want to immediately start developing and testing private apps for a particular store. <br> If your ultimate goal is to distribute apps on the BigCommerce Apps Marketplace, you can avoid repeated steps (like creating trial/sandbox stores for app testing) by jumping directly to the instructions under <a href="#joinappmkt">Joining the BigCommerce App Marketplace</a>.
+</aside>
+
+<p>To obtain Basic or OAuth credentials to use this API, you will first need to create a trial store. (If you already have a store, skip ahead to <a href="#login">Logging&#160;In</a>.)</p>
+
+<h2 id="creating-a-trial-store"><span class="jumptarget" id="createstore"> Creating a Trial Store</span></h2>
+
+<ol>
+<li><p>Go to the <a href="https://www.bigcommerce.com" target ="_blank">BigCommerce home page</a>.</p></li>
+<li><p>Select either <strong>GET STARTED</strong> or <strong>START YOUR FREE TRIAL</strong>.</p></li>
+<li><p>Enter an email address where prompted, and select <strong>START YOUR TRIAL</strong>.</p></li>
+<li><p>In the trial store form, enter a store name, password, and other details. Then select <strong>CREATE YOUR STORE</strong>.</p></li>
+<li><p>Wait for the store-creation animation to stop, then select either <strong>FINISH</strong> or <strong>Ask Me Later</strong>.</p></li>
+</ol>
+
+<h2 id="logging-in"><span class="jumptarget" id="login"> Logging In</span></h2>
+
+<p>If you have just created your trial store, you will already be logged into the store&rsquo;s control panel. Skip ahead to <a href="#basiccred">Creating Basic Auth Credentials</a>.</p>
+
+<p>Otherwise, you might need to log into your store:</p>
+
+<ol>
+<li><p>Return to the <a href="https://www.bigcommerce.com" target ="_blank">BigCommerce home page</a>.</p></li>
+<li><p>Select <strong>LOG IN</strong> at the upper right. </p></li>
+<li><p>If prompted to <strong>Log in to your store</strong>, enter the email address and password you set when you created  your trial, then select <strong>LOG IN</strong>.</p>
+
+<p>This will reopen your store&rsquo;s control panel.</p></li>
+</ol>
+
+<h2 id="creating-basic-auth-credentials"><span class="jumptarget" id="basiccred"> Creating Basic Auth Credentials </span></h2>
+
+<ol>
+<li><p>From your store&rsquo;s control panel, go to <strong>Advanced Settings &gt; Legacy API Settings</strong>.</p></li>
+<li><p>Select <strong>Create a Legacy API Account</strong>.</p></li>
+<li><p>Enter a <strong>Username</strong>. Reusing the app&rsquo;s name is a good way to keep track of which account corresponds to which app. After saving, you can use the API credentials listed on this page.</p></li>
+<li><p>Select <strong>Save</strong> if you&rsquo;re creating or changing the API account.</p></li>
+</ol>
+
+<h2 id="creating-oauth-credentials"><span class="jumptarget" id="oauthcred"> Creating OAuth Credentials</span></h2>
+
+<p>When you log in to the BigCommerce Developer Portal to get OAuth credentials for the first time, you&rsquo;ll be prompted to authorize the Developer Portal application.</p>
+
+<ol>
+<li>Select <strong>My Apps</strong> in this Developer Portals&rsquo;s upper-right-hand corner, and log in to your BigCommerce account.</li>
+<li>Within the Developer Portal, select <strong>Create an app</strong>. You can give your app any name you&rsquo;d like, such as <code class="prettyprint">Test</code>.</li>
+<li>Once the app is created, select <strong>View Client ID</strong>. This will display the modal shown below, from which you can copy your <br> <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+</ol>
+
+<p><img src="../assets/client-id+secret-modal.png" alt="BigCommerce Client ID and Secret" height=67% width=67%></p>
+
+<h2 id="making-an-api-request"><span class="jumptarget">Making an API Request</span></h2>
+
+<p>Many tools are available to interact with APIs. For example, to see how to quickly make initial requests using <a href="https://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a> commands, please see our <a href="#curl-quickstart-guide">cURL Quickstart Guide</a>.</p>
+
+<h1 id="joining-the-bigcommerce-app-marketplace"><span class="jumptarget" id="joinappmkt"> Joining the BigCommerce App Marketplace</span></h1>
 
 <p><span class="fake-h2" style="color:black;font-weight:bold"> Build Best-Of-Breed Solutions for Fast-Growing Online Businesses </span></p>
 
-<p>This section describes how to establish yourself as a vendor of <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> on the BigCommerce Apps Marketplace. Here are your first steps to get started:</p>
+<p>The following sections outline the steps required to become a vendor of <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> on the BigCommerce platform.</p>
 
-<h2 id="1-join-the-technology-partner-program"><span class="jumptarget"> 1. Join the Technology Partner Program </span></h2>
+<aside class="notice">
+<span class="aside-notice-hd"> Want a Quicker Start? </span><br><br>
+If you only want to develop private apps for a particular BigCommerce store, you can get started faster by jumping to the streamlined instructions under <a href="#apicred">Apps Quick Start</a>.
+</aside>
 
-<p>Before you&rsquo;ll be ready to submit an app for the BigCommerce Marketplace, you must become an official Partner. BigCommerce offers app developers free sandbox stores through its Technology Partner Program. You can <a href="https://www.bigcommerce.com/partners/signup" target="_blank">apply for a technology partnership here</a>. To be approved as a partner, you will need:</p>
+<h2 id="apply-to-the-technology-partner-program"><span class="jumptarget"> Apply to the Technology Partner Program </span></h2>
+
+<p>Before you can submit an app to the BigCommerce Marketplace, you must become an official Partner. BigCommerce offers app developers free sandbox stores through its Technology Partner Program. You can <a href="https://www.bigcommerce.com/partners/signup" target="_blank">apply for a technology partnership here</a>. To be approved as a partner, you will need:</p>
 
 <ul>
 <li>A website.</li>
@@ -247,7 +321,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </ul>
 </aside>
 
-<p>Once approved, you will receive one or more emails containing your partner credentials and next steps. Your Partner username and ID will be required to submit your app for <a href="https://developer.bigcommerce.com/" target="_blank">App Store</a> consideration.</p>
+<p>Once approved, you will receive one or more emails listing your partner credentials and next steps. Your Partner username and ID will be required to submit your app for <a href="https://developer.bigcommerce.com/" target="_blank">App Store</a> consideration.</p>
 
 <aside class="notice">
 <span class="aside-notice-hd">Note</span>
@@ -258,33 +332,35 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </ul>
 </aside>
 
-<h2 id="2-get-a-sandbox-store"><span class="jumptarget"> 2. Get a Sandbox Store </span></h2>
+<h2 id="create-a-sandbox-store"><span class="jumptarget"> Create a Sandbox Store </span></h2>
 
-<p>To open your sandbox store, log into the Partner Portal, then click <strong>Create a Trial Store</strong>. When you log into your store, use the same email that you used when applying to become a Technology Partner.</p>
+<p>To open your sandbox store, log into the Partner Portal, then click <strong>Create a Trial Store</strong>. </p>
+
+<p>When you log into your new store, use the same email that you used when applying to become a Technology Partner.</p>
 
 <p>NOTE: Although the <strong>Create a Trial Store</strong> option&rsquo;s name indicates that the store might be temporary, it is actually permanent.</p>
 
-<h2 id="3-create-your-draft-app"><span class="jumptarget">3. Create your Draft App </span></h2>
+<h2 id="create-your-draft-app"><span class="jumptarget"> Create Your Draft App </span></h2>
 
-<p>Once you’re ready to start on your app, navigate to the Developer Portal home page, click the <strong>My Apps</strong> link, and log in using the same email address you&rsquo;ve used for your sandbox store.</p>
+<p>Once you’re ready to start on your app, navigate to the Developer Portal home page, select the <strong>My Apps</strong> link, and log in using the same email address you&rsquo;ve used for your sandbox store.</p>
 
-<p>The <strong>My Apps</strong> page is where you will add, edit, and manage any of your BigCommerce Single-Click Apps. Start by clicking <strong>Create an app now</strong>, and initiating <a href="/api/#app-registration">registration of your app</a> - you can always come back to edit this later!</p>
+<p>The <strong>My Apps</strong> page is where you will add, edit, and manage any of your BigCommerce Single-Click Apps. Start by clicking <strong>Create an app now</strong>, and initiating <a href="/api/#app-registration">registration of your app</a>. (You can always come back to edit your draft app&rsquo;s name and other details later.)</p>
 
 <p>Once your draft app is created, you will be able to install and test it privately in your sandbox store.</p>
 
 <aside class="notice">
 <span class="aside-notice-hd">Note</span>
     <br><br>
-To access your draft app in the store, the email address used for your sandbox store’s Owner user must be identical to the address that you use for the BigCommerce Developer Portal. </ul>
+To access your draft app in the store, make sure the email address you enter for your sandbox store’s **Owner** is identical to the email address you use for the BigCommerce Developer Portal. </ul>
 </aside>
 
-<h2 id="4-submit-your-app"><span class="jumptarget"> 4. Submit Your App </span></h2>
+<h2 id="submit-your-app"><span class="jumptarget"> Submit Your App </span></h2>
 
-<p>Once your app is fully functional and meets all of BigCommerce’s <a href="#app-store-approval-requirements">approval requirements</a>, submit the app from <strong>My Apps</strong>. We will get back to you as soon as we have reviewed your submission.</p>
+<p>Once your app is fully functional, and meets all of BigCommerce’s <a href="#app-store-approval-requirements">approval requirements</a>, submit the app from <strong>My Apps</strong>. We will get back to you as soon as we have reviewed your submission.</p>
 
 <h2 id="about-client-libraries"><span class="jumptarget"> About Client Libraries </span></h2>
 
-<p>To make it easier for our developers, we provide <a href="#client-libraries">client libraries</a> in a variety of popular languages.</p>
+<p>To make facilitate app development on the BigCommerce platform, we provide <a href="#client-libraries">client libraries</a> in a variety of popular programming languages.</p>
 
           <h1 id="request-headers"><span class="jumptarget"> Request Headers </span></h1>
 
@@ -2521,220 +2597,9 @@ X-BC-ApiLimit-Remaining: 0
 
 <p>Simple applications running as background tasks can use the standard <code class="prettyprint">sleep</code> function in their host environment to pause between outgoing requests.</p>
 
-          <h2 id="curl-quickstart-guide"><span class="jumptarget" id="curl_quickstart"> cURL Quickstart Guide </span></h2>
-
-<p>This section provides some sample cURL commands, for quickstart purposes. These use Basic Authentication, so before you can issue these commands, you must generate Basic Authentication credentials by following the steps discussed <a href="#pvt_token">here</a>. Once you have your Basic Authentication credentials, you can issue cURL commands as listed below.</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -H "Authorization: Basic _username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/time
-</code></pre>
-
-<p>If the request is made using the <code class="prettyprint">Authorization</code> header, you need to encode the credentials using base64. Or, a simple way to accomplish the same task as above is:</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/orders.json
-</code></pre>
-
-<h3 id="orders-curl-commands"><span class="jumptarget"> Orders cURL Commands </span></h3>
-
-<p>Here are sample cURL commands to handle orders.</p>
-
-<h4 id="get-a-list-of-orders-from-the-store"><span class="jumptarget"> Get a List of Orders from the Store</span></h4>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/orders.json
-</code></pre>
-
-<p>By default, the API request returns only 50 orders. If you want to return all the orders from the store, you must use filters, as shown in the next example below.</p>
-
-<h4 id="get-all-orders-from-the-store"><span class="jumptarget"> Get All Orders from the Store</span></h4>
-
-<p>Use the <code class="prettyprint">limit</code> and <code class="prettyprint">page</code> filter parameters to get a data beyond what the default query returns. Note that 200 orders is the maximum returned per page:</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/orders.json?limit=200&amp;page=1
-</code></pre>
-
-<h4 id="update-an-order"><span class="jumptarget"> Update an Order</span></h4>
-
-<p>Orders take many fields upon update requests. (For details, please see <a href="/api/v2/#update-an-order" target="_blank">this documentation</a>.) Here, we update an order using just the mandatory fields:</p>
-<pre class="highlight plaintext"><code>    curl --request PUT \
-    -u "_username_:_API_key_" \
-    -H "Content-Type: application/json" \
-    --data-binary '{"status_id":1}' \
-    https://store.mybigcommerce.com/api/v2/orders/101
-</code></pre>
-
-<h4 id="get-orders-created-since-a-certain-date"><span class="jumptarget"> Get Orders Created since a Certain Date</span></h4>
-
-<p>You can use the <code class="prettyprint">If-Modified-Since</code> header to request orders that have been created after a given date:</p>
-<pre class="highlight plaintext"><code>    curl -I --request GET \
-    -u "_username_:_API_key_" \
-    -H "Content-Type: application/json" \
-    -H "If-Modified-Since: Tue, 4 Dec 2012 00:00:00 GMT" \
-    https://store.mybigcommerce.com/api/v2/orders.json
-</code></pre>
-
-<h4 id="get-coupons-associated-with-an-order"><span class="jumptarget"> Get Coupons Associated with an Order</span></h4>
-
-<p>An order can contain coupons, which might be applied to the order to offer discounts to the customer. You can look at all the available coupons in an order as follows:</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_"\
-    https://store.mybigcommerce.com/api/v2/orders/115/coupons.json
-</code></pre>
-
-<h4 id="create-a-shipment-for-an-order"><span class="jumptarget"> Create a Shipment for an Order</span></h4>
-
-<p>You can create a shipment for an order via the <a href="/api/v2/#create-a-shipment" target="_blank">Orders &gt; Create a Shipment</a> endpoint. As an example, third-party shipping services can query orders from a store when the orders are created, and create shipments for those:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -u "_username_:_API_key_" \
-    -H "Content-Type: application/json" \
-    -d '{"order_address_id":15,"tracking_number":"123-123-123","items":[{"order_product_id":15,"quantity":1}]}' \
-    https://store.mybigcommerce.com/api/v2/orders/114/shipments.json
-</code></pre>
-
-<h3 id="products-curl-commands"><span class="jumptarget"> Products cURL Commands </span></h3>
-
-<p>Here are sample cURL commands to handle products.</p>
-
-<h4 id="get-a-list-of-products-from-the-store"><span class="jumptarget"> Get a List of Products from the Store </span></h4>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/products.json
-</code></pre>
-
-<p>By default, the API request returns only 50 products. If you want to return all the products from the store, you must use filters, as shown in the example below.</p>
-
-<h4 id="get-all-products-from-the-store"><span class="jumptarget"> Get All Products from the Store </span></h4>
-
-<p>Use the <code class="prettyprint">limit</code> and <code class="prettyprint">page</code> filter parameters to get data beyond what the default query returns. Note that a maximum of 200 products are returned per page:</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/products.json?limit=200&amp;page=1
-</code></pre>
-
-<h4 id="create-a-product"><span class="jumptarget"> Create a Product </span></h4>
-
-<p>Products have many fields. For details on the product fields allowed as part of a <code class="prettyprint">POST</code> request, please see <a href="/api/v2/#create-a-product" target="_blank">this page</a>.</p>
-
-<p>Let&rsquo;s assume that we want to create a product using only the fields that are for a <code class="prettyprint">POST</code> request. Here, <code class="prettyprint">price</code> must specified as a string, while <code class="prettyprint">weight</code> is a decimal. The <code class="prettyprint">is_visible</code> flag is not mandatory, but if it is not set to <code class="prettyprint">true</code>, the product would not be visible by default:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -H "Content-Type: application/json" \
-    -u "_username_:_API_key_" \
-    -d '{"name":"startrek","price":19.99,"categories":[2],"type":"physical","availability":"available", "weight":0}' \
-    https://store.mybigcommerce.com/api/v2/products.json
-</code></pre>
-
-<h4 id="update-a-product"><span class="jumptarget"> Update a Product </span></h4>
-
-<p>To update the product created above, you could use the following:</p>
-<pre class="highlight plaintext"><code>    curl --request PUT \
-    -H "Content-Type: application/json" \
-    -u "_username_:_API_key_" \
-    -d '{"name":"startrek","sku":"STREK-DVD","categories":[2,3],"inventory_tracking":"simple","inventory_level":"500", "inventory_warning":100}' \
-    https://store.mybigcommerce.com/api/v2/products/id.json
-</code></pre>
-
-<h4 id="search-a-product-by-sku"><span class="jumptarget"> Search a Product by SKU </span></h4>
-
-<p>To search by a product SKU, we could use the following code. Remember that when a product has optionset/variations defined, and if the individual options have SKUs defined, then the product SKU is overriden by the option SKUs. Currently, there are two ways to search for SKUs: <code class="prettyprint">GET /products?sku=&quot;something&quot;</code> or <code class="prettyprint">GET /products/skus?sku=&quot;something&quot;</code>. The first call returns only product-level SKUs and not option-level SKUs.</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/products/skus.json?sku="abcd"
-</code></pre>
-
-<h3 id="coupons-curl-commands"><span class="jumptarget"> Coupons cURL Commands </span></h3>
-
-<p>Here are sample cURL commands to handle coupons.</p>
-
-<h4 id="get-a-list-of-coupons-from-the-store"><span class="jumptarget"> Get a List of Coupons from the Store </span></h4>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/coupons.json
-</code></pre>
-
-<p>Coupons can be filtered by <code class="prettyprint">code</code>, <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, <code class="prettyprint">min_id</code> and <code class="prettyprint">max_id</code>. Without these filters, the call returns all the coupons in the store. So for example, if we wanted to return a list of only those coupons of <code class="prettyprint">type=percentage_discount</code>, we could make the following request:</p>
-<pre class="highlight plaintext"><code>    curl --request GET \
-    -u "_username_:_API_key_" \
-    https://store.mybigcommerce.com/api/v2/coupons.json?type=percentage_discount
-</code></pre>
-
-<p>For details on filter fields, please see the <a href="/api/v2#coupons" target="_blank">Coupons resource</a>.</p>
-
-<h4 id="create-a-coupon"><span class="jumptarget"> Create a Coupon </span></h4>
-
-<p>Coupons can be created by a <code class="prettyprint">POST</code> request on the coupons endpoint. For example, if we want to create a coupon to take 50% off an order, then our coupon will have <code class="prettyprint">percentage_discount</code> as the type. The <code class="prettyprint">applies_to</code> field is optional, and can be used to restrict the coupon to a set of products or categories. In the example shown below, the coupon is being restricted to a set of products:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -H "Content-Type: application/json" \
-    -u "_username_:_API_key_" \
-    -d '{"code":"50OFF", "type":"percentage_discount", "name":"testcoupon1", "amount":50.00, "enabled":"true", "applies_to":"{\"entity\":\"products\",\"ids\":[32]}"}' \
-    https://store.mybigcommerce.com/api/v2/coupons.json
-</code></pre>
-
-<h4 id="update-a-coupon"><span class="jumptarget"> Update a Coupon </span></h4>
-
-<p>Updating a coupon is almost similar to the Create example above, except that we work off an ID via a <code class="prettyprint">PUT</code> request. For example, assume that we want to change the above coupon from a 50% to a 30% discount, and that the coupon ID is <code class="prettyprint">15</code>. We can update the coupon using the following:</p>
-<pre class="highlight plaintext"><code>    curl --request PUT \
-    -H "Content-Type: application/json" \
-    -u "_username_:_API_key_" \
-    -d '{"code":"30OFF", "type":"percentage_discount"' \
-    https://store.mybigcommerce.com/api/v2/coupons/15.json
-</code></pre>
-
-<h3 id="option-sets-curl-commands"><span class="jumptarget"> Option Sets cURL Commands </span></h3>
-
-<p>Here are sample cURL commands to handle option sets.</p>
-
-<h4 id="connect-options-to-option-sets"><span class="jumptarget"> Connect Options to Option Sets </span></h4>
-
-<p>This is currently a four-step process.</p>
-
-<ol>
-<li> Create the option.</li>
-<li> Add some values to the option.</li>
-<li> Create the option set.</li>
-<li> Create option-set options, using the options you just created.</li>
-</ol>
-
-<p>Use the following command to create an option:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -H "Content-Type: application/json" \
-    -u "_username_:_API_key_" \
-    -d '{"name":"homer simpson", "type":"T"}' \
-    https://store.mybigcommerce.com/api/v2/options.json
-</code></pre>
-
-<p>BigCommerce returns the following, which includes an option ID:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"T"</span><span class="p">,</span><span class="nt">"values"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33/values.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33/values"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
-<p>Next, create a new option set:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -u "admin:key" \
-    -d '{"name": "Simpson family"}' \
-    -H "Content-Type: application/json" \
-    https://store.mybigcommerce.com/api/v2/optionsets.json
-</code></pre>
-
-<p>The API returns the following, which includes an option-set ID:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"options"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/optionsets/27/options.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/optionsets/27/options"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
-<p>The final step is to connect the option with the option set:</p>
-<pre class="highlight plaintext"><code>    curl --request POST \
-    -u "_username_:_API_key_" \
-    -d '{"option_id": "33", "display_name":"Simpson family"}' \
-    -H "Content-Type: application/json" \
-    https://store.mybigcommerce.com/api/v2/optionsets/27/options.json
-</code></pre>
-
-<p>Which yields the following:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">"option_id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"option_set_id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"sort_order"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">"is_required"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">"option"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
           <h2 id="migrating-to-oauth"><span class="jumptarget"> Migrating to OAuth </span></h2>
 
-<p>Apps in the App Store that use Basic Authentication are deprecated, and will be sunsetted in the near future. We will contact you directly to let you know the details and the timeline of this transition. This page discusses how to migrate your public app from Basic Authentication to OAuth.</p>
+<p>Apps in the App Store that use Basic Authentication are now deprecated, and will eventually be sunsetted. We will contact you directly to let you know the details and the timeline of this transition. This page discusses how to migrate your public app from Basic Authentication to OAuth.</p>
 
 <aside class="notice">
 <span class="aside-notice-hd">Private Apps Exempted</span><br><br>
@@ -2797,6 +2662,217 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <li><p><strong>Time to wait before retries</strong>: The old rate limiting scheme used a fixed hourly limit, regardless of who was accessing the API and how many requests were made per app or per user. This value was returned in the <code class="prettyprint">X-BC-ApiLimit-Remaining</code> header. The <code class="prettyprint">X-BC-ApiLimit-Remaining</code> header is not sent to OAuth apps. When an OAuth client is rate limited, the header <code class="prettyprint">X-Retry-After</code> signals the number of seconds that a client should wait before retrying the request.</p></li>
 <li><p><strong>More information</strong>: Further information can be found on the <a href="#rate-limits_oauth">OAuth rate limits page</a> and the <a href="#response-headers">Response Headers page</a>.</p></li>
 </ul>
+
+          <h1 id="curl-quickstart-guide"><span class="jumptarget" id="curl_quickstart"> cURL Quickstart Guide </span></h1>
+
+<p>This section provides some sample cURL commands, for quickstart purposes. These use Basic Authentication, so before you can issue these commands, you must generate Basic Authentication credentials by following the steps discussed <a href="#pvt_token">here</a>. Once you have your Basic Authentication credentials, you can issue cURL commands as listed below.</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -H "Authorization: Basic _username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/time
+</code></pre>
+
+<p>If the request is made using the <code class="prettyprint">Authorization</code> header, you need to encode the credentials using base64. Or, a simple way to accomplish the same task as above is:</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/orders.json
+</code></pre>
+
+<h2 id="orders-curl-commands"><span class="jumptarget"> Orders cURL Commands </span></h2>
+
+<p>Here are sample cURL commands to handle orders.</p>
+
+<h3 id="get-a-list-of-orders-from-the-store"><span class="jumptarget"> Get a List of Orders from the Store</span></h3>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/orders.json
+</code></pre>
+
+<p>By default, the API request returns only 50 orders. If you want to return all the orders from the store, you must use filters, as shown in the next example below.</p>
+
+<h3 id="get-all-orders-from-the-store"><span class="jumptarget"> Get All Orders from the Store</span></h3>
+
+<p>Use the <code class="prettyprint">limit</code> and <code class="prettyprint">page</code> filter parameters to get a data beyond what the default query returns. Note that 200 orders is the maximum returned per page:</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/orders.json?limit=200&amp;page=1
+</code></pre>
+
+<h3 id="update-an-order"><span class="jumptarget"> Update an Order</span></h3>
+
+<p>Orders take many fields upon update requests. (For details, please see <a href="/api/v2/#update-an-order" target="_blank">this documentation</a>.) Here, we update an order using just the mandatory fields:</p>
+<pre class="highlight plaintext"><code>    curl --request PUT \
+    -u "_username_:_API_key_" \
+    -H "Content-Type: application/json" \
+    --data-binary '{"status_id":1}' \
+    https://store.mybigcommerce.com/api/v2/orders/101
+</code></pre>
+
+<h3 id="get-orders-created-since-a-certain-date"><span class="jumptarget"> Get Orders Created since a Certain Date</span></h3>
+
+<p>You can use the <code class="prettyprint">If-Modified-Since</code> header to request orders that have been created after a given date:</p>
+<pre class="highlight plaintext"><code>    curl -I --request GET \
+    -u "_username_:_API_key_" \
+    -H "Content-Type: application/json" \
+    -H "If-Modified-Since: Tue, 4 Dec 2012 00:00:00 GMT" \
+    https://store.mybigcommerce.com/api/v2/orders.json
+</code></pre>
+
+<h3 id="get-coupons-associated-with-an-order"><span class="jumptarget"> Get Coupons Associated with an Order</span></h3>
+
+<p>An order can contain coupons, which might be applied to the order to offer discounts to the customer. You can look at all the available coupons in an order as follows:</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_"\
+    https://store.mybigcommerce.com/api/v2/orders/115/coupons.json
+</code></pre>
+
+<h3 id="create-a-shipment-for-an-order"><span class="jumptarget"> Create a Shipment for an Order</span></h3>
+
+<p>You can create a shipment for an order via the <a href="/api/v2/#create-a-shipment" target="_blank">Orders &gt; Create a Shipment</a> endpoint. As an example, third-party shipping services can query orders from a store when the orders are created, and create shipments for those:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -u "_username_:_API_key_" \
+    -H "Content-Type: application/json" \
+    -d '{"order_address_id":15,"tracking_number":"123-123-123","items":[{"order_product_id":15,"quantity":1}]}' \
+    https://store.mybigcommerce.com/api/v2/orders/114/shipments.json
+</code></pre>
+
+<h2 id="products-curl-commands"><span class="jumptarget"> Products cURL Commands </span></h2>
+
+<p>Here are sample cURL commands to handle products.</p>
+
+<h4 id="get-a-list-of-products-from-the-store"><span class="jumptarget"> Get a List of Products from the Store </span></h4>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/products.json
+</code></pre>
+
+<p>By default, the API request returns only 50 products. If you want to return all the products from the store, you must use filters, as shown in the example below.</p>
+
+<h4 id="get-all-products-from-the-store"><span class="jumptarget"> Get All Products from the Store </span></h4>
+
+<p>Use the <code class="prettyprint">limit</code> and <code class="prettyprint">page</code> filter parameters to get data beyond what the default query returns. Note that a maximum of 200 products are returned per page:</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/products.json?limit=200&amp;page=1
+</code></pre>
+
+<h4 id="create-a-product"><span class="jumptarget"> Create a Product </span></h4>
+
+<p>Products have many fields. For details on the product fields allowed as part of a <code class="prettyprint">POST</code> request, please see <a href="/api/v2/#create-a-product" target="_blank">this page</a>.</p>
+
+<p>Let&rsquo;s assume that we want to create a product using only the fields that are for a <code class="prettyprint">POST</code> request. Here, <code class="prettyprint">price</code> must specified as a string, while <code class="prettyprint">weight</code> is a decimal. The <code class="prettyprint">is_visible</code> flag is not mandatory, but if it is not set to <code class="prettyprint">true</code>, the product would not be visible by default:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -H "Content-Type: application/json" \
+    -u "_username_:_API_key_" \
+    -d '{"name":"startrek","price":19.99,"categories":[2],"type":"physical","availability":"available", "weight":0}' \
+    https://store.mybigcommerce.com/api/v2/products.json
+</code></pre>
+
+<h3 id="update-a-product"><span class="jumptarget"> Update a Product </span></h3>
+
+<p>To update the product created above, you could use the following:</p>
+<pre class="highlight plaintext"><code>    curl --request PUT \
+    -H "Content-Type: application/json" \
+    -u "_username_:_API_key_" \
+    -d '{"name":"startrek","sku":"STREK-DVD","categories":[2,3],"inventory_tracking":"simple","inventory_level":"500", "inventory_warning":100}' \
+    https://store.mybigcommerce.com/api/v2/products/id.json
+</code></pre>
+
+<h3 id="search-a-product-by-sku"><span class="jumptarget"> Search a Product by SKU </span></h3>
+
+<p>To search by a product SKU, we could use the following code. Remember that when a product has optionset/variations defined, and if the individual options have SKUs defined, then the product SKU is overriden by the option SKUs. Currently, there are two ways to search for SKUs: <code class="prettyprint">GET /products?sku=&quot;something&quot;</code> or <code class="prettyprint">GET /products/skus?sku=&quot;something&quot;</code>. The first call returns only product-level SKUs and not option-level SKUs.</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/products/skus.json?sku="abcd"
+</code></pre>
+
+<h2 id="coupons-curl-commands"><span class="jumptarget"> Coupons cURL Commands </span></h2>
+
+<p>Here are sample cURL commands to handle coupons.</p>
+
+<h3 id="get-a-list-of-coupons-from-the-store"><span class="jumptarget"> Get a List of Coupons from the Store </span></h3>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/coupons.json
+</code></pre>
+
+<p>Coupons can be filtered by <code class="prettyprint">code</code>, <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, <code class="prettyprint">min_id</code> and <code class="prettyprint">max_id</code>. Without these filters, the call returns all the coupons in the store. So for example, if we wanted to return a list of only those coupons of <code class="prettyprint">type=percentage_discount</code>, we could make the following request:</p>
+<pre class="highlight plaintext"><code>    curl --request GET \
+    -u "_username_:_API_key_" \
+    https://store.mybigcommerce.com/api/v2/coupons.json?type=percentage_discount
+</code></pre>
+
+<p>For details on filter fields, please see the <a href="/api/v2#coupons" target="_blank">Coupons resource</a>.</p>
+
+<h4 id="create-a-coupon"><span class="jumptarget"> Create a Coupon </span></h4>
+
+<p>Coupons can be created by a <code class="prettyprint">POST</code> request on the coupons endpoint. For example, if we want to create a coupon to take 50% off an order, then our coupon will have <code class="prettyprint">percentage_discount</code> as the type. The <code class="prettyprint">applies_to</code> field is optional, and can be used to restrict the coupon to a set of products or categories. In the example shown below, the coupon is being restricted to a set of products:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -H "Content-Type: application/json" \
+    -u "_username_:_API_key_" \
+    -d '{"code":"50OFF", "type":"percentage_discount", "name":"testcoupon1", "amount":50.00, "enabled":"true", "applies_to":"{\"entity\":\"products\",\"ids\":[32]}"}' \
+    https://store.mybigcommerce.com/api/v2/coupons.json
+</code></pre>
+
+<h4 id="update-a-coupon"><span class="jumptarget"> Update a Coupon </span></h4>
+
+<p>Updating a coupon is almost similar to the Create example above, except that we work off an ID via a <code class="prettyprint">PUT</code> request. For example, assume that we want to change the above coupon from a 50% to a 30% discount, and that the coupon ID is <code class="prettyprint">15</code>. We can update the coupon using the following:</p>
+<pre class="highlight plaintext"><code>    curl --request PUT \
+    -H "Content-Type: application/json" \
+    -u "_username_:_API_key_" \
+    -d '{"code":"30OFF", "type":"percentage_discount"' \
+    https://store.mybigcommerce.com/api/v2/coupons/15.json
+</code></pre>
+
+<h2 id="option-sets-curl-commands"><span class="jumptarget"> Option Sets cURL Commands </span></h2>
+
+<p>Here are sample cURL commands to handle option sets.</p>
+
+<h3 id="connect-options-to-option-sets"><span class="jumptarget"> Connect Options to Option Sets </span></h3>
+
+<p>This is currently a four-step process.</p>
+
+<ol>
+<li> Create the option.</li>
+<li> Add some values to the option.</li>
+<li> Create the option set.</li>
+<li> Create option-set options, using the options you just created.</li>
+</ol>
+
+<p>Use the following command to create an option:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -H "Content-Type: application/json" \
+    -u "_username_:_API_key_" \
+    -d '{"name":"homer simpson", "type":"T"}' \
+    https://store.mybigcommerce.com/api/v2/options.json
+</code></pre>
+
+<p>BigCommerce returns the following, which includes an option ID:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"T"</span><span class="p">,</span><span class="nt">"values"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33/values.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33/values"</span><span class="p">}}</span><span class="w">
+</span></code></pre>
+
+<p>Next, create a new option set:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -u "admin:key" \
+    -d '{"name": "Simpson family"}' \
+    -H "Content-Type: application/json" \
+    https://store.mybigcommerce.com/api/v2/optionsets.json
+</code></pre>
+
+<p>The API returns the following, which includes an option-set ID:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"options"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/optionsets/27/options.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/optionsets/27/options"</span><span class="p">}}</span><span class="w">
+</span></code></pre>
+
+<p>The final step is to connect the option with the option set:</p>
+<pre class="highlight plaintext"><code>    curl --request POST \
+    -u "_username_:_API_key_" \
+    -d '{"option_id": "33", "display_name":"Simpson family"}' \
+    -H "Content-Type: application/json" \
+    https://store.mybigcommerce.com/api/v2/optionsets/27/options.json
+</code></pre>
+
+<p>Which yields the following:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">"option_id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"option_set_id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"sort_order"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">"is_required"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">"option"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33"</span><span class="p">}}</span><span class="w">
+</span></code></pre>
 
           <h1 id="building-storefront-apps"><span class="jumptarget"> <a name="storefront-apps-intro"></a> Building Storefront Apps </span></h1>
 

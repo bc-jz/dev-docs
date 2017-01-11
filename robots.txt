@@ -1,2 +1,5 @@
-#User-agent: *
-#Disallow: /
+User-agent: *
+Disallow: /drafts/
+Disallow: /CNAME
+Disallow: /assets/
+Sitemap: https://developer.bigcommerce.com/sitemap.xml

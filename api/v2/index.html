@@ -400,7 +400,7 @@ With clever use of this API, you can automate various commerce, business, and pu
 <tr>
 <td>store_credit_amount</td>
 <td>decimal</td>
-<td>A read-only value. Do not pass in a POST or PUT.</td>
+<td>Represents the store credit that the shopper has redeemed on this individual order. This is a read-only value. Do not pass in a POST or PUT.</td>
 </tr>
 <tr>
 <td>gift_certificate_amount</td>
@@ -3428,7 +3428,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>keyword_filter</td>
 <td>string</td>
-<td></td>
+<td>(This property is deprecated.)</td>
 </tr>
 <tr>
 <td>name</td>
@@ -3438,7 +3438,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>type</td>
 <td>enum</td>
-<td>The product type. One of:<br><br> <code class="prettyprint">physical</code> – a physical stock unit.<br> <code class="prettyprint">digital</code> – a digital download.</td>
+<td>The product type. One of:<br> <code class="prettyprint">physical</code> – a physical stock unit.<br> <code class="prettyprint">digital</code> – a digital download.</td>
 </tr>
 <tr>
 <td>sku</td>
@@ -3483,7 +3483,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>calculated_price</td>
 <td>decimal</td>
-<td></td>
+<td>Price as displayed to guests, adjusted for applicable sales and rules. (Cart price might incorporate further discounts for logged-in customers or customer groups.) Read-only.</td>
 </tr>
 <tr>
 <td>sort_order</td>
@@ -3553,7 +3553,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>inventory_tracking</td>
 <td>enum</td>
-<td>The type of inventory tracking for the product. One of:<br><br> <code class="prettyprint">none</code> – inventory levels will not be tracked.<br> <code class="prettyprint">simple</code> – inventory levels will be tracked using the <code class="prettyprint">inventory_level</code> and <code class="prettyprint">inventory_warning_level</code> fields.<br> <code class="prettyprint">sku</code> – inventory levels will be tracked based on individual product options, which maintain their own warning levels and inventory levels.</td>
+<td>The type of inventory tracking for the product. One of:<br> <code class="prettyprint">none</code> – inventory levels will not be tracked.<br> <code class="prettyprint">simple</code> – inventory levels will be tracked using the <code class="prettyprint">inventory_level</code> and <code class="prettyprint">inventory_warning_level</code> fields.<br> <code class="prettyprint">sku</code> – inventory levels will be tracked based on individual product options, which maintain their own warning levels and inventory levels.</td>
 </tr>
 <tr>
 <td>rating_total</td>
@@ -3568,7 +3568,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>total_sold</td>
 <td>int</td>
-<td></td>
+<td>Total quantity of this product sold through transactions.</td>
 </tr>
 <tr>
 <td>date_created</td>
@@ -3633,7 +3633,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>event_date_type</td>
 <td>enum</td>
-<td>One of the following values:<br><br> <code class="prettyprint">none</code> – Disables the event/delivery date requirement and field.<br> <code class="prettyprint">after</code> – The selected date must fall either on, or after, the date specified in the <code class="prettyprint">event_date_start</code> field.<br> <code class="prettyprint">before</code> – The selected date must fall either before, or on, the date specified in the <code class="prettyprint">event_date_end</code> field.<br> <code class="prettyprint">range</code> – The selected date must fall between the <code class="prettyprint">event_date_start</code> and <code class="prettyprint">event_date_end</code> dates.</td>
+<td>One of the following values:<br> <code class="prettyprint">none</code> – Disables the event/delivery date requirement and field.<br> <code class="prettyprint">after</code> – The selected date must fall either on, or after, the date specified in the <code class="prettyprint">event_date_start</code> field.<br> <code class="prettyprint">before</code> – The selected date must fall either before, or on, the date specified in the <code class="prettyprint">event_date_end</code> field.<br> <code class="prettyprint">range</code> – The selected date must fall between the <code class="prettyprint">event_date_start</code> and <code class="prettyprint">event_date_end</code> dates.</td>
 </tr>
 <tr>
 <td>event_date_start</td>
@@ -3733,7 +3733,7 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>option_set_id</td>
 <td>int</td>
-<td>The ID of the <a href="/v2#product-option-sets">option set</a> applied to the product. (NOTE: To remove the option set from the product, set the value to <code class="prettyprint">null</code> on update.)</td>
+<td>The ID of the <a href="/api/v2/#option-sets">option set</a> applied to the product. (NOTE: To remove the option set from the product, set the value to <code class="prettyprint">null</code> on update.)</td>
 </tr>
 <tr>
 <td>tax_class_id</td>
@@ -3753,82 +3753,82 @@ Values passed for the <code>products</code> array to a <code>PUT</code> are appe
 <tr>
 <td>custom_url</td>
 <td>string</td>
-<td></td>
+<td>Custom URL (if set) overriding the structure dictated in the store&rsquo;s settings. If no custom URL is set, this will contain the default URL.</td>
 </tr>
 <tr>
 <td>primary_image</td>
 <td>object</td>
-<td>An image object, corresponding to the image that is set as the product&rsquo;s thumbnail. This object includes that image&rsquo;s <code class="prettyprint">id</code>, plus four URL values identifying where to pull the image at different sizes:<br> <br><code class="prettyprint">standard_url</code> is the image used in the product page&rsquo;s image box.<br> <code class="prettyprint">tiny_url</code> is the thumbnail image displayed below the product page&rsquo;s image box.<br> <code class="prettyprint">thumbnail_url</code> is used for product list-box images on category pages and in side panels.<br> <code class="prettyprint">zoom_url</code> is either the original image size provided to BigCommerce, or the merchant-selected <code class="prettyprint">Product Zoom Image</code>/<code class="prettyprint">Zoomed image</code> size – whichever is smaller. (You can always access the product&rsquo;s original image via the <a href="/api/v2/products/#product-images">Product Images resource</a>.)</td>
+<td>An image object, corresponding to the image that is set as the product&rsquo;s thumbnail. This object includes that image&rsquo;s <code class="prettyprint">id</code>, plus four URL values identifying where to pull the image at different sizes:<br><code class="prettyprint">standard_url</code> is the image used in the product page&rsquo;s image box.<br> <code class="prettyprint">tiny_url</code> is the thumbnail image displayed below the product page&rsquo;s image box.<br> <code class="prettyprint">thumbnail_url</code> is used for product list-box images on category pages and in side panels.<br> <code class="prettyprint">zoom_url</code> is either the original image size provided to BigCommerce, or the merchant-selected <code class="prettyprint">Product Zoom Image</code>/<code class="prettyprint">Zoomed image</code> size – whichever is smaller. (You can always access the product&rsquo;s original image via the <a href="/api/v2/#product-images">Product Images resource</a>.)</td>
 </tr>
 <tr>
 <td>availability</td>
 <td>enum</td>
-<td>Availability of the product. Possible values:<br><br> <code class="prettyprint">available</code> – the product can be purchased on the storefront.<br> <code class="prettyprint">disabled</code> - the product is listed on the storefront, but cannot be purchased.<br> <code class="prettyprint">preorder</code> – the product is listed for pre-orders.</td>
+<td>Availability of the product. Possible values:<br> <code class="prettyprint">available</code> – the product can be purchased on the storefront.<br> <code class="prettyprint">disabled</code> - the product is listed on the storefront, but cannot be purchased.<br> <code class="prettyprint">preorder</code> – the product is listed for pre-orders.</td>
 </tr>
 <tr>
 <td>brand</td>
 <td>resource</td>
-<td></td>
+<td>The product&rsquo;s brand</td>
 </tr>
 <tr>
 <td>downloads</td>
 <td>resource</td>
-<td></td>
+<td>Total number of downloads for a downloadable product.</td>
 </tr>
 <tr>
 <td>images</td>
 <td>resource</td>
-<td>See the <a href="/api/v2/products/#product-images">Product Images resource</a> for information.</td>
+<td>See the <a href="/api/v2/#product-images">Product Images resource</a> for information.</td>
 </tr>
 <tr>
 <td>discount_rules</td>
 <td>resource</td>
-<td>See the <a href="/api/v2#bulk-pricing">Bulk Pricing/Discount</a> resource for information.</td>
+<td>See the <a href="/api/v2/#bulk-pricing">Bulk Pricing/Discount</a> resource for information.</td>
 </tr>
 <tr>
 <td>configurable_fields</td>
 <td>resource</td>
-<td>See the <a href="/api/v2#configurable-fields">Configurable Fields</a> resource for information.</td>
+<td>See the <a href="/api/v2/#configurable-fields">Configurable Fields</a> resource for information.</td>
 </tr>
 <tr>
 <td>custom_fields</td>
 <td>resource</td>
-<td>See the <a href="/api/v2#custom-fields">Custom Fields</a> resource for information.</td>
+<td>See the <a href="/api/v2/#custom-fields">Custom Fields</a> resource for information.</td>
 </tr>
 <tr>
 <td>videos</td>
 <td>resource</td>
-<td>See the <a href="/api/v2/products/#videos">Videos resource</a> for information.</td>
+<td>See the <a href="/api/v2/#videos">Videos resource</a> for information.</td>
 </tr>
 <tr>
 <td>skus</td>
 <td>resource</td>
-<td>Stock Keeping Units for the product. See the <a href="/api/v2#product-skus">Product SKUs</a> resource for the definition of a sku object.</td>
+<td>Stock Keeping Units for the product. See the <a href="/api/v2/#skus">Product SKUs</a> resource for the definition of a sku object.</td>
 </tr>
 <tr>
 <td>rules</td>
 <td>resource</td>
-<td>Rules that apply only to this product, based on the product&rsquo;s <a href="/v2#product-option-sets">option set</a>. See <a href="/api/v2#product-rules">Product Rules</a> resource for information.</td>
+<td>Rules that apply only to this product, based on the product&rsquo;s <a href="/v2#product-option-sets">option set</a>. See <a href="/api/v2/#product-rules">Product Rules</a> resource for information.</td>
 </tr>
 <tr>
 <td>option_set</td>
 <td>resource</td>
-<td>See the <a href="/v2#product-option-sets">Product Option Sets</a> resource for information.</td>
+<td>See the <a href="/v2/#product-option-sets">Product Option Sets</a> resource for information.</td>
 </tr>
 <tr>
 <td>options</td>
 <td>resource</td>
-<td>Options from the <a href="/v2#product-option-sets">option set</a> applied to the product. See the <a href="/api/v2#product-options">Product Options</a> resource for information.</td>
+<td>Options from the <a href="/api/v2/#option-sets">option set</a> applied to the product. See the <a href="/api/v2/#product-options">Product Options</a> resource for information.</td>
 </tr>
 <tr>
 <td>tax_class</td>
 <td>resource</td>
-<td></td>
+<td>Assigned tax class, when using a manual tax setup. This can be a number matching one of the tax classes set up in your store.</td>
 </tr>
 <tr>
 <td>avalara_product_tax_code</td>
 <td>resource</td>
-<td>Accepts AvaTax system codes, which identify products and services that fall into special sales-tax categories. Allows merchants who subscribe to Avalara Premium to achieve increased accuracy in sales-tax calculations.<br><br> Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive.<br><br> For further information and the full list of codes, please see <a href="https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code">this Avalara reference page</a> &gt; &ldquo;AvaTax System tax codes&rdquo; section.</td>
+<td>Accepts AvaTax System Tax Codes, which identify products and services that fall into special sales-tax categories. By using these codes, merchants who subscribe to Avalara Premium can calculate sales taxes more accurately.<br><br> Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive.<br><br> For details, please see Avalara&rsquo;s <a href="https://help.avalara.com/000_Avalara_AvaTax/Manage_Product_Taxability/010_Select_AvaTax_System_Tax_Codes" target="_blank">overview</a> and <a href="https://help.avalara.com/000_Avalara_AvaTax/Manage_Product_Taxability/Tax_Codes_-_Frequently_Asked_Questions" target="_blank">FAQ</a> on AvaTax System Tax Codes. You can also <a href="https://help.avalara.com/@api/deki/files/1675/AvaTax_System_Tax_Codes_Toolkit.zip?revision=37" target="_blank">download codes</a> as a zipfile of spreadsheets, or <a href="https://taxcode.avatax.avalara.com/" target="_blank">search or browse codes</a> in Avalara&rsquo;s Tax Code Search Tool. (These external links are subject to change.)</td>
 </tr>
 </tbody></table>
 

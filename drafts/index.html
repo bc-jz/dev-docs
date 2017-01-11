@@ -224,18 +224,18 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 </tr>
 <tr>
 <td>type</td>
-<td>string</td>
-<td>Type of zone – one or more countries, a list of states, a list of ZIP/postal codes, or <code class="prettyprint">global</code>. A value of <code class="prettyprint">global</code> is treated as &ldquo;rest of the world&rdquo;. If type is <code class="prettyprint">global</code>, then <code class="prettyprint">name</code> and <code class="prettyprint">locations</code> are not mandatory.</td>
+<td>enum</td>
+<td>The type of shipping zone. Possible string values are: <br>  <code class="prettyprint">zip</code>: a list of ZIP/postal codes; <br> <code class="prettyprint">country</code>: one or more countries; <br> <code class="prettyprint">state</code>: a list of states; <br> <code class="prettyprint">global</code>: this value is treated as &ldquo;rest of the world&rdquo;.  (If the <code class="prettyprint">type</code> value is <code class="prettyprint">global</code>, then <code class="prettyprint">name</code> and <code class="prettyprint">locations</code> are not mandatory.)</td>
 </tr>
 <tr>
 <td>locations</td>
 <td>array</td>
-<td>Array of zone locations, each of which contains the following elements:<br> <code class="prettyprint">id</code>: location&rsquo;s ID (integer);<br> <code class="prettyprint">zip</code>: location&rsquo;s ZIP/postal code (string);<br> <code class="prettyprint">country_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the country (string, see <a href="#zoneobjnote">Notes</a> below);<br> <code class="prettyprint">state_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the state (string, see <a href="#zoneobjnote">Notes</a> below).</td>
+<td>Array of zone locations, each of which contains the following elements:<br> <code class="prettyprint">id</code>: location&rsquo;s ID (integer);<br> <code class="prettyprint">zip</code>: location&rsquo;s ZIP/postal code (string);<br> <code class="prettyprint">country_iso2</code>: 2-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the country (string, see <a href="#zoneobjnote">Notes</a> below);<br> <code class="prettyprint">state_iso2</code>: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO Alpha-2</a> code for the state (string, see <a href="#zoneobjnote">Notes</a> below).</td>
 </tr>
 <tr>
 <td>free_shipping</td>
 <td>object</td>
-<td>You can limit free shipping to orders exceeding a certain subtotal value. You can make products with fixed-price shipping ineligible for free shipping, but such products&rsquo; prices will still count toward the minimum order threshold. This object contains the following elements: <br> <code class="prettyprint">enabled</code>: whether free shipping is enabled for this zone (boolean);<br> <code class="prettyprint">minimum_sub_total</code>: order subtotal that establishes threshold for free shipping (number);<br> <code class="prettyprint">exclude_fixed_shipping_products</code>: whether products with a fixed shipping cost are ineligible for free shipping (boolean).</td>
+<td>You can limit free shipping to orders exceeding a certain subtotal value. You can make products with fixed-price shipping ineligible for free shipping, but such products&rsquo; prices will still count toward the minimum order threshold. This object contains the following elements: <br> <code class="prettyprint">enabled</code>: whether free shipping is enabled for this zone (boolean);<br> <code class="prettyprint">minimum_subtotal</code>: order subtotal that establishes threshold for free shipping (number);<br> <code class="prettyprint">exclude_fixed_shipping_products</code>: whether products with a fixed shipping cost are ineligible for free shipping (boolean).</td>
 </tr>
 <tr>
 <td>handling_fees</td>
@@ -545,7 +545,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 <tr>
 <td>type</td>
 <td>string</td>
-<td>Shipping-method type. The currently supported static/fixed shipping-quote types are <a href="#perorder"><code class="prettyprint">perorder</code></a>, <a href="#peritem"><code class="prettyprint">peritem</code></a>, <a href="#weight"><code class="prettyprint">weight</code></a>, or <a href="#total"><code class="prettyprint">total</code></a>. We plan to later add support for these dynamic/real-time shipping-quote types: <code class="prettyprint">auspost</code>, <code class="prettyprint">canadapost</code>, <code class="prettyprint">endicia</code>, <code class="prettyprint">usps</code>, <code class="prettyprint">fedex</code>, <code class="prettyprint">royalmail</code>, <code class="prettyprint">ups</code>, <code class="prettyprint">upsready</code>, <code class="prettyprint">upsonline</code>, or <code class="prettyprint">shipperhq</code>.</td>
+<td>Shipping-method type. The currently supported static/fixed shipping-quote types are <a href="#perorder"><code class="prettyprint">perorder</code></a>, <a href="#peritem"><code class="prettyprint">peritem</code></a>, <a href="#weight"><code class="prettyprint">weight</code></a>, or <a href="#total"><code class="prettyprint">total</code></a>. We plan to later add support for these dynamic/real-time shipping-quote types: <code class="prettyprint">auspost</code>, <code class="prettyprint">canadapost</code>, <code class="prettyprint">endicia</code>, <code class="prettyprint">usps</code>, <code class="prettyprint">fedex</code>, <code class="prettyprint">royalmail</code>, <code class="prettyprint">ups</code>, <code class="prettyprint">upsready</code>, or <code class="prettyprint">upsonline</code>.</td>
 </tr>
 <tr>
 <td>settings</td>

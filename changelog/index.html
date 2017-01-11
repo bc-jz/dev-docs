@@ -192,13 +192,17 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="january"><span class="jumptarget"> January </span></h2>
 
+<h3 id="stencil-cornerstone-1-4-2-theme-released"><span class="jumptarget"> Stencil Cornerstone 1.4.2 Theme Released </span></h3>
+
+<p>Version <a href="https://stencil.bigcommerce.com/docs/cornerstone-14x-theme-release-notes#142">1.4.2</a> of Stencil&rsquo;s default Cornerstone theme is now available. To deter spam submissions through the storefront Contact form, this update replaces the Contact template&rsquo;s CAPTCHA challenge with a Google reCAPTCHA v1 challenge. For the PR #/commit # to apply this fix, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
+
 <h3 id="order-shipments-gt-shipping_provider-usage-clarified"><span class="jumptarget"> Order Shipments &gt; shipping_provider Usage Clarified </span></h3>
 
 <p>We have updated our documentation on the Order Shipment <a href="/api/v2/#blog-posts-object-properties" target="_blank">object</a>, and <a href="/api/v2/#create-a-shipment" target="_blank">Create a Shipment endpoint</a>, to clarify that the <code class="prettyprint">shipping_provider</code> property is effectively required in <code class="prettyprint">POST</code> requests. (You should include the property, even as an empty string, to prevent the unexpected default behavior described in the documentation.)</p>
 
 <h3 id="blog-posts-gt-published_date-usage-clarified"><span class="jumptarget"> Blog Posts &gt; published_date Usage Clarified </span></h3>
 
-<p>We have updated our documentation on the Blog Posts <a href="/api/v2/#blog-posts-object-properties" target="_blank">object</a>, <a href="/api/v2/#create-a-blog-post" target="_blank">POST endpoint</a>, and <a href="/api/v2/#update-a-blog-post" target="_blank">PUT endpoint</a>, to clarify the <code class="prettyprint">published_date</code> property&rsquo;s usage. Although <code class="prettyprint">published_date</code> is returned as an object in responses, your <code class="prettyprint">POST</code> and <code class="prettyprint">PUT</code> requests should supply it as a flat date string in <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format.</p>
+<p>We have updated our documentation on the Blog Posts <a href="/api/v2/#blog-posts-object-properties" target="_blank">object</a>, and its <a href="/api/v2/#create-a-blog-post" target="_blank">POST</a> and <a href="/api/v2/#update-a-blog-post" target="_blank">PUT</a> endpoints, to clarify the usage of this API&rsquo;s <code class="prettyprint">published_date</code> property. Although <code class="prettyprint">published_date</code> is returned as an object in responses, your <code class="prettyprint">POST</code> and <code class="prettyprint">PUT</code> requests should supply it as a flat date string in <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format.</p>
 
           <h1 id="2016"><span class="jumptarget"> 2016 </span></h1>
 
@@ -220,7 +224,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h3 id="stencil-cornerstone-1-4-1-theme-released">Stencil Cornerstone 1.4.1 Theme Released</h3>
 
-<p>Version <a href="https://stencil.bigcommerce.com/docs/cornerstone-14x-theme-release-notes#141">1.4.1</a> of Stencil&rsquo;s default Cornerstone theme is now available. This release corrects a bug that allowed JavaScript to execute in a Cornerstone storefront&rsquo;s search box. For the PR #/commit # to apply this fix, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a></p>
+<p>Version <a href="https://stencil.bigcommerce.com/docs/cornerstone-14x-theme-release-notes#141">1.4.1</a> of Stencil&rsquo;s default Cornerstone theme is now available. This release corrects a bug that allowed JavaScript to execute in a Cornerstone storefront&rsquo;s search box. For the PR #/commit # to apply this fix, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
 
 <h2 id="november"><span class="jumptarget"> November </span></h2>
 

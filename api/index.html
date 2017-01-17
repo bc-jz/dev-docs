@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>BigCommerce API Documentation</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -15,11 +15,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #272822;
+  background-color: #f92672;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #75715e;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -28,45 +28,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .p, .highlight .pi {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .gi {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #f92672;
 }
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
+  color: #66d9ef;
+  background-color: #272822;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+  color: #ae81ff;
 }
 .highlight .kc {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kt {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kd {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #a1efe4;
 }
 .highlight .si {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .se {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -78,13 +78,13 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #6a9fb5;
+  color: #66d9ef;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #a6e22e;
 }
     </style>
 
@@ -124,7 +124,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="../images/navbar.png" />
+        <img src="../images/navbar.png" alt="Navbar" />
       </span>
     </a>
 
@@ -132,7 +132,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   <div class="topBar-container topBar-container--fixed">
   <nav class="top-bar ng-isolate-scope" ng-transclude="" top-bar="" style="height: 81px;">
     <ul class="title-area ng-scope">
-      <li class="name"><a href="/"><img src="../images/developer.png" /></a></li>
+      <li class="name"><a href="/"><img src="../images/developer.png" alt="Developer" /></a></li>
     </ul>
     <section class="top-bar-section ng-scope">
       <ul class="menuItems">
@@ -528,201 +528,197 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 
 <p>The body of a JSON request is simply an object containing a set of key-value pairs. A simple representation of a product object is:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPod"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A portable MP3 music player."</span><span class="w">
+     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPod"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A portable MP3 music player."</span><span class="w">
  </span><span class="p">}</span><span class="w"> 
 </span></code></pre>
-
 <h3 id="response-structure"><span class="jumptarget"> Response Structure</span></h3>
 
 <p>Responses are structured similarly to requests. If a request returns a single object, then the response will contain a single object, containing the fields for that resource.</p>
 
 <p>The response will also contain links to any sub-resource – for example, <code class="prettyprint">images</code> on the product below:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Shuffle"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sku"</span><span class="p">:</span><span class="s2">"IPOD-SHUFFLE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"The world’s smallest digital music player, ..."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"date created"</span><span class="p">:</span><span class="s2">"Mon, 12 Jan 2009 10:22:39 +0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"categories"</span><span class="p">:[</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Shuffle"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"IPOD-SHUFFLE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"The world’s smallest digital music player, ..."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date created"</span><span class="p">:</span><span class="s2">"Mon, 12 Jan 2009 10:22:39 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"categories"</span><span class="p">:[</span><span class="w">
     </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="mi">3</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"date modified"</span><span class="p">:</span><span class="s2">"Sun, 28 Aug 2011 23:08:56 +0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"custom url"</span><span class="p">:</span><span class="s2">"\/products\/sample-product-ipod-shuffle.html"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"brand"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/brands\/1.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/brands\/1"</span><span class="w">
+  </span><span class="s2">"date modified"</span><span class="p">:</span><span class="s2">"Sun, 28 Aug 2011 23:08:56 +0000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"custom url"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">sample-product-ipod-shuffle.html"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brand"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"images"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/images.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/images"</span><span class="w">
+  </span><span class="s2">"images"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">images.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">images"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"discount rules"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/discountrules.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/discountrules"</span><span class="w">
+  </span><span class="s2">"discount rules"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">discountrules.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">discountrules"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"configurable fields"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/configurablefields.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/configurablefields"</span><span class="w">
+  </span><span class="s2">"configurable fields"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">configurablefields.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">configurablefields"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"custom fields"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/customfields.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/customfields"</span><span class="w">
+  </span><span class="s2">"custom fields"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">customfields.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">customfields"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"videos"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/videos.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/videos"</span><span class="w">
+  </span><span class="s2">"videos"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">videos.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">videos"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"skus"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/skus.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/skus"</span><span class="w">
+  </span><span class="s2">"skus"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">skus.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">skus"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"rules"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/rules.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/rules"</span><span class="w">
+  </span><span class="s2">"rules"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">rules.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">rules"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"option_set"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/optionsets\/15.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/optionsets\/15"</span><span class="w">
+  </span><span class="s2">"option_set"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">optionsets</span><span class="se">\/</span><span class="s2">15.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">optionsets</span><span class="se">\/</span><span class="s2">15"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"options"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/options.json"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/options"</span><span class="w">
+  </span><span class="s2">"options"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">options.json"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">options"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
+  </span><span class="s2">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
 <p>If the request returns more than one result, then the response will consist of an array of objects for each result:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Shuffle"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sku"</span><span class="p">:</span><span class="s2">"IPOD-SHUFFLE"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"The world’s smallest digital music player, ..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"search_keywords"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"availability_description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_price_hidden"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"price_hidden_label"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"categories"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Shuffle"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">"IPOD-SHUFFLE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"The world’s smallest digital music player, ..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"search_keywords"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"availability_description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_price_hidden"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_hidden_label"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categories"</span><span class="p">:[</span><span class="w">
       </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="mi">3</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="s2">"Sun, 28 Aug 2011 23:08:56 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bin_picking_number"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"custom_url"</span><span class="p">:</span><span class="s2">"\/products\/sample-product-ipod-shuffle.html"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"brand"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/brands\/1.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/brands\/1"</span><span class="w">
+    </span><span class="s2">"date_modified"</span><span class="p">:</span><span class="s2">"Sun, 28 Aug 2011 23:08:56 +0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bin_picking_number"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_url"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">sample-product-ipod-shuffle.html"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"images"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/images.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/images"</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">images.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">images"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"discount_rules"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/discountrules.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/discountrules"</span><span class="w">
+    </span><span class="s2">"discount_rules"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">discountrules.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">discountrules"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"configurable_fields"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/configurablefields.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/configurablefields"</span><span class="w">
+    </span><span class="s2">"configurable_fields"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">configurablefields.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">configurablefields"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"custom_fields"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/customfields.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/customfields"</span><span class="w">
+    </span><span class="s2">"custom_fields"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">customfields.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">customfields"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"videos"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/videos.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/videos"</span><span class="w">
+    </span><span class="s2">"videos"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">videos.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">videos"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"skus"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/skus.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/skus"</span><span class="w">
+    </span><span class="s2">"skus"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">skus.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">skus"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"rules"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/rules.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/rules"</span><span class="w">
+    </span><span class="s2">"rules"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">rules.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">rules"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"option_set"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/optionsets\/15.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/optionsets\/15"</span><span class="w">
+    </span><span class="s2">"option_set"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">optionsets</span><span class="se">\/</span><span class="s2">15.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">optionsets</span><span class="se">\/</span><span class="s2">15"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"options"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/1\/options.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/1\/options"</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">options.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">1</span><span class="se">\/</span><span class="s2">options"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
+    </span><span class="s2">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Nano"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sku"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"Color isn't the only brilliant new iPod Nano feature. ..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"date_created"</span><span class="p">:</span><span class="s2">"Mon, 12 Jan 2009 10:28:58 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"brand_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"view_count"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"page_title"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"meta_keywords"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"meta_description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"layout"</span><span class="p">:</span><span class="s2">"product.html"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_price_hidden"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"price_hidden_label"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"categories"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"[Sample Product] iPod Nano"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sku"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Color isn't the only brilliant new iPod Nano feature. ..."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created"</span><span class="p">:</span><span class="s2">"Mon, 12 Jan 2009 10:28:58 +0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"view_count"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page_title"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta_keywords"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta_description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"layout"</span><span class="p">:</span><span class="s2">"product.html"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_price_hidden"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_hidden_label"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categories"</span><span class="p">:[</span><span class="w">
       </span><span class="mi">3</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"date_modified"</span><span class="p">:</span><span class="s2">"Thu, 18 Aug 2011 05:42:15 +0000"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bin_picking_number"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"custom_url"</span><span class="p">:</span><span class="s2">"\/products\/sample-product-ipod-nano.html"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"brand"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/brands\/1.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/brands\/1"</span><span class="w">
+    </span><span class="s2">"date_modified"</span><span class="p">:</span><span class="s2">"Thu, 18 Aug 2011 05:42:15 +0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bin_picking_number"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_url"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">sample-product-ipod-nano.html"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"brand"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">brands</span><span class="se">\/</span><span class="s2">1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"images"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/images.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/images"</span><span class="w">
+    </span><span class="s2">"images"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">images.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">images"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"discount_rules"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/discountrules.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/discountrules"</span><span class="w">
+    </span><span class="s2">"discount_rules"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">discountrules.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">discountrules"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"configurable_fields"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/configurablefields.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/configurablefields"</span><span class="w">
+    </span><span class="s2">"configurable_fields"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">configurablefields.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">configurablefields"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"custom_fields"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/customfields.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/customfields"</span><span class="w">
+    </span><span class="s2">"custom_fields"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">customfields.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">customfields"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"videos"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/videos.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/videos"</span><span class="w">
+    </span><span class="s2">"videos"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">videos.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">videos"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"skus"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/skus.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/skus"</span><span class="w">
+    </span><span class="s2">"skus"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">skus.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">skus"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"rules"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/rules.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/rules"</span><span class="w">
+    </span><span class="s2">"rules"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">rules.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">rules"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"options"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https:\/\/www.example.com\/api\/v2\/products\/2\/options.json"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"\/products\/2\/options"</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="s2">"https:</span><span class="se">\/\/</span><span class="s2">www.example.com</span><span class="se">\/</span><span class="s2">api</span><span class="se">\/</span><span class="s2">v2</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">options.json"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"resource"</span><span class="p">:</span><span class="s2">"</span><span class="se">\/</span><span class="s2">products</span><span class="se">\/</span><span class="s2">2</span><span class="se">\/</span><span class="s2">options"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
+    </span><span class="s2">"availability"</span><span class="p">:</span><span class="s2">"available"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-
 <h2 id="xml"><span class="jumptarget"> XML</span></h2>
 
 <p>XML has a content type of <code class="prettyprint">application/xml</code>. All XML transactions begin with the standard XML declaration:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 
 </code></pre>
-
 <h3 id="request-structure"><span class="jumptarget"> Request Structure</span></h3>
 
 <p>The body of an XML request should first contain an element that is named according to the resource, in singular form, such as <code class="prettyprint">product</code> for the <code class="prettyprint">products</code> resource:</p>
@@ -731,7 +727,6 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 <span class="nt">&lt;/product&gt;</span>
 
 </code></pre>
-
 <p>The resource element should then contain a set of elements that match the fields described in that resource&rsquo;s documentation:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;product&gt;</span>
@@ -741,13 +736,11 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 <span class="nt">&lt;/product&gt;</span>
 
 </code></pre>
-
 <h3 id="response-structure"><span class="jumptarget"> Response Structure</span></h3>
 
 <p>To receive an XML response, the request URI should include an .xml extension, as shown here:</p>
 <pre class="highlight plaintext"><code>GET /customers/1.xml
 </code></pre>
-
 <p>Here is a corresponding response:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;customer&gt;</span>
@@ -769,7 +762,6 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 <span class="nt">&lt;/customer&gt;</span>
 
 </code></pre>
-
 <p>If the request returns more than one result, then the response will consist of an element named according to the resource, in plural form, which contains a set of objects for each result:</p>
 <pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;customers&gt;</span>
@@ -793,7 +785,6 @@ The XML media type is deprecated. Our v2 webhooks support JSON only, and Stores 
 <span class="nt">&lt;/customers&gt;</span>
 
 </code></pre>
-
           <h1 id="client-libraries"><span class="jumptarget"> Client Libraries </span></h1>
 
 <h2 id="official-bigcommerce-sdks"><span class="jumptarget"> Official BigCommerce  SDKs </span></h2>
@@ -936,7 +927,6 @@ Webhooks differ from the rest of the Stores API as follows:
      X-Auth-Client: &lt;the OAuth client id&gt;
      X-Auth-Token: &lt;the OAuth token&gt;
 </code></pre>
-
 <h3 id="prerequisites"><span class="jumptarget"> Prerequisites </span></h3>
 
 <p>Before you can send any requests or receive any responses, you will need the following:</p>
@@ -1063,9 +1053,8 @@ Following the creation of a webhook, it can take up to one minute for BigCommerc
 <p>In the callback, we send a light payload with only minimum details regarding the event that&rsquo;s been triggered. This gives you maximum flexibility as to how you want to handle the notification in your application. For instance, if you subscribe to the <code class="prettyprint">store/product/update</code> event, we&rsquo;ll send you the product ID when it&rsquo;s been updated, and you might want to handle it by fetching the product via a request to the <a href="/api/v2/#get-a-product">Products resource</a>.</p>
 
 <p>An example payload follows:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"store_id"</span><span class="p">:</span><span class="mi">11111</span><span class="p">,</span><span class="nt">"producer"</span><span class="p">:</span><span class="s2">"stores/abcde"</span><span class="p">,</span><span class="nt">"scope"</span><span class="p">:</span><span class="s2">"store/order/statusUpdated"</span><span class="p">,</span><span class="nt">"data"</span><span class="p">:{</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"order"</span><span class="p">,</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">173331</span><span class="p">},</span><span class="nt">"hash"</span><span class="p">:</span><span class="s2">"3f9ea420af83450d7ef9f78b08c8af25b2213637"</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>{"store_id":11111,"producer":"stores/abcde","scope":"store/order/statusUpdated","data":{"type":"order","id":173331},"hash":"3f9ea420af83450d7ef9f78b08c8af25b2213637"}
+</code></pre>
 <h4 id="multiple-events-are-triggered-during-bulk-data-imports"><span class="jumptarget"> Multiple Events Are Triggered during Bulk Data Imports </span></h4>
 
 <p>Bulk data imports will trigger the relevant events for every record affected. For example, if you have a hook on <code class="prettyprint">store/product/created</code>, when the merchant imports 2,000 products, then we will send 2,000 individual callback events.</p>
@@ -1191,18 +1180,16 @@ You can also create a “Draft” version of a Single-Click App, for use only in
 
 <p>In addition, while not all resources require the <code class="prettyprint">Accept</code> and <code class="prettyprint">Content-Type</code> headers, many do. To ensure that your calls succeed, always include these headers. </p>
 
-<h3 id="managing-users-39-session-timeouts"><span class="jumptarget"> Managing Users&rsquo; Session Timeouts </span></h3>
+<h3 id="managing-users-session-timeouts"><span class="jumptarget"> Managing Users&rsquo; Session Timeouts </span></h3>
 
 <p>We recommend that you add BigCommerce&rsquo;s JavaScript SDK to your Single-Click Apps, to protect your apps&rsquo; users from getting logged out of the BigCommerce control panel after a period of idleness. To include our SDK, add this script tag to your Single-Click App: </p>
 <pre class="highlight html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdn.bigcommerce.com/jssdk/bc-sdk.js"</span><span class="nt">&gt;</span><span class="err">
 </span></code></pre>
-
 <p>Optionally, you can pass a logout callback function within the initialization call:</p>
 <pre class="highlight javascript"><code><span class="nx">BigCommerce</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
       <span class="na">onLogout</span><span class="p">:</span> <span class="nx">callback</span>
 <span class="p">});</span>
 </code></pre>
-
 <p>This callback function will run when the user explicitly logs out of the BigCommerce control panel, or is automatically logged out. The callback will allow your app to respond to this logout.</p>
 
 <h3 id="monetizing-your-app"><span class="jumptarget"> Monetizing Your App </span></h3>
@@ -1301,7 +1288,7 @@ For security, Auth and Load callback should be handled server-side. If you are b
 
 <p>The following diagram illustrates the entire sequence.</p>
 
-<p><img alt="UML diagram: App installation/update sequence (bc-oauth-install+update-seq.svg)" src="https://www.filepicker.io/api/file/jrCCco74ShqIiILykrG5" /></p>
+<p><img src="https://www.filepicker.io/api/file/jrCCco74ShqIiILykrG5" alt="UML diagram: App installation/update sequence (bc-oauth-install+update-seq.svg)" /></p>
 
 <p>The remainder of this section discusses each action your app needs to take during the sequence.</p>
 
@@ -1346,14 +1333,12 @@ For security, Auth and Load callback should be handled server-side. If you are b
 <pre class="highlight plaintext"><code>GET /auth?code=qr6h3thvbvag2ffq&amp;scope=store_v2_orders&amp;context=stores/g5cd38 HTTP/1.1  
 Host: app.example.com
 </code></pre>
-
 <h4 id="example-updating-scopes"><span class="jumptarget"> Example – Updating Scopes </span></h4>
 
 <p>The following example requests a scope of <code class="prettyprint">store_v2_products</code>, in addition to the initially requested scope of <code class="prettyprint">store_v2_orders</code>:</p>
 <pre class="highlight plaintext"><code>GET /auth?code=qr6h3thvbvag2ffq&amp;scope=store_v2_orders+store_v2_products&amp;context=stores/g5cd38 HTTP/1.1  
 Host: app.example.com
 </code></pre>
-
 <p>(Note that when your app receives a new token, any previously issued token is invalidated.)</p>
 
 <h3 id="responding-to-the-get-request"><span class="jumptarget"> <a name="get-response"></a> Responding to the GET Request </span></h3>
@@ -1427,7 +1412,6 @@ Content-Length: 186
 
 <span class="nv">client_id</span><span class="o">={</span>CLIENT_ID<span class="o">}</span>&amp;client_secret<span class="o">={</span>CLIENT_SECRET<span class="o">}</span>&amp;code<span class="o">=</span>qr6h3thvbvag2ffq&amp;scope<span class="o">=</span>store_v2_orders&amp;grant_type<span class="o">=</span>authorization_code&amp;redirect_uri<span class="o">=</span>https://app.example.com/oauth&amp;context<span class="o">=</span>stores/<span class="o">{</span>STORE_HASH<span class="o">}</span>
 </code></pre>
-
 <ul>
 <li>  <a href="#token-php">PHP</a></li>
 </ul>
@@ -1446,7 +1430,6 @@ Content-Length: 186
 <span class="p">));</span>
 <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">access_token</span><span class="p">;</span>
 </code></pre>
-
 <h4 id="examples-updating-scopes"><span class="jumptarget"> Examples – Updating Scopes </span></h4>
 
 <p>The following example requests a scope of <code class="prettyprint">store_v2_products</code>, in addition to the initially requested scope of <code class="prettyprint">store_v2_orders</code>:</p>
@@ -1461,7 +1444,6 @@ Content-Length: 186
 
 <span class="nv">client_id</span><span class="o">={</span>CLIENT_ID<span class="o">}</span>&amp;client_secret<span class="o">={</span>CLIENT_SECRET<span class="o">}</span>&amp;scope<span class="o">=</span>store_v2_orders+store_v2_products&amp;grant_type<span class="o">=</span>authorization_code&amp;redirect_uri<span class="o">=</span>https://app.example.com/oauth&amp;context<span class="o">=</span>stores/<span class="o">{</span>STORE_HASH<span class="o">}</span>
 </code></pre>
-
 <ul>
 <li>  <a href="#token-php">PHP</a></li>
 </ul>
@@ -1482,7 +1464,6 @@ Content-Length: 186
 
 <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">access_token</span><span class="p">;</span>
 </code></pre>
-
 <h3 id="receiving-the-post-response"><span class="jumptarget"> <a name="post-receipt"></a> Receiving the POST Response </span></h3>
 
 <p>The <code class="prettyprint">POST</code> response will include a JSON object containing the permanent OAuth token, user information, and other values. Upon receiving the permanent OAuth token, store it securely. You should also store the user and store hash values, to identify the user and store at load and uninstall. The following sections detail the contents of the JSON body.</p>
@@ -1525,30 +1506,28 @@ Content-Length: 186
 
 <h4 id="json-example-initial-installation"><span class="jumptarget"> JSON Example – Initial Installation </span></h4>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_TOKEN"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store_v2_orders"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24654</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant@mybigcommerce.com"</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_TOKEN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store_v2_orders"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24654</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant@mybigcommerce.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/STORE_HASH"</span><span class="w">
+  </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/STORE_HASH"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
 <h4 id="json-example-updating-scopes"><span class="jumptarget"> JSON Example – Updating Scopes </span></h4>
 
 <p>Update requests will refresh the payload&rsquo;s <code class="prettyprint">access_token</code> and <code class="prettyprint">scope</code> values. Here again, the following example requests a scope of <code class="prettyprint">store_v2_products</code>, in addition to the initially requested scope of <code class="prettyprint">store_v2_orders</code>:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_TOKEN"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store_v2_orders store_v2_products"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24654</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant@mybigcommerce.com"</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCESS_TOKEN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store_v2_orders store_v2_products"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24654</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant@mybigcommerce.com"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/STORE_HASH"</span><span class="w">
+  </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/STORE_HASH"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
           <h2 id="load-uninstall-and-user-removal-requests"><span class="jumptarget"> <a name="load"></a> Load, Uninstall, and User Removal Requests</span></h2>
 
 <p>In addition to the <strong>Auth Callback URI</strong>, the <a href="#app-registration">App Registration</a> wizard requests the following URIs.</p>
@@ -1609,7 +1588,6 @@ For security, Auth and Load callback should be handled server-side. If you are b
 <pre class="highlight plaintext"><code>GET /load?signed_payload=hw9fhkx2ureq.t73sk8y80jx9 HTTP/1.1
 Host: app.example.com
 </code></pre>
-
 <p>Upon receiving a <code class="prettyprint">GET</code> request to the <strong>Load Callback URI</strong>, your app needs to <a href="#processing-the-signed-payload">process the signed payload</a>.</p>
 
 <p>After processing the payload, your app returns its user interface as HTML. BigCommerce renders this inside of an iframe. Please see <a href="#ui-constraints">User&#160;Interface Constraints</a> for important information about your app&rsquo;s user interface.</p>
@@ -1624,7 +1602,6 @@ Host: app.example.com
 <pre class="highlight plaintext"><code>GET /uninstall?signed_payload=hw9fhkx2ureq.t73sk8y80jx9 HTTP/1.1
 Host: app.example.com
 </code></pre>
-
 <p>Upon receiving the <code class="prettyprint">GET</code> request, your app will need to <a href="#processing-the-signed-payload">process the signed payload</a>.</p>
 
 <aside class="notice">
@@ -1638,7 +1615,6 @@ Any HTML that you return in your response will not be rendered.
 <pre class="highlight plaintext"><code>GET /remove-user?signed_payload=hw9fhkx2ureq.t73sk8y80jx9 HTTP/1.1
 Host: app.example.com
 </code></pre>
-
 <p>Upon receiving the <code class="prettyprint">GET</code> request, your app will need to <a href="#processing-the-signed-payload">process the signed payload</a>.</p>
 
 <aside class="notice">
@@ -1655,7 +1631,6 @@ Any HTML that you return in your response will not be rendered.
 <p>The signed payload is a string containing a base64url-encoded JSON string and a base64url-encoded <a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code" target="_blank">HMAC signature</a>. The parts are delimited by the <code class="prettyprint">.</code> character:</p>
 <pre class="highlight plaintext"><code>encoded_json_string.encoded_hmac_signature
 </code></pre>
-
 <p>To decode the signed payload, complete the following steps:</p>
 
 <ol>
@@ -1698,7 +1673,6 @@ To limit the vulnerability of your app to <a href="http://codahale.com/a-lesson-
     <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
-
 <aside class="notice">
 <span class="aside-notice-hd">NOTE:</span> 
 <code>!hash_equals</code> is available in PHP 5.6 and later. If you are running an older version of PHP, pull in a compatibility library such as the following: <a href="https://packagist.org/packages/realityking/hash_equals" target="_blank">https://packagist.org/packages/realityking/hash_equals</a>. BigCommerce&rsquo;s sample app <NOBR><a href="https://github.com/bigcommerce/hello-world-app-php-silex" target="_blank">hello-world-app-php-silex app</a></nobr> does this automatically.
@@ -1735,7 +1709,6 @@ To limit the vulnerability of your app to <a href="http://codahale.com/a-lesson-
   <span class="n">res</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="k">end</span>
 </code></pre>
-
 <h3 id="processing-the-json-object"><span class="jumptarget" id="Identifying"> Processing the JSON Object</span></h3>
 
 <p>The JSON object embedded in the <code class="prettyprint">signed_payload</code> contains information about the BigCommerce store and the store owner or user.</p>
@@ -1820,22 +1793,21 @@ To limit the vulnerability of your app to <a href="http://codahale.com/a-lesson-
 
 <h4 id="json-example"><span class="jumptarget"> JSON Example</span></h4>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w">
          </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">9128</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"user@mybigcommerce.com"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">9128</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"user@mybigcommerce.com"</span><span class="w">
      </span><span class="p">},</span><span class="w">
-     </span><span class="nt">"owner"</span><span class="p">:</span><span class="w">
+     </span><span class="s2">"owner"</span><span class="p">:</span><span class="w">
           </span><span class="p">{</span><span class="w">
-         </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">9128</span><span class="p">,</span><span class="w">
-         </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"user@mybigcommerce.com"</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">9128</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"user@mybigcommerce.com"</span><span class="w">
      </span><span class="p">},</span><span class="w">
-     </span><span class="nt">"context"</span><span class="p">:</span><span class="s2">"stores/z4zn3wo"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"store_hash"</span><span class="p">:</span><span class="s2">"z4zn3wo"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="mf">1469823892.9123988</span><span class="w">
+     </span><span class="s2">"context"</span><span class="p">:</span><span class="s2">"stores/z4zn3wo"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"store_hash"</span><span class="p">:</span><span class="s2">"z4zn3wo"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mf">1469823892.9123988</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
           <h2 id="multi-user-support"><span class="jumptarget"> <a name="multi_intro"></a> Multi-User Support </span></h2>
 
 <p>When you register your app with BigCommerce, if you <a href="#regis-multi-user">enable multi-user support</a>, this will allow store admins to manually authorize users – other than the store owner – to load the app. This feature is not available for <a href="#building-basic-auth-apps">basic-auth apps</a>.</p>
@@ -2171,14 +2143,12 @@ To limit the vulnerability of your app to <a href="http://codahale.com/a-lesson-
     Content-Type: application/json
     X-Retry-After: 15
 </code></pre>
-
 <p>Parse the <strong>X-Retry-After</strong> header to determine how long you have to wait. In this case, it would be 15 seconds.</p>
 
 <p>Your client can sleep on the specified interval:</p>
 <pre class="highlight plaintext"><code>    $seconds = $response-&gt;getHeader("X-Retry-After");
     sleep($seconds);
 </code></pre>
-
 <p>After waiting for the given number of seconds, you can go back to making API requests.</p>
 
           <h2 id="app-store-approval-requirements"><span class="jumptarget" id="approval"> App Store Approval Requirements </span></h2>
@@ -2217,7 +2187,7 @@ Install and test your app thoroughly prior to submission. Be sure to install and
 <li><p>Apps must have all required information and files discussed in <a href="#app-submission">App Submission</a>.</p></li>
 </ul>
 
-<h3 id="types-of-apps-we-39-re-accepting"><span class="jumptarget" id="apps-accepted"> Types of Apps We&rsquo;re Accepting </span></h3>
+<h3 id="types-of-apps-were-accepting"><span class="jumptarget" id="apps-accepted"> Types of Apps We&rsquo;re Accepting </span></h3>
 
 <table><thead>
 <tr>
@@ -2549,7 +2519,6 @@ Even within the v2 API, apps relying on Basic Authentication cannot access some 
 <p>For example, the following response header signals that your client can make up to 900 additional requests within the current window:</p>
 <pre class="highlight plaintext"><code>X-BC-ApiLimit-Remaining: 900
 </code></pre>
-
 <p>When the limit remaining drops to zero, additional requests result in Bandwidth Limit Exceeded responses with the <code class="prettyprint">509</code> status code:</p>
 <pre class="highlight plaintext"><code>HTTP/1.1 509
 Date: Wed, 04 Dec 2013 10:36:32 GMT
@@ -2564,7 +2533,6 @@ X-BC-ApiLimit-Remaining: 0
 ]
 
 </code></pre>
-
 <p>If your client is rate limited, you won’t be able to make further requests until your quota resets.</p>
 
 <h3 id="working-with-rate-limits"><span class="jumptarget"> Working with Rate Limits </span></h3>
@@ -2670,13 +2638,11 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -H "Authorization: Basic _username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/time
 </code></pre>
-
 <p>If the request is made using the <code class="prettyprint">Authorization</code> header, you need to encode the credentials using base64. Or, a simple way to accomplish the same task as above is:</p>
 <pre class="highlight plaintext"><code>    curl --request GET \
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/orders.json
 </code></pre>
-
 <h2 id="orders-curl-commands"><span class="jumptarget"> Orders cURL Commands </span></h2>
 
 <p>Here are sample cURL commands to handle orders.</p>
@@ -2686,7 +2652,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/orders.json
 </code></pre>
-
 <p>By default, the API request returns only 50 orders. If you want to return all the orders from the store, you must use filters, as shown in the next example below.</p>
 
 <h3 id="get-all-orders-from-the-store"><span class="jumptarget"> Get All Orders from the Store</span></h3>
@@ -2696,7 +2661,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/orders.json?limit=200&amp;page=1
 </code></pre>
-
 <h3 id="update-an-order"><span class="jumptarget"> Update an Order</span></h3>
 
 <p>Orders take many fields upon update requests. (For details, please see <a href="/api/v2/#update-an-order" target="_blank">this documentation</a>.) Here, we update an order using just the mandatory fields:</p>
@@ -2706,7 +2670,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     --data-binary '{"status_id":1}' \
     https://store.mybigcommerce.com/api/v2/orders/101
 </code></pre>
-
 <h3 id="get-orders-created-since-a-certain-date"><span class="jumptarget"> Get Orders Created since a Certain Date</span></h3>
 
 <p>You can use the <code class="prettyprint">If-Modified-Since</code> header to request orders that have been created after a given date:</p>
@@ -2716,7 +2679,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -H "If-Modified-Since: Tue, 4 Dec 2012 00:00:00 GMT" \
     https://store.mybigcommerce.com/api/v2/orders.json
 </code></pre>
-
 <h3 id="get-coupons-associated-with-an-order"><span class="jumptarget"> Get Coupons Associated with an Order</span></h3>
 
 <p>An order can contain coupons, which might be applied to the order to offer discounts to the customer. You can look at all the available coupons in an order as follows:</p>
@@ -2724,7 +2686,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_"\
     https://store.mybigcommerce.com/api/v2/orders/115/coupons.json
 </code></pre>
-
 <h3 id="create-a-shipment-for-an-order"><span class="jumptarget"> Create a Shipment for an Order</span></h3>
 
 <p>You can create a shipment for an order via the <a href="/api/v2/#create-a-shipment" target="_blank">Orders &gt; Create a Shipment</a> endpoint. As an example, third-party shipping services can query orders from a store when the orders are created, and create shipments for those:</p>
@@ -2734,7 +2695,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"order_address_id":15,"tracking_number":"123-123-123","items":[{"order_product_id":15,"quantity":1}]}' \
     https://store.mybigcommerce.com/api/v2/orders/114/shipments.json
 </code></pre>
-
 <h2 id="products-curl-commands"><span class="jumptarget"> Products cURL Commands </span></h2>
 
 <p>Here are sample cURL commands to handle products.</p>
@@ -2744,7 +2704,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/products.json
 </code></pre>
-
 <p>By default, the API request returns only 50 products. If you want to return all the products from the store, you must use filters, as shown in the example below.</p>
 
 <h4 id="get-all-products-from-the-store"><span class="jumptarget"> Get All Products from the Store </span></h4>
@@ -2754,7 +2713,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/products.json?limit=200&amp;page=1
 </code></pre>
-
 <h4 id="create-a-product"><span class="jumptarget"> Create a Product </span></h4>
 
 <p>Products have many fields. For details on the product fields allowed as part of a <code class="prettyprint">POST</code> request, please see <a href="/api/v2/#create-a-product" target="_blank">this page</a>.</p>
@@ -2766,7 +2724,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"name":"startrek","price":19.99,"categories":[2],"type":"physical","availability":"available", "weight":0}' \
     https://store.mybigcommerce.com/api/v2/products.json
 </code></pre>
-
 <h3 id="update-a-product"><span class="jumptarget"> Update a Product </span></h3>
 
 <p>To update the product created above, you could use the following:</p>
@@ -2776,7 +2733,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"name":"startrek","sku":"STREK-DVD","categories":[2,3],"inventory_tracking":"simple","inventory_level":"500", "inventory_warning":100}' \
     https://store.mybigcommerce.com/api/v2/products/id.json
 </code></pre>
-
 <h3 id="search-a-product-by-sku"><span class="jumptarget"> Search a Product by SKU </span></h3>
 
 <p>To search by a product SKU, we could use the following code. Remember that when a product has optionset/variations defined, and if the individual options have SKUs defined, then the product SKU is overriden by the option SKUs. Currently, there are two ways to search for SKUs: <code class="prettyprint">GET /products?sku=&quot;something&quot;</code> or <code class="prettyprint">GET /products/skus?sku=&quot;something&quot;</code>. The first call returns only product-level SKUs and not option-level SKUs.</p>
@@ -2784,7 +2740,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/products/skus.json?sku="abcd"
 </code></pre>
-
 <h2 id="coupons-curl-commands"><span class="jumptarget"> Coupons cURL Commands </span></h2>
 
 <p>Here are sample cURL commands to handle coupons.</p>
@@ -2794,13 +2749,11 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/coupons.json
 </code></pre>
-
 <p>Coupons can be filtered by <code class="prettyprint">code</code>, <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, <code class="prettyprint">min_id</code> and <code class="prettyprint">max_id</code>. Without these filters, the call returns all the coupons in the store. So for example, if we wanted to return a list of only those coupons of <code class="prettyprint">type=percentage_discount</code>, we could make the following request:</p>
 <pre class="highlight plaintext"><code>    curl --request GET \
     -u "_username_:_API_key_" \
     https://store.mybigcommerce.com/api/v2/coupons.json?type=percentage_discount
 </code></pre>
-
 <p>For details on filter fields, please see the <a href="/api/v2#coupons" target="_blank">Coupons resource</a>.</p>
 
 <h4 id="create-a-coupon"><span class="jumptarget"> Create a Coupon </span></h4>
@@ -2812,7 +2765,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"code":"50OFF", "type":"percentage_discount", "name":"testcoupon1", "amount":50.00, "enabled":"true", "applies_to":"{\"entity\":\"products\",\"ids\":[32]}"}' \
     https://store.mybigcommerce.com/api/v2/coupons.json
 </code></pre>
-
 <h4 id="update-a-coupon"><span class="jumptarget"> Update a Coupon </span></h4>
 
 <p>Updating a coupon is almost similar to the Create example above, except that we work off an ID via a <code class="prettyprint">PUT</code> request. For example, assume that we want to change the above coupon from a 50% to a 30% discount, and that the coupon ID is <code class="prettyprint">15</code>. We can update the coupon using the following:</p>
@@ -2822,7 +2774,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"code":"30OFF", "type":"percentage_discount"' \
     https://store.mybigcommerce.com/api/v2/coupons/15.json
 </code></pre>
-
 <h2 id="option-sets-curl-commands"><span class="jumptarget"> Option Sets cURL Commands </span></h2>
 
 <p>Here are sample cURL commands to handle option sets.</p>
@@ -2845,11 +2796,9 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -d '{"name":"homer simpson", "type":"T"}' \
     https://store.mybigcommerce.com/api/v2/options.json
 </code></pre>
-
 <p>BigCommerce returns the following, which includes an option ID:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"homer simpson"</span><span class="p">,</span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"T"</span><span class="p">,</span><span class="nt">"values"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33/values.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33/values"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>{"id":33,"name":"homer simpson","display_name":"homer simpson","type":"T","values":{"url":"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33/values.json","resource":"/options/33/values"}}
+</code></pre>
 <p>Next, create a new option set:</p>
 <pre class="highlight plaintext"><code>    curl --request POST \
     -u "admin:key" \
@@ -2857,11 +2806,9 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -H "Content-Type: application/json" \
     https://store.mybigcommerce.com/api/v2/optionsets.json
 </code></pre>
-
 <p>The API returns the following, which includes an option-set ID:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"options"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/optionsets/27/options.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/optionsets/27/options"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>{"id":27,"name":"Simpson family","options":{"url":"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/optionsets/27/options.json","resource":"/optionsets/27/options"}}
+</code></pre>
 <p>The final step is to connect the option with the option set:</p>
 <pre class="highlight plaintext"><code>    curl --request POST \
     -u "_username_:_API_key_" \
@@ -2869,18 +2816,16 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
     -H "Content-Type: application/json" \
     https://store.mybigcommerce.com/api/v2/optionsets/27/options.json
 </code></pre>
-
 <p>Which yields the following:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">"option_id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"option_set_id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"sort_order"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">"is_required"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">"option"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33"</span><span class="p">}}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>{"id":44,"option_id":33,"option_set_id":27,"display_name":"Simpson family","sort_order":0,"is_required":false,"option":{"url":"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33.json","resource":"/options/33"}}
+</code></pre>
           <h1 id="building-storefront-apps"><span class="jumptarget"> <a name="storefront-apps-intro"></a> Building Storefront Apps </span></h1>
 
 <p>Storefront apps interact directly with the storefront. They use JWT (JSON Web Token) authentication, rather than OAuth or Basic Auth.</p>
 
           <h2 id="customer-login-api"><span class="jumptarget"> Customer Login API </span></h2>
 
-<p>The Customer Login API enables single sign-on (SSO). It allows your apps to generate a token to programmatically log in a storefront customer, by using the login entry point  at <code class="prettyprint">/login/token/{token}</code>. Here, <code class="prettyprint">{token}</code> must be a JSON Web Token (JWT) containing the parameters for the customer login request in its payload, and must be signed by your <a href="/api/#building-oauth-apps" target="_blank">OAuth application</a>&rsquo;s <a href="/api/#app-registration" target="_blank">client secret</a>.</p>
+<p>The Customer Login API enables single sign-on (SSO). It allows your apps to generate a token to programmatically log in a storefront customer, by using the login entry point  at <code class="prettyprint">/login/token/{token}</code>. Here, <code class="prettyprint">{token}</code> must be a JSON Web Token (JWT) containing the parameters for the customer login request in its payload, and must be signed by your <a href="/api/#building-oauth-apps" target="_blank">OAuth application</a>&lsquo;s <a href="/api/#app-registration" target="_blank">client secret</a>.</p>
 
 <p>For a full overview of the JWT standard, please see <a href="https://jwt.io/" target="_blank">JWT.IO</a>, where you will find links to client libraries (in many languages) that facilitate the generation and verification of JWT tokens. BigCommerce also supplies helper methods for generating login tokens in our API <a href="/api/#client-libraries" target="_blank">Client Libraries</a>.</p>
 
@@ -2893,27 +2838,24 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 .eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9
 .TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 </code></pre>
-
 <h4 id="header"><span class="jumptarget"> Header </span></h4>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HS256"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>{
+"typ": "JWT",
+"alg": "HS256"
+}
+</code></pre>
 <h4 id="payload"><span class="jumptarget"> Payload </span></h4>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;application_client_id&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;issued_at&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;unique_string&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer_login"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;store_hash&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;customer_id&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"redirect_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;relative_path (optional)&gt;"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"request_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ipv4_address (optional)&gt;"</span><span class="w">
+</span><span class="s2">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;application_client_id&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;issued_at&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;unique_string&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer_login"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;store_hash&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;customer_id&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"redirect_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;relative_path (optional)&gt;"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"request_ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ipv4_address (optional)&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
 <h4 id="fields"><span class="jumptarget"> Fields </span></h4>
 
 <table><thead>
@@ -3000,7 +2942,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
         <span class="k">return</span> <span class="nx">JWT</span><span class="o">::</span><span class="na">encode</span><span class="p">(</span><span class="nv">$payload</span><span class="p">,</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$client_secret</span><span class="p">,</span> <span class="s1">'HS256'</span><span class="p">);</span>
     <span class="p">}</span>
 </code></pre>
-
 <h4 id="python-sample"><span class="jumptarget"> <a href="https://github.com/bigcommerce/bigcommerce-api-python/blob/master/bigcommerce/customer_login_token.py">Python Sample</a> </span></h4>
 <pre class="highlight python"><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -3053,7 +2994,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
         <span class="k">return</span> <span class="s">'</span><span class="si">%</span><span class="s">s/login/token/</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">secure_url</span><span class="p">,</span> <span class="n">login_token</span><span class="p">)</span>
 
 </code></pre>
-
 <h4 id="ruby-sample"><span class="jumptarget"> <a href="https://github.com/bigcommerce/bigcommerce-api-ruby/blob/master/examples/customers/customer_login.rb">Ruby Sample</a> </span></h4>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'bigcommerce'</span>
 
@@ -3070,7 +3010,6 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <span class="c1"># Generate token login url</span>
 <span class="nb">puts</span> <span class="n">customer</span><span class="p">.</span><span class="nf">login_token</span>
 </code></pre>
-
 <h3 id="oauth-scope"><span class="jumptarget"> OAuth Scope </span></h3>
 
 <p>In order to use this feature, your app must be installed in the store, and must have the <code class="prettyprint">store_v2_customers_login</code> scope.</p>
@@ -3121,30 +3060,28 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <span class="nx">customerJWT</span><span class="p">();</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
 </span></code></pre>
-
 <p>If you are logged into the storefront with a customer account, the above JavaScript should alert to the browser with a JWT token. If no customer is logged in, BigCommerce will return a 404 response, and you will see an error message.</p>
 
 <p>The JWT returned from this endpoint (example below) can be decoded on <a href="https://jwt.io/" target="_blank">JWT.IO</a>, or via any of <a href="https://jwt.io/#libraries-io" target="_blank"> these libraries</a>. </p>
 
 <h4 id="example-output"><span class="jumptarget"> Example Output </span></h4>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4927</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4927</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc/apps"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480831863</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480832763</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tfx3j5gsopm42ss5dd67g2srvq"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tasdgr2b5hs5dd67g2srvq"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_customer"</span><span class="w">
+  </span><span class="s2">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bc/apps"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480831863</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1480832763</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tfx3j5gsopm42ss5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6sv16tasdgr2b5hs5dd67g2srvq"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"store_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_customer"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
 <p>By design, your application should send this token to the application’s server, validate it against your client secret, and then use it as a trusted indication of the logged-in customer’s identity, before displaying confidential information to them.</p>
 
 <p>An end-to-end example, which displays a customer’s recently purchased products, is available in our <a href="https://github.com/bigcommerce/hello-world-app-ruby-sinatra/" target="_blank">Ruby</a> and <a href="https://github.com/bigcommerce/hello-world-app-php-silex/" target="_blank">PHP</a> sample apps. 
@@ -3173,11 +3110,9 @@ Each of the custom links described here can add only a single item (quantity 1) 
 <h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
 <pre class="highlight plaintext"><code>site.com/sample-test-product-w-options/?sku=INSERT-SKU-HERE
 </code></pre>
-
 <h4 id="example"><span class="jumptarget"> Example: </span></h4>
 <pre class="highlight plaintext"><code>myawesomestore.com/shirt/?sku=SHIRT-SM-RED
 </code></pre>
-
 <h3 id="add-specific-sku-to-cart"><span class="jumptarget"> Add Specific SKU to Cart </span></h3>
 
 <p>To automatically add a product or variant to a shopper&rsquo;s cart and take them directly to the cart page, append<br>
@@ -3186,11 +3121,9 @@ Each of the custom links described here can add only a single item (quantity 1) 
 <h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
 <pre class="highlight plaintext"><code>site.com/cart.php?action=add&amp;sku=INSERT-SKU-HERE
 </code></pre>
-
 <h4 id="example"><span class="jumptarget"> Example: </span></h4>
 <pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=add&amp;sku=SHIRT-SM-RED
 </code></pre>
-
 <h3 id="add-specific-sku-to-cart-and-go-directly-to-checkout"><span class="jumptarget"> Add Specific SKU to Cart and Go Directly to Checkout </span></h3>
 
 <p>To automatically add a product or variant to a shopper&rsquo;s cart and forward them directly to checkout, append<br>
@@ -3199,11 +3132,9 @@ Each of the custom links described here can add only a single item (quantity 1) 
 <h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
 <pre class="highlight plaintext"><code>site.com/cart.php?action=buy&amp;sku=INSERT-SKU-HERE
 </code></pre>
-
 <h4 id="example"><span class="jumptarget"> Example: </span></h4>
 <pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=buy&amp;sku=SHIRT-SM-RED
 </code></pre>
-
 <h3 id="add-specific-sku-go-to-checkout-and-include-source"><span class="jumptarget"> Add Specific SKU, Go to Checkout, and Include Source </span></h3>
 
 <p>To automatically add a product or variant to a shopper&rsquo;s cart, forward them to checkout, and also include a source parameter for analytics/conversion tracking, append <code class="prettyprint">cart.php?action=buy&amp;sku=INSERT-SKU-HERE&amp;source=SOURCE-HERE</code> to the store&rsquo;s domain. (The&#160;source parameter can be any string.)</p>
@@ -3211,11 +3142,9 @@ Each of the custom links described here can add only a single item (quantity 1) 
 <h4 id="structure"><span class="jumptarget"> Structure: </span></h4>
 <pre class="highlight plaintext"><code>site.com/cart.php?action=buy&amp;sku=INSERT-SKU-HERE&amp;source=SOURCE-HERE
 </code></pre>
-
 <h4 id="example"><span class="jumptarget"> Example: </span></h4>
 <pre class="highlight plaintext"><code>myawesomestore.com/cart.php?action=buy&amp;sku=SHIRT-SM-RED&amp;source=JULY-EMAIL-NEWSLETTER
 </code></pre>
-
           <h1 id="supported-browsers"><span class="jumptarget"> Supported Browsers </span></h1>
 
 <p>Below are the browsers supported for the BigCommerce control panel. We drop support when a version falls below 2% of usage. The browsers are sorted by popularity, with the most popular browsers at the top.</p>

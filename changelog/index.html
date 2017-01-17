@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>BigCommerce API &amp; Theme Framework Changelog</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -15,11 +15,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #272822;
+  background-color: #f92672;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #75715e;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -28,45 +28,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .p, .highlight .pi {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .gi {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #f92672;
 }
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
+  color: #66d9ef;
+  background-color: #272822;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+  color: #ae81ff;
 }
 .highlight .kc {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kt {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kd {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #a1efe4;
 }
 .highlight .si {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .se {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -78,13 +78,13 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #6a9fb5;
+  color: #66d9ef;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #a6e22e;
 }
     </style>
 
@@ -119,7 +119,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="../images/navbar.png" />
+        <img src="../images/navbar.png" alt="Navbar" />
       </span>
     </a>
 
@@ -127,7 +127,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
       <div class="topBar-container topBar-container--fixed">
   <nav class="top-bar ng-isolate-scope" ng-transclude="" top-bar="" style="height: 81px;">
     <ul class="title-area ng-scope">
-      <li class="name"><a href="/"><img src="../images/developer.png" /></a></li>
+      <li class="name"><a href="/"><img src="../images/developer.png" alt="Developer" /></a></li>
     </ul>
     <section class="top-bar-section ng-scope">
       <ul class="menuItems">
@@ -196,11 +196,11 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Version <a href="https://stencil.bigcommerce.com/docs/cornerstone-14x-theme-release-notes#142">1.4.2</a> of Stencil&rsquo;s default Cornerstone theme is now available. To deter spam submissions through the storefront Contact form, this update replaces the Contact template&rsquo;s CAPTCHA challenge with a Google reCAPTCHA v1 challenge. For the PR #/commit # to apply this fix, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
 
-<h3 id="order-shipments-gt-shipping_provider-usage-clarified"><span class="jumptarget"> Order Shipments &gt; shipping_provider Usage Clarified </span></h3>
+<h3 id="order-shipments-shipping_provider-usage-clarified"><span class="jumptarget"> Order Shipments &gt; shipping_provider Usage Clarified </span></h3>
 
 <p>We have updated our documentation on the Order Shipment <a href="/api/v2/#blog-posts-object-properties" target="_blank">object</a>, and <a href="/api/v2/#create-a-shipment" target="_blank">Create a Shipment endpoint</a>, to clarify that the <code class="prettyprint">shipping_provider</code> property is effectively required in <code class="prettyprint">POST</code> requests. (You should include the property, even as an empty string, to prevent the unexpected default behavior described in the documentation.)</p>
 
-<h3 id="blog-posts-gt-published_date-usage-clarified"><span class="jumptarget"> Blog Posts &gt; published_date Usage Clarified </span></h3>
+<h3 id="blog-posts-published_date-usage-clarified"><span class="jumptarget"> Blog Posts &gt; published_date Usage Clarified </span></h3>
 
 <p>We have updated our documentation on the Blog Posts <a href="/api/v2/#blog-posts-object-properties" target="_blank">object</a>, and its <a href="/api/v2/#create-a-blog-post" target="_blank">POST</a> and <a href="/api/v2/#update-a-blog-post" target="_blank">PUT</a> endpoints, to clarify the usage of this API&rsquo;s <code class="prettyprint">published_date</code> property. Although <code class="prettyprint">published_date</code> is returned as an object in responses, your <code class="prettyprint">POST</code> and <code class="prettyprint">PUT</code> requests should supply it as a flat date string in <a href="http://tools.ietf.org/html/rfc2822#section-3.3" target="_blank">RFC 2822</a> or <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> format.</p>
 
@@ -208,7 +208,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="december"><span class="jumptarget"> December </span></h2>
 
-<h3 id="stencil-product-gt-ratings-count">Stencil Product &gt; Ratings Count</h3>
+<h3 id="stencil-product-ratings-count">Stencil Product &gt; Ratings Count</h3>
 
 <p>Stencil themes&rsquo; <a href="https://stencil.bigcommerce.com/docs/common-product-card-model">Common Product Card Model</a> now includes a <code class="prettyprint">ratings</code> property, representing the number of customer reviews that contributed to a product&rsquo;s <code class="prettyprint">rating</code> value.</p>
 
@@ -246,7 +246,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h3 id="web-pages-api-updated">Web Pages API Updated</h3>
 
-<p>We have corrected the behavior of the Store Content &gt; <a href="/api/v2/#pages" target="_blank">Pages API</a>&rsquo;s <code class="prettyprint">is_homepage</code> property. Any API call that sets this writable property to <code class="prettyprint">true</code> will now unset other instances of the property, ensuring that a store will have only one designated home page.</p>
+<p>We have corrected the behavior of the Store Content &gt; <a href="/api/v2/#pages" target="_blank">Pages API</a>&lsquo;s <code class="prettyprint">is_homepage</code> property. Any API call that sets this writable property to <code class="prettyprint">true</code> will now unset other instances of the property, ensuring that a store will have only one designated home page.</p>
 
 <h3 id="currency-api-added">Currency API Added</h3>
 
@@ -351,11 +351,11 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>We will now be sending information on the current store owner in the load callback, and you should use this as the source of truth about the store’s owner. This could be important where your app needs to determine what user is active in the app, or if your account information is based on the incoming data (such as the store owner’s email address).</p>
 
-<h3 id="quot-create-a-product-quot-documentation-updated">&ldquo;Create a Product&rdquo; documentation updated</h3>
+<h3 id="create-a-product-documentation-updated">&ldquo;Create a Product&rdquo; documentation updated</h3>
 
 <p>In the <a href="/api/v2/products#create-a-product">Create a Product</a> endpoint&rsquo;s documentation, the list of read-only properties now includes the <code class="prettyprint">id</code> field.</p>
 
-<h3 id="global-quot-customer-group-id-quot-variable-documented">GLOBAL &ldquo;Customer Group ID&rdquo; variable documented</h3>
+<h3 id="global-customer-group-id-variable-documented">GLOBAL &ldquo;Customer Group ID&rdquo; variable documented</h3>
 
 <p>We have added the <code class="prettyprint">%%GLOBAL_CustomerGroupId%%</code> variable to the <a href="themes/#global_variables">GLOBAL Variables</a> documentation page.</p>
 
@@ -393,7 +393,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Please also see <a href="https://github.com/bigcommerce/api/blob/master/docs/v3-catalog.md" target="_blank">this broader overview</a>, which includes authentication instructions. It also provides links where we invite you to submit issues on GitHub – and use Trello to to nominate, vote on, and track future additions to our API.</p>
 
-<h3 id="customer-resource-has-new-quot-accepts_marketing-quot-field">Customer resource has new &ldquo;accepts_marketing&rdquo; field</h3>
+<h3 id="customer-resource-has-new-accepts_marketing-field">Customer resource has new &ldquo;accepts_marketing&rdquo; field</h3>
 
 <p>The Customer API has a new <code class="prettyprint">accepts_marketing</code> field, which records whether the customer would like to receive marketing content from this store. The new field is a boolean and is read-only, reflecting the customer&rsquo;s selections on the storefront.</p>
 
@@ -414,7 +414,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 <li><p>BigCommerce will now send information about the current store owner in the load callback, which apps should use as the source of truth about the store’s owner. (This might be important if your app needs to determine what user is active in the app; or if your account information is based on the incoming data, such as the store owner’s email address.)</p></li>
 </ul>
 
-<h3 id="order-shipment-api-refreshed-with-quot-shipping_provider-quot-quot-tracking_carrier-quot-fields"><span class="jumptarget"> Order Shipment API refreshed with &ldquo;shipping_provider&rdquo;, &ldquo;tracking_carrier&rdquo; fields</h3>
+<h3 id="order-shipment-api-refreshed-with-shipping_provider-tracking_carrier-fields"><span class="jumptarget"> Order Shipment API refreshed with &ldquo;shipping_provider&rdquo;, &ldquo;tracking_carrier&rdquo; fields</h3>
 
 <p>The Order Shipment resource has been refreshed with two fields that can be used to track shipments:</p>
 
@@ -449,7 +449,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Links to the post are also available on the <a href="https://forum.bigcommerce.com/s/group/0F913000000HLjECAW" target="_blank">BigCommerce Developer forum</a>, and on Twitter from <a href="https://twitter.com/BigEng/status/744945588316180481" target="_blank">@BigEng</a>.</p>
 
-<h3 id="order-shipment-resource-adds-quot-shipping_provider-quot-field"><span class="jumptarget"> Order Shipment resource adds &ldquo;shipping_provider&rdquo; field </span></h3>
+<h3 id="order-shipment-resource-adds-shipping_provider-field"><span class="jumptarget"> Order Shipment resource adds &ldquo;shipping_provider&rdquo; field </span></h3>
 
 <p>The Order Shipment resource has a new <code class="prettyprint">shipping_provider</code> field, which contains the enum of the delivery service used to fulfill the shipment.</p>
 
@@ -485,11 +485,11 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="may"><span class="jumptarget"> May </span></h2>
 
-<h3 id="order-shipment-resource-adds-quot-shipping_provider-quot-field"><span class="jumptarget"> Order Shipment resource adds &ldquo;shipping_provider&rdquo; field </span></h3>
+<h3 id="order-shipment-resource-adds-shipping_provider-field"><span class="jumptarget"> Order Shipment resource adds &ldquo;shipping_provider&rdquo; field </span></h3>
 
 <p>The Order Shipment resource has a new <code class="prettyprint">shipping_provider</code> field, which contains the enum of the delivery service used to fulfill the shipment.</p>
 
-<p>We have added this field to the <a href="/api/v2/orders/#shipment-object-properties">Order Shipment object</a>&rsquo;s documentation, and also to sample responses for 
+<p>We have added this field to the <a href="/api/v2/orders/#shipment-object-properties">Order Shipment object</a>&lsquo;s documentation, and also to sample responses for 
 <a href="/api/v2/orders/#shipments-operations">Order Shipment endpoints</a> that can return this field.</p>
 
 <h3 id="stencil-cornerstone-theme-1-2-1-released"><span class="jumptarget"> Stencil Cornerstone theme 1.2.1 released </span></h3>
@@ -520,7 +520,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Once once you have pulled the latest code from the <a href="https://github.com/bigcommerce/stencil">Stencil repo</a>, you can access this version by checking out its tag, using: <code class="prettyprint">git checkout v1.2.0</code></p>
 
-<h3 id="store-information-endpoint-adds-quot-features-quot-array"><span class="jumptarget"> Store Information endpoint adds &ldquo;features&rdquo; array </span></h3>
+<h3 id="store-information-endpoint-adds-features-array"><span class="jumptarget"> Store Information endpoint adds &ldquo;features&rdquo; array </span></h3>
 
 <p>The Store Information endpoint now provides a <code class="prettyprint">features</code> array, whose elements flag features that affect app compatibility or functionality. This array&rsquo;s initial <code class="prettyprint">stencil_enabled</code> (Boolean) element indicates whether a store is using a Stencil theme, as in this example:</p>
 
@@ -612,7 +612,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Prior to this change, you had no way to change the scopes requested by your published app. If you changed these scopes, existing installations would cease to function. This forced each merchant to uninstall, then reinstall, your app to grant you the new scopes.  </p>
 
-<h4 id="what-hasn-39-t-changed"><span class="jumptarget"> What hasn&rsquo;t changed? </span></h4>
+<h4 id="what-hasnt-changed"><span class="jumptarget"> What hasn&rsquo;t changed? </span></h4>
 
 <ul>
 <li>When your app is installed, you&rsquo;ll still receive an HTTP call on the <code class="prettyprint">auth_callback_url</code> that you have registered in Developer Portal.</li>
@@ -629,7 +629,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <p>Merchants will see changes only under certain conditions:   </p>
 
-<h4 id="what-hasn-39-t-changed"><span class="jumptarget"> What hasn&rsquo;t changed? </span></h4>
+<h4 id="what-hasnt-changed"><span class="jumptarget"> What hasn&rsquo;t changed? </span></h4>
 
 <ul>
 <li>When merchants install your application, they will still see a confirmation screen prompting them to grant you the scopes you requested.</li>
@@ -746,10 +746,9 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
           List Customer Addresses
           Get a Customer Address
 </code></pre>
-
 <p>You can access custom fields within the new   <strong><code class="prettyprint">form_fields</code></strong>   element. For details and examples, please see our updated <a href="/api/v2#customers">Customers</a> and <a href="/api/v2#customers">Customer Addresses</a> reference pages.</p>
 
-<h3 id="new-store-updated-amp-order-webhooks"><span class="jumptarget"> New Store Updated &amp; Order Webhooks </span></h3>
+<h3 id="new-store-updated-order-webhooks"><span class="jumptarget"> New Store Updated &amp; Order Webhooks </span></h3>
 
 <p>BigCommerce has made available two new webhooks. We encourage you to use these webhooks, as appropriate, in your applications:</p>
 
@@ -821,7 +820,6 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     store/customer/deleted
   store/app/uninstalled
 </code></pre>
-
 <p>We have updated the <a href="/api/#webhooks-overview">webhooks overview</a> to include these new webhooks.</p>
 
 <h3 id="status-fields-added-to-order-statusupdated-webhook"><span class="jumptarget"> Status fields added to order/statusUpdated webhook </span></h3>
@@ -840,45 +838,42 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
              "new_status_id": "11"
     }
 </code></pre>
-
 <p>The   <code class="prettyprint">previous_status_id</code>   field will allow your applications to troubleshoot orders by tracing the path these orders took through fulfillment. You could also build logic around this field, allowing your application to process only orders that pass from one certain status to another.</p>
 
 <p>For example, you could prevent the double-processing of orders whose status accidentally changed, without having to store and check a list of already processed orders.</p>
 
 <p>Here is an example of a webhook message in its currently supported format:</p>
-<pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store/order/statusUpdated"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"353242"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"817"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24c6b87efc683de186387b12746455230e250fab"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1449701096</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"producer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/z4zn3wo"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>    {
+      "scope": "store/order/statusUpdated",
+      "store_id": "353242",
+      "data": {
+        "type": "order",
+        "id": "817"
+      },
+      "hash": "24c6b87efc683de186387b12746455230e250fab",
+      "created_at": 1449701096,
+      "producer": "stores/z4zn3wo"
+    }
+</code></pre>
 <p>Here is the same webhook message in the new format, with the added   <code class="prettyprint">status</code>   fields set off with blank lines for visibility:</p>
-<pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"store/order/statusUpdated"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"353242"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"817"</span><span class="p">,</span><span class="w">
+<pre class="highlight plaintext"><code>    {
+      "scope": "store/order/statusUpdated",
+      "store_id": "353242",
+      "data": {
+        "type": "order",
+        "id": "817",
 
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                 </span><span class="nt">"previous_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                 </span><span class="nt">"new_status_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        "status": {
+                 "previous_status_id": "0",
+                 "new_status_id": "11"
+        }
 
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24c6b87efc683de186387b12746455230e250fab"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1449701096</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"producer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stores/z4zn3wo"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+      },
+      "hash": "24c6b87efc683de186387b12746455230e250fab",
+      "created_at": 1449701096,
+      "producer": "stores/z4zn3wo"
+    }
+</code></pre>
 <p>(This second example shows an order moving from an &ldquo;Incomplete&rdquo; status [<code class="prettyprint">id: 0</code>] to an &ldquo;Awaiting Fulfillment&rdquo; status [<code class="prettyprint">id: 11</code>]. This change occurs whenever an order is paid for during storefront checkout.)</p>
 
 <h3 id="include-or-exclude-specific-fields-for-products-resource"><span class="jumptarget"> Include or exclude specific fields for Products resource </span></h3>
@@ -912,7 +907,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="july"><span class="jumptarget"> July </span></h2>
 
-<h3 id="manage-users-39-logout-and-session-timeouts"><span class="jumptarget"> Manage users&rsquo; logout and session timeouts </span></h3>
+<h3 id="manage-users-logout-and-session-timeouts"><span class="jumptarget"> Manage users&rsquo; logout and session timeouts </span></h3>
 
 <p>A new callback function allows your Single-Click Apps to detect, and respond to, a user&rsquo;s logout or timeout from the BigCommerce control panel.</p>
 
@@ -925,7 +920,6 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
           onLogout: callback
     });
 </code></pre>
-
 <p>The callback function will run when the user explicitly logs out of the BigCommerce control panel, or is automatically timed out. Your app can then respond to this logout. <a href="/api#using-oauth-intro">Read more.</a></p>
 
 <h2 id="april"><span class="jumptarget"> April </span></h2>
@@ -1075,17 +1069,16 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 <p>We&rsquo;ve released a small usability improvement for people working with products and images.</p>
 
 <p>An object representing the primary product image is now embedded in the products resource for all <a href="/api/v2#list-products">list products</a> and <a href="/api/v2#get-product">get product</a> responses.</p>
-<pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"primary_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">247</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"zoom_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.url/et7xe3pz/products/32/images/247/123.0.1280.1280.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"thumbnail_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.url/et7xe3pz/products/32/images/247/123.0.220.290.jpg"</span><span class="w">
-      </span><span class="s2">"standard_url"</span><span class="err">:</span><span class="w"> </span><span class="s2">"https://cdn.url/et7xe3pz/products/32/images/247/123.0.386.513.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tiny_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.url/et7xe3pz/products/32/images/247/123.0.44.58.jpg"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
+<pre class="highlight plaintext"><code>    {
+    "primary_image": {
+      "id": 247,
+      "zoom_url": "https://cdn.url/et7xe3pz/products/32/images/247/123.0.1280.1280.jpg",
+      "thumbnail_url": "https://cdn.url/et7xe3pz/products/32/images/247/123.0.220.290.jpg"
+      "standard_url": "https://cdn.url/et7xe3pz/products/32/images/247/123.0.386.513.jpg",
+      "tiny_url": "https://cdn.url/et7xe3pz/products/32/images/247/123.0.44.58.jpg"
+      }
+    }
+</code></pre>
 <p>The primary image is assigned to a product through the <code class="prettyprint">is_thumbnail</code> property on the <a href="/api/v2#products-images">product images resource</a>.</p>
 
 <p>We&rsquo;ve also added some additional CDN URL properties to all product images objects, supporting the following size formats:</p>

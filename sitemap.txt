@@ -79,17 +79,11 @@ https://developer.bigcommerce.com/includes/api_overview~never_include_me~for_loo
 
 https://developer.bigcommerce.com/
 
-
-
-
 https://developer.bigcommerce.com/robots.txt
 
 https://developer.bigcommerce.com/sitemap.txt
 
 https://developer.bigcommerce.com/sitemap.xml
-
-
-
 
 https://developer.bigcommerce.com/support/
 
@@ -102,4 +96,10 @@ https://developer.bigcommerce.com/themes/blueprint/panels/
 https://developer.bigcommerce.com/themes/blueprint/snippets/
 
 https://developer.bigcommerce.com/themes/
+
+
+
+
+
+
 

@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>BigCommerce API Documentation</title>
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -15,11 +15,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #272822;
-  background-color: #f92672;
+  color: #151515;
+  background-color: #ac4142;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #75715e;
+  color: #505050;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -28,45 +28,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #f8f8f2;
+  color: #d0d0d0;
 }
 .highlight .p, .highlight .pi {
-  color: #f8f8f2;
+  color: #d0d0d0;
 }
 .highlight .gi {
-  color: #a6e22e;
+  color: #90a959;
 }
 .highlight .gd {
-  color: #f92672;
+  color: #ac4142;
 }
 .highlight .gh {
-  color: #66d9ef;
-  background-color: #272822;
+  color: #6a9fb5;
+  background-color: #151515;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #ae81ff;
+  color: #aa759f;
 }
 .highlight .kc {
-  color: #fd971f;
+  color: #d28445;
 }
 .highlight .kt {
-  color: #fd971f;
+  color: #d28445;
 }
 .highlight .kd {
-  color: #fd971f;
+  color: #d28445;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #a6e22e;
+  color: #90a959;
 }
 .highlight .sr {
-  color: #a1efe4;
+  color: #75b5aa;
 }
 .highlight .si {
-  color: #cc6633;
+  color: #8f5536;
 }
 .highlight .se {
-  color: #cc6633;
+  color: #8f5536;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -78,13 +78,13 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #66d9ef;
+  color: #6a9fb5;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #a6e22e;
+  color: #90a959;
 }
 .highlight .ss {
-  color: #a6e22e;
+  color: #90a959;
 }
     </style>
 
@@ -197,78 +197,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     </div>
     <div class="page-wrapper">
       <div class="content">
-        <h1 id="draft-new-api-content"><span class="jumptarget"> Draft New API Content </span></h1>
-
-          <h1 id="oauth-tokens-via-cp-draft"><span class="jumptarget" id=""> OAuth Tokens via CP – Draft </span></h1>
-
-<aside class="warning">
-<span class="aside-warning-hd">Draft New CP > OAuth Instructions</span><br><br>
-This will replace <em>subsections</em> of: <a href="https://developer.bigcommerce.com/api/#making-requests" target="_blank">https://developer.bigcommerce.com/api/#making-requests</a>.
-</aside>
-
-<h2 id="obtaining-an-oauth-token"><span class="jumptarget" id="cp_oauth_get"> Obtaining an OAuth Token </span></h2>
-
-<p>You can create and manage OAuth tokens in the BigCommerce control panel by creating an API account, as described below. (Only the <a href="https://support.bigcommerce.com/articles/Public/Store-Owner" target="_blank">store owner</a> can create API accounts, which are limited to 50 accounts per store.) </p>
-
-<p><img src="../assets/CreateAccount.png" alt="Creating an API account" height=80% width=80%></p>
-
-<p>To create your API account and its corresponding token, use the following steps:</p>
-
-<ol>
-<li> Log into the store, using the store owner&rsquo;s username/password.</li>
-<li> Select <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>API Accounts</strong>. This will display the <strong>Store API Accounts</strong> page.</li>
-<li> Select <strong>Create API Account</strong>. This will display the <strong>Create API Account</strong> page shown above.</li>
-<li> In the <strong>Name</strong> field, summarize the purpose for which you will use these credentials. (This name is for internal use only, so assign any name that you will recognize.)</li>
-<li> In the <strong>OAuth Scopes</strong> section, select at least the minimal scopes your app will require (as explained <a href="#request_scopes" target="_blank">here</a>). </li>
-<li> Select <strong>Save</strong> at the page&rsquo;s lower right-hand corner.</li>
-</ol>
-
-<p>Successfully saving the account will display the pop-up shown below, containing the API credentials that your app will need for OAuth access: your <strong>Client ID</strong>, <strong>Client Secret</strong>, and <strong>Access&#160;Token</strong>. A .txt file containing the same credentials will also download to your computer.</p>
-
-<p><img src="../assets/SaveCreds.png" alt="Viewing and saving OAuth credentials" height=67% width=67%></p>
-
-<aside class="warning">
-<span class="aside-warning-hd">Keep Your Credentials</span><br><br>
-There is no way to re-display this pop-up, after you select <b>Done</b> to dismiss it. So make sure you store your credentials &ndash; either by locating the downloaded .txt file, or by copying/pasting the contents of each field out of the pop-up. Otherwise, you will need to repeat all the above steps to generate new credentials.
-</aside>
-
-<aside class="notice">
-<span class="aside-notice-hd">More Drafts Pending</span><br><br>
-The 2 struck-out sections below are copied verbatim from existing content within <a href="https://developer.bigcommerce.com/api/#building-basic-auth-apps">https://developer.bigcommerce.com/api/#building-basic-auth-apps</a>. Awaiting <b>store owner</b> access to some integration store (or the correct experiment enabled on my own store) to test/rewrite corresponding steps under the new OAuth flow.  
-</aside>
-
-<p><strike></p>
-
-<h2 id="revoking-app-access"><span class="jumptarget" id="cp_oauth_revoke"> Revoking App Access </span></h2>
-
-<p>To revoke app access to a store, use the following steps:</p>
-
-<ol>
-<li> Log into the store.</li>
-<li> Click <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>Legacy API Accounts</strong>.</li>
-<li> Click the gears icon in the <strong>Action</strong> column and select <strong>Edit</strong>.</li>
-<li> Click the <strong>Generate New Token</strong> button.</li>
-<li> Select the <strong>Save</strong> button.</li>
-<li> Select the check box next to the user.</li>
-<li> Click the trash can button.</li>
-<li> Click <strong>OK</strong> in the confirmation prompt.</li>
-</ol>
-
-<h2 id="regenerating-an-api-token"><span class="jumptarget" id="cp_oauth_regen"> Regenerating an API Token </span></h2>
-
-<p>To change the API token that an app is using to access a store, use the following steps:</p>
-
-<ol>
-<li> Log into the store.</li>
-<li> Click <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>Legacy API Accounts</strong>.</li>
-<li> Click the gears icon in the <strong>Action</strong> column and select <strong>Edit</strong>.</li>
-<li> Click the <strong>Generate New Token</strong> button.</li>
-<li> Select the <strong>Save</strong> button.
-</strike></li>
-</ol>
+        <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
 
           <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
 
@@ -325,12 +254,15 @@ The 2 struck-out sections below are copied verbatim from existing content within
 <p>For the <code class="prettyprint">locations</code> property listed above, you can look up all <code class="prettyprint">country_iso2</code> codes supported by BigCommerce by using the <a href="/api/v2/#list-countries">List Countries</a> endpoint, with a request of the following form: </p>
 <pre class="highlight html"><code>https://{store_hash}/api/v2/countries?limit=250
 </code></pre>
+
 <p>To look up all <code class="prettyprint">state_iso2</code> codes supported by BigCommerce, you can use the <a href="/api/v2/#list-countries">List States</a> endpoint, with a request of the following form. (To&#160;supply its <code class="prettyprint">{country_id}</code> parameter, query the <a href="/api/v2/#list-states">List Countries</a> endpoint as described just above.)</p>
 <pre class="highlight html"><code>https://{store_hash}/api/v2/countries/{country_id}/states
 </code></pre>
+
 <p>For example, to look up codes for all U.S. states and territories, you would use a request of the following form:</p>
 <pre class="highlight html"><code>https://{store_hash}/api/v2/countries/226/states?limit=100
 </code></pre>
+
           <h2 id="list-shipping-zones"><span class="jumptarget"> List Shipping Zones </span></h2>
 
 <p>Gets all shipping zones.</p>
@@ -347,49 +279,50 @@ The 2 struck-out sections below are copied verbatim from existing content within
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+
 <h2 id="get-a-shipping-zone"><span class="jumptarget"> Get a Shipping Zone </span></h2>
 
 <p>Retrieves a specified shipping zone by zone ID.</p>
@@ -413,27 +346,28 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"country"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h2 id="create-a-shipping-zone"><span class="jumptarget"> Create a Shipping Zone </span></h2>
 
 <p>Creates a new shipping zone.</p>
@@ -449,46 +383,48 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
- </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-NM"</span><span class="p">,</span><span class="w">
- </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
- </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-NM"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NM"</span><span class="w">
+     </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NM"</span><span class="w">
    </span><span class="p">}</span><span class="w">
    </span><span class="p">],</span><span class="w">
- </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"fixed_surcharge"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">12.00</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"display_separately"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+ </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nt">"fixed_surcharge"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">12.00</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"display_separately"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
-<pre class="highlight plaintext"><code>{
-  "id": 2,
-  "name": "UnitedStates-NM",
-  "type": "state",
-  "locations": [
-    {
-      "id": 2,
-      "country_iso2": "US",
-      "state_iso2": "NM"
-    }
-  ],
-  "free_shipping": {
-    "enabled": false,
-    "minimum_sub_total": "0.0000",
-    "exclude_fixed_shipping_products": false
-  },
-  "handling_fees": {
-    "fixed_surcharge": "12.0000",
-    "display_separately": true
-  },
-  "enabled": true
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-NM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NM"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h2 id="update-a-shipping-zone"><span class="jumptarget"> Update a Shipping Zone </span></h2>
 
 <p>Updates an existing shipping zone.</p>
@@ -512,54 +448,56 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-Samoa"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-Samoa"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS"</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.0000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
-<pre class="highlight plaintext"><code>{
-  "id": 2,
-  "name": "UnitedStates-Samoa",
-  "type": "state",
-  "locations": [
-    {
-      "id": 3,
-      "country_iso2": "US",
-      "state_iso2": "AS"
-    }
-  ],
-  "free_shipping": {
-    "enabled": false,
-    "minimum_sub_total": "0.0000",
-    "exclude_fixed_shipping_products": false
-  },
-  "handling_fees": {
-    "fixed_surcharge": "6.0000",
-    "display_separately": true
-  },
-  "enabled": true
-}
-</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UnitedStates-Samoa"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"country_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state_iso2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AS"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"display_separately"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h2 id="delete-a-shipping-zone"><span class="jumptarget"> Delete a Shipping Zone </span></h2>
 
 <p>Deletes a specified shipping zone. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
@@ -650,12 +588,13 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <h4 id="json-example"><span class="jumptarget" id="perorder-ex"> JSON Example </span></h4>
 <pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate per Order"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate per Order"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span></code></pre>
+
 <h3 id="peritem-object-properties"><span class="jumptarget" id="peritem"> peritem Object – Properties </span></h3>
 
 <p>Object model for flat-rate shipping quotes per item ordered.</p>
@@ -676,12 +615,13 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <h4 id="json-example"><span class="jumptarget" id="peritem-ex"> JSON Example </span></h4>
 <pre class="highlight json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate per Item"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate per Item"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span></code></pre>
+
 <h3 id="weight-object-properties"><span class="jumptarget" id="weight"> weight Object – Properties </span></h3>
 
 <p>Object model for shipping quotes by weight.</p>
@@ -712,26 +652,27 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <h4 id="json-example"><span class="jumptarget" id="weight-ex"> JSON Example </span></h4>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rate per Weight"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rate per Weight"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nt">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
        </span><span class="p">},</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h3 id="total-object-properties"><span class="jumptarget" id="total"> total Object – Properties </span></h3>
 
 <p>Object model for shipping quotes by order&rsquo;s total value.</p>
@@ -769,42 +710,43 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>This example sets free shipping above a certain order total:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Total or Free"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"include_order_total_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Total or Free"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nt">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"include_order_total_taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
        </span><span class="p">},</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
        </span><span class="p">},</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
        </span><span class="p">},</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mf">49.99</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mf">49.99</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
        </span><span class="p">},</span><span class="w">
        </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
        </span><span class="p">}</span><span class="w">       
      </span><span class="p">]</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h3 id="range-object-properties"><span class="jumptarget" id="range"> Range Object – Properties </span></h3>
 
 <p>Object model to define ranges for shipping quotes. Units are defined in the calling object.</p>
@@ -835,11 +777,12 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <h4 id="json-example"><span class="jumptarget" id="range-ex"> JSON Example </span></h4>
 <pre class="highlight json"><code><span class="w">       </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+         </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
        </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
           <h2 id="list-shipping-methods"><span class="jumptarget"> List Shipping Methods </span></h2>
 
 <p>Gets all configured shipping methods, by <code class="prettyprint">zone_id</code>. (Default sorting is by shipping-method <code class="prettyprint">id</code>, from lowest to highest.)</p>
@@ -864,44 +807,45 @@ The 2 struck-out sections below are copied verbatim from existing content within
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ship by Weight"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ship by Weight"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"default_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"default_cost_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed_amount"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+          </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+          </span><span class="nt">"lower_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"upper_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"shipping_cost"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+
 <h2 id="get-a-shipping-method"><span class="jumptarget"> Get a Shipping Method </span></h2>
 
 <p>Gets a shipping method, specified by <code class="prettyprint">zone_id</code> and method <code class="prettyprint">id</code>.</p>
@@ -926,18 +870,19 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flat Rate"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peritem"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h2 id="create-a-shipping-method"><span class="jumptarget"> Create a Shipping Method </span></h2>
 
 <p>Creates a new method in the specificed shipping zone.</p>
@@ -961,33 +906,35 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h2 id="update-a-shipping-method"><span class="jumptarget"> Update a Shipping Method </span></h2>
 
 <p>Updates an existing shipping method.</p>
@@ -1011,30 +958,32 @@ The 2 struck-out sections below are copied verbatim from existing content within
 
 <p>Example request object:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">  
 </span></code></pre>
+
 <h3 id="response"><span class="jumptarget"> Response </span></h3>
 
 <p>Example JSON returned in the response:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Per Order"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"perorder"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fixed_surcharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
 <h2 id="delete-a-shipping-method"><span class="jumptarget"> Delete a Shipping Method </span></h2>
 
 <p>Deletes a specified shipping method. (If successful, this will typically return a &ldquo;204 No Content&rdquo;.)</p>
@@ -9309,7 +9258,7 @@ Values: id, name, sku, price, date_modified, date_last_imported, inventory_level
  </div>
 <div class="param">quantity_max (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The minimum inclusive quantity of a product to satisfy this rule. Must be greater than or equal to zero.
  </div>
-<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of adjument that is made, &lsquo;price&rsquo; - The adjument amount per product, &lsquo;percent&rsquo; - The adjustment as a percent of the original price, &lsquo;fixed&rsquo; - the adjusted absolute price of the product.
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of adjument that is made, &lsquo;price&rsquo; - The adjument amount per product, &#39;percent&rsquo; - The adjustment as a percent of the original price, &#39;fixed&rsquo; - the adjusted absolute price of the product.
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">price</div><div class="param-enum">percent</div><div class="param-enum">fixed</div>
@@ -9787,7 +9736,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  format: double</div>
 <div class="param">tax_class_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The ID of the tax class applied to the product. NOTE: Value ignored if automatic tax is enabled.
  </div>
-<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &lsquo;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
+<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &#39;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
  </div>
 <div class="param">calculated_price (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span> The price of the product unless a sale_price is set.
  format: double</div>
@@ -9799,7 +9748,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">inventory_warning_level (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Inventory Warning level for the product. When the products inventory level drops below the warning level the store owner will be informed. Simple inventory tracking must be enabled (See the inventory_tracking field) for this to take any effect.
  </div>
-<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &lsquo;inventory_level&rsquo; and &lsquo;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
+<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &#39;inventory_level&rsquo; and &#39;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">none</div><div class="param-enum">product</div><div class="param-enum">variant</div>
@@ -9809,7 +9758,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_visible (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be displayed to customers browsing the store or not. If true the product will be displayed, false the product will be hidden from view.
  </div>
-<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &lsquo;featured products&rsquo; panel when viewing the store.
+<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &#39;featured products&rsquo; panel when viewing the store.
  </div>
 <div class="param">warranty (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Warranty information displayed on the product page which can include HTML formatting.
  </div>
@@ -9825,7 +9774,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">available</div><div class="param-enum">disabled</div><div class="param-enum">preorder</div>
-<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &lsquo;Usually ships in 24 hours&rsquo;.
+<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &#39;Usually ships in 24 hours&rsquo;.
  </div>
 <div class="param">gift_wrapping_options_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> &#x60;any&#x60; - allow any gift wrapping options in the store, &#x60;none&#x60; - disallow gift wrapping on the product. When the type is set to &#x60;list&#x60;, a list of ids in gift_wrapping_options_list field should be provided.
  </div>
@@ -9835,7 +9784,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">sort_order (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Priority this product will be given when included in product lists on category pages and search results. The lower the number, the closer to the top of the results the product will be.
  </div>
-<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &lsquo;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
+<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &#39;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
  </div>
 <div class="param">is_condition_shown (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag used to determine if the product condition is shown to the customer on the product page.
  </div>
@@ -9861,9 +9810,9 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_preorder_only (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> If set to false, the product will not change its availability from preorder to available on the release date. Otherwise on the release date the products availability/status will change to available.
  </div>
-<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &lsquo;true&rsquo;, the price is hidden. NOTE: To successfully set &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &#39;true&rsquo;, the price is hidden. NOTE: To successfully set &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
-<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &lsquo;is_price_hidden&rsquo; is &lsquo;true&rsquo;, the value of &lsquo;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &#39;is_price_hidden&rsquo; is &#39;true&rsquo;, the value of &#39;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
 <div class="param">images (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductImage">array[ProductImage]</a></span>  </div>
 <div class="param">videos (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductVideo">array[ProductVideo]</a></span>  </div>
@@ -9961,7 +9910,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  format: double</div>
 <div class="param">tax_class_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The ID of the tax class applied to the product. NOTE: Value ignored if automatic tax is enabled.
  </div>
-<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &lsquo;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
+<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &#39;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
  </div>
 <div class="param">calculated_price (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span> The price of the product unless a sale_price is set.
  format: double</div>
@@ -9973,7 +9922,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">inventory_warning_level (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Inventory Warning level for the product. When the products inventory level drops below the warning level the store owner will be informed. Simple inventory tracking must be enabled (See the inventory_tracking field) for this to take any effect.
  </div>
-<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &lsquo;inventory_level&rsquo; and &lsquo;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
+<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &#39;inventory_level&rsquo; and &#39;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">none</div><div class="param-enum">product</div><div class="param-enum">variant</div>
@@ -9983,7 +9932,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_visible (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be displayed to customers browsing the store or not. If true the product will be displayed, false the product will be hidden from view.
  </div>
-<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &lsquo;featured products&rsquo; panel when viewing the store.
+<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &#39;featured products&rsquo; panel when viewing the store.
  </div>
 <div class="param">warranty (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Warranty information displayed on the product page which can include HTML formatting.
  </div>
@@ -9999,7 +9948,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">available</div><div class="param-enum">disabled</div><div class="param-enum">preorder</div>
-<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &lsquo;Usually ships in 24 hours&rsquo;.
+<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &#39;Usually ships in 24 hours&rsquo;.
  </div>
 <div class="param">gift_wrapping_options_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> &#x60;any&#x60; - allow any gift wrapping options in the store, &#x60;none&#x60; - disallow gift wrapping on the product. When the type is set to &#x60;list&#x60;, a list of ids in gift_wrapping_options_list field should be provided.
  </div>
@@ -10009,7 +9958,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">sort_order (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Priority this product will be given when included in product lists on category pages and search results. The lower the number, the closer to the top of the results the product will be.
  </div>
-<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &lsquo;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
+<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &#39;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
  </div>
 <div class="param">is_condition_shown (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag used to determine if the product condition is shown to the customer on the product page.
  </div>
@@ -10035,9 +9984,9 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_preorder_only (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> If set to false, the product will not change its availability from preorder to available on the release date. Otherwise on the release date the products availability/status will change to available.
  </div>
-<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &lsquo;true&rsquo;, the price is hidden. NOTE: To successfully set &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &#39;true&rsquo;, the price is hidden. NOTE: To successfully set &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
-<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &lsquo;is_price_hidden&rsquo; is &lsquo;true&rsquo;, the value of &lsquo;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &#39;is_price_hidden&rsquo; is &#39;true&rsquo;, the value of &#39;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
 <div class="param">images (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductImage">array[ProductImage]</a></span>  </div>
 <div class="param">videos (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductVideo">array[ProductVideo]</a></span>  </div>
@@ -10081,7 +10030,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  format: double</div>
 <div class="param">tax_class_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The ID of the tax class applied to the product. NOTE: Value ignored if automatic tax is enabled.
  </div>
-<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &lsquo;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
+<div class="param">product_tax_code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Accepts AvaTax system codes that identify products and services that fall into special sales tax categories. Allows merchants that subscribe to Avalara Premium to achieve increased accuracy in sales tax calculations. Stores without Avalara Premium will ignore the code when calculating sales tax. Do not pass more than one code. The codes are case-sensitive. Refer to the &#39;AvaTax System tax codes&rsquo; section of the following page for further information and the full list of codes: https://help.avalara.com/000_AvaTax_Calc/000AvaTaxCalc_User_Guide/040_Managing_Tax_Profiles/050_Tax_Codes/001_What_is_a_Tax_Code
  </div>
 <div class="param">calculated_price (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span> The price of the product unless a sale_price is set.
  format: double</div>
@@ -10093,7 +10042,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">inventory_warning_level (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Inventory Warning level for the product. When the products inventory level drops below the warning level the store owner will be informed. Simple inventory tracking must be enabled (See the inventory_tracking field) for this to take any effect.
  </div>
-<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &lsquo;inventory_level&rsquo; and &lsquo;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
+<div class="param">inventory_tracking (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of inventory tracking for the product: none - inventory levels will not be tracked. product - inventory levels will be tracked using the &#39;inventory_level&rsquo; and &#39;inventory_warning_level&rsquo; fields. variant - inventory levels will be tracked based on  variants which maintain their own warning levels and inventory levels.
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">none</div><div class="param-enum">product</div><div class="param-enum">variant</div>
@@ -10103,7 +10052,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_visible (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be displayed to customers browsing the store or not. If true the product will be displayed, false the product will be hidden from view.
  </div>
-<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &lsquo;featured products&rsquo; panel when viewing the store.
+<div class="param">is_featured (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag to determine if the product should be included in &#39;featured products&rsquo; panel when viewing the store.
  </div>
 <div class="param">warranty (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Warranty information displayed on the product page which can include HTML formatting.
  </div>
@@ -10119,7 +10068,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">available</div><div class="param-enum">disabled</div><div class="param-enum">preorder</div>
-<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &lsquo;Usually ships in 24 hours&rsquo;.
+<div class="param">availability_description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Availability text displayed on the checkout page under the product title telling the customer how long it will normally take to ship this product, such as &#39;Usually ships in 24 hours&rsquo;.
  </div>
 <div class="param">gift_wrapping_options_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> &#x60;any&#x60; - allow any gift wrapping options in the store, &#x60;none&#x60; - disallow gift wrapping on the product. When the type is set to &#x60;list&#x60;, a list of ids in gift_wrapping_options_list field should be provided.
  </div>
@@ -10129,7 +10078,7 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">sort_order (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Priority this product will be given when included in product lists on category pages and search results. The lower the number, the closer to the top of the results the product will be.
  </div>
-<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &lsquo;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
+<div class="param">condition (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The product condition, will be shown on the product page if the value of the &#39;is_condition_shown&rsquo; field is true. Possible values: New, Used, Refurbished
  </div>
 <div class="param">is_condition_shown (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Flag used to determine if the product condition is shown to the customer on the product page.
  </div>
@@ -10155,9 +10104,9 @@ RB &#x3D; radio_buttons, RT &#x3D; rectangles, S &#x3D; dropdown, P &#x3D; produ
  </div>
 <div class="param">is_preorder_only (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> If set to false, the product will not change its availability from preorder to available on the release date. Otherwise on the release date the products availability/status will change to available.
  </div>
-<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &lsquo;true&rsquo;, the price is hidden. NOTE: To successfully set &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">is_price_hidden (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> False by default, which indicates that the price of this product should be shown on the product page. If set to &#39;true&rsquo;, the price is hidden. NOTE: To successfully set &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
-<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &lsquo;is_price_hidden&rsquo; is &lsquo;true&rsquo;, the value of &lsquo;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &lsquo;is_price_hidden&rsquo; to &lsquo;true&rsquo;, the &lsquo;availability&rsquo; value must be &lsquo;disabled&rsquo;.
+<div class="param">price_hidden_label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> By default, an empty string. If &#39;is_price_hidden&rsquo; is &#39;true&rsquo;, the value of &#39;price_hidden_label&rsquo; is displayed instead of the price. NOTE: To successfully set a non-empty string value for &#39;is_price_hidden&rsquo; to &#39;true&rsquo;, the &#39;availability&rsquo; value must be &#39;disabled&rsquo;.
  </div>
 <div class="param">images (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductImage">array[ProductImage]</a></span>  </div>
 <div class="param">videos (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductVideo">array[ProductVideo]</a></span>  </div>

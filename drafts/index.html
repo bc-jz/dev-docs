@@ -197,7 +197,122 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     </div>
     <div class="page-wrapper">
       <div class="content">
-        <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
+        <h1 id="draft-new-api-content"><span class="jumptarget"> Draft New API Content </span></h1>
+
+          <h1 id="managing-oauth-tokens-control-panel"><span class="jumptarget" id=""> Managing OAuth Tokens (Control Panel) </span></h1>
+
+<aside class="warning">
+<span class="aside-warning-hd">Draft New CP > OAuth Instructions</span><br><br>
+This will replace <em>subsections</em> of: <a href="https://developer.bigcommerce.com/api/#making-requests" target="_blank">https://developer.bigcommerce.com/api/#making-requests</a>.
+</aside>
+
+<h2 id="obtaining-an-oauth-token"><span class="jumptarget" id="cp_oauth_get"> Obtaining an OAuth Token </span></h2>
+
+<p>You can create and manage OAuth tokens in the BigCommerce control panel by creating an API account, as described below. (Only the <a href="https://support.bigcommerce.com/articles/Public/Store-Owner" target="_blank">store&#160;owner</a> can create API accounts; accounts are limited to 50 per store.) </p>
+
+<p><img src="../assets/CreateAccount.png" alt="Creating an API account" height=80% width=80%></p>
+
+<p>To create your API account and its corresponding token, use the following steps:</p>
+
+<ol>
+<li> Log into the store, using the store owner&rsquo;s username/password.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>API Accounts</strong>. This will display the <strong>Store API Accounts</strong> page.</li>
+<li> Select <strong>Create API Account</strong>. This will display the <strong>Create API Account</strong> page shown above.</li>
+<li> In the <strong>Name</strong> field, summarize the purpose for which you will use these credentials. (This name is for internal use only, so assign any name that you will recognize.)</li>
+<li> Copy the <strong>API Path</strong> field&rsquo;s contents and save it to a file. You will need this path to interact with the API. (If you need to later re-create this string, it is made up of: <code class="prettyprint">https://api.bigcommerce.com/stores/</code> + <code class="prettyprint">&lt;your store hash&gt;</code> + either <code class="prettyprint">/v3/</code> or <code class="prettyprint">/v2/</code>, depending on the API version you are targeting.)</li>
+<li> In the <strong>OAuth Scopes</strong> section, select at least the minimal scopes your app will require (as explained <a href="#request_scopes" target="_blank">here</a>). </li>
+<li> Select <strong>Save</strong> at the page&rsquo;s lower right-hand corner.</li>
+</ol>
+
+<p>A successful save will display the pop-up shown below, containing the API credentials that your app will need for OAuth access – your <strong>Client ID</strong>, <strong>Client Secret</strong>, and <strong>Access&#160;Token</strong>. Also, a .txt file containing the same credentials will (on most browsers) download to your computer.</p>
+
+<p><img src="../assets/SaveCreds.png" alt="Viewing and saving OAuth credentials" height=67% width=67%></p>
+
+<aside class="warning">
+<span class="aside-warning-hd">Keep Your Credentials</span><br><br>
+There is no way to re-display this pop-up after you select <b>Done</b> to dismiss it. <br><br> 
+So make sure you store your credentials &ndash; either by copying/pasting the contents of each field out of the pop-up, or by keeping the downloaded .txt file. (To that same .txt file, we suggest adding the **API Path** field value that your stored earlier.) Otherwise, you will need to repeat all the above steps to generate new credentials.
+</aside>
+
+<h2 id="revoking-an-oauth-token"><span class="jumptarget" id="cp_oauth_revoke"> Revoking an OAuth Token </span></h2>
+
+<p>To revoke an OAuth token, use the following steps to delete the associated API account:</p>
+
+<ol>
+<li> Log into the store, using the store owner&rsquo;s username/password.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>API Accounts</strong>. This will display the <strong>Store API Accounts</strong> page, shown below.</li>
+<li> In the <strong>Actions</strong> column at right, select the trash-can button next to the account you want to delete.</li>
+</ol>
+
+<aside class="warning">
+<span class="aside-warning-hd">Delete Carefully</span><br><br>
+There is no undo, so be sure before you delete an account. You can also use the check boxes on the left side to delete multiple accounts at once &ndash; but be especially careful when using this option.
+</aside>
+
+<p><img src="../assets/store-api-accounts.png" alt="Creating an API account" height=100% width=100%></p>
+
+          <h1 id="postman-oauth-quick-start"><span class="jumptarget"> Postman/OAuth Quick Start </span></h1>
+
+<p>This section shows you how to quickly get started exercising BigCommerce APIs, using the <a href="https://www.getpostman.com/">Postman app</a>.</p>
+
+<p>To get started, you&rsquo;ll need OAuth credentials to supply to Postman. BigCommerce uses OAuth 2.0. </p>
+
+<h2 id="creating-oauth2-0-credentials"><span class="jumptarget"> Creating OAuth2.0 Credentials </span></h2>
+
+<p>Create yur OAuth 2.0 credentials as described above in <a href="#cp_oauth_get">this section</a>. (Depending on what scopes you set, you will be limited in what objects you can request. You can view scope information <a href="/api/#oauth-scopes">here</a>.)</p>
+
+<h2 id="postman-setup"><span class="jumptarget"> Postman Setup </span></h2>
+
+<p>You&rsquo;ll do the next steps in the Postman app.</p>
+
+<h3 id="select-no-auth"><span class="jumptarget"> Select No Auth </span></h3>
+
+<p>In Postman, set the <strong>Type</strong> drop-down list to <strong>No Auth</strong> (so as to create only the OAuth headers that you need). This will display the form shown below:</p>
+
+<p><img src="../assets/postman-noauth.png" /></p>
+
+<h3 id="populate-auth-headers"><span class="jumptarget"> Populate Auth Headers </span></h3>
+
+<p>Select the <strong>Headers</strong> tab to display the form shown below: </p>
+
+<p><img src="../assets/postman-headers.png" /></p>
+
+<p>Next, add these two key/value pairs, using the OAuth credentials you obtained in the BigCommerce control panel:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">X-Auth-Client</code></td>
+<td>The <strong>Client ID</strong> you obtained when you <a href="/#cp_oauth_get">created your OAuth token</a>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">X-Auth-Token</code></td>
+<td>The <strong>Access Token</strong> string you obtained when you <a href="#cp_oauth_get">created your OAuth token</a>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="sending-a-request"><span class="jumptarget" id="post_setup"> Sending a Request </span></h2>
+
+<p>We have created a collection of Postman requests for our v3 API, which you can import by clicking the button below:</p>
+
+<p><a href="https://app.getpostman.com/run-collection/0911a7fefbc14ed2e4cb"><img alt="Run in Postman" src="https://run.pstmn.io/button.svg" /></a></p>
+
+<p>To use this collection, you&rsquo;ll need to enter your OAuth credentials, as explained above under <a href="#post_setup">Postman Setup</a>.</p>
+
+<p>You&rsquo;ll also need to enter your store&rsquo;s API Path, as displayed in the <a href="#cp_oauth_get">control panel</a>. You can do so in either of these days:</p>
+
+<ul>
+<li><p>Within each endpoint, replace the variable <code class="prettyprint">{{store_hash}}</code>; or </p></li>
+<li><p>Add a new environment, in which you create a  <code class="prettyprint">store_hash</code> key, then set its value to the alpahnumeric string from your API Path. (For&#160;details on setting up a Postman environment, see <a href="https://www.getpostman.com/docs/environments">this Postman documentation</a>.)</p></li>
+</ul>
+
+<p>Now you can send and receive information through an OAuth API connection with BigCommerce. If you&rsquo;d like to register webhooks through Postman, please see <a href="/api/#creating-webhooks-sending-the-post-request">Creating Webhooks: Sending the POST Request</a>. </p>
 
           <h1 id="shipping-zones-reference"><span class="jumptarget"> Shipping Zones Reference </span></h1>
 
@@ -290,7 +405,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -311,7 +426,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -357,7 +472,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -414,7 +529,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -460,7 +575,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -487,7 +602,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"free_shipping"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"minimum_sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"minimum_subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"exclude_fixed_shipping_products"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"handling_fees"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -941,9 +1056,9 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <ul>
 <li>  OAuth
-&gt;<code class="prettyprint">PUT /stores/{store_hash}/api/v2/shipping/zones/{zone_id}/methods/{method_id}</code></li>
+&gt;<code class="prettyprint">PUT /stores/{store_hash}/api/v2/shipping/zones/{zone_id}/methods/{id}</code></li>
 <li>  Basic Auth
-&gt;<code class="prettyprint">PUT /api/v2/shipping/zones/{zone_id}/methods/{method_id}</code>
+&gt;<code class="prettyprint">PUT /api/v2/shipping/zones/{zone_id}/methods/{id}</code>
 ### <span class="jumptarget"> Requirements </span></li>
 </ul>
 

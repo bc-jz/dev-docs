@@ -188,7 +188,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
         <div class="search">
           <form>
             <input type="text" class="search" required id="input-search" placeholder="Search">
-            <input type="reset" class="reset-form" value="X">
+            <button type="reset" class="reset-form"><i class="fa fa-times"></i></button>
           </form>
         </div>
         <ul class="search-results"></ul>
@@ -224,16 +224,16 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
           <h1 id="api-apps-first-steps"><span class="jumptarget" id="apiquickstart"> API/Apps First Steps </span></h1>
 
-<p>The following sections list initial steps for two different development scenarios:</p>
+<p>The following sections offer initial steps for two different development scenarios:</p>
 
 <ul>
 <li><p>Developing private apps for a particular BigCommerce store: You can follow the <a href="#apicred">Apps Quick Start</a> procedure, which has no administrative requirements.</p></li>
-<li><p>Developing <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> for sale to/installation on any BigCommerce store: See the <a href="#joinappmkt">Joining the BigCommerce App Marketplace</a> procedure, which requires applying to become a BigCommerce partner.</p></li>
+<li><p>Developing <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> for sale to/installation on any BigCommerce store: Jump to the <a href="#joinappmkt">Joining the App Marketplace</a> procedure, which requires applying to become a BigCommerce partner.</p></li>
 </ul>
 
-<p>These two scenarios are not mutually exclusive – some developers will work under both scenarios – but some of their instructions are redundant. Please use the links above to jump to the section that best matches your immediate scenario.</p>
+<p>These two scenarios are not mutually exclusive –  some developers will work under both scenarios. But some of their setup instructions are redundant. Therefore, we suggest that you start with the section that best matches your immediate scenario.</p>
 
-<h1 id="apps-quick-start-obtaining-api-credentials"><span class="jumptarget" id="apicred"> Apps Quick Start: Obtaining API Credentials</span></h1>
+<h1 id="apps-quick-start"><span class="jumptarget" id="api2paths"> Apps Quick Start </span></h1>
 
 <aside class="notice">
 <span class="aside-notice-hd"> Private or Saleable Apps? </span><br><br>
@@ -266,36 +266,138 @@ This section is intended for developers who want to immediately start developing
 <p>This will reopen your store&rsquo;s control panel.</p></li>
 </ol>
 
-<h2 id="creating-basic-auth-credentials"><span class="jumptarget" id="basiccred"> Creating Basic Auth Credentials </span></h2>
+<p>Next, you will need to <a href="#apicred">obtain API credentials</a>, as explained just below.</p>
+
+          <h1 id="managing-api-credentials"><span class="jumptarget" id="apicred"> Managing API Credentials</span></h1>
+
+<p>You have two options for obtaining and managing credentials that will connect your app with your BigCommerce store:</p>
+
+<ul>
+<li><p><a href="#cp_oauth_get">Obtaining OAuth Tokens</a>: We recommend OAuth, because this authentication method is compatible with all current and planned BigCommerce APIs. Also, OAuth is required for apps intended to be <a href="#">sold on the BigCommerce App Marketplace</a>.</p></li>
+<li><p><a href="#basiccred">Creating Basic Auth Credentials</a>: Basic Auth is still supported as a legacy option for <a href="##building-basic-auth-apps">private apps</a> (apps developed for a single BigCommerce store). However, although Basic Auth is compatible with most of our v2 API, it is inccompatible with <a href="##webhooks-overview">webhooks</a>, and incompatible with our <a href="https://github.com/bigcommerce/api/blob/master/docs/v3-catalog.md" target="_blank">v3 API</a>.</p></li>
+</ul>
+
+<h2 id="authenticating-with-oauth"><span class="jumptarget" id="cp_oauth_manage"> Authenticating with OAuth </span></h2>
+
+<p>The following sections outline how to create and manage OAuth tokens in the BigCommerce control panel.</p>
+
+<aside class="notice">
+<span class="notice"> Future-Proof with OAuth </span><br><br>
+We strongly recommend building all BigCommerce apps with OAuth. OAuth is compatible with all current and planned BigCommerce APIs, including v2 Webhooks and our v3 API. Also, any apps intended for sale on the BigCommerce App Marketplace must use OAuth. BigCommerce is gradually deprecating its legacy support for <a href="#basiccred">Basic Authentication</a>.
+</aside>
+
+<h3 id="obtaining-oauth-tokens"><span class="jumptarget" id="cp_oauth_get"> Obtaining OAuth Tokens </span></h3>
+
+<p>You can create and manage OAuth tokens in the BigCommerce control panel by creating an API account, as described below. (Only the <a href="https://support.bigcommerce.com/articles/Public/Store-Owner" target="_blank">store&#160;owner</a> can create API accounts; accounts are limited to 50 per store.) </p>
+
+<p><img src="../assets/CreateAccount.png" alt="Creating an API account" height=80% width=80%></p>
+
+<p>To create your API account and its corresponding token, use the following steps:</p>
 
 <ol>
-<li><p>From your store&rsquo;s control panel, go to <strong>Advanced Settings &gt; Legacy API Settings</strong>.</p></li>
-<li><p>Select <strong>Create a Legacy API Account</strong>.</p></li>
-<li><p>Enter a <strong>Username</strong>. Reusing the app&rsquo;s name is a good way to keep track of which account corresponds to which app. After saving, you can use the API credentials listed on this page.</p></li>
-<li><p>Select <strong>Save</strong> if you&rsquo;re creating or changing the API account.</p></li>
+<li> Log into the store, using the store owner&rsquo;s username/password.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>API Accounts</strong>. This will display the <strong>Store API Accounts</strong> page.</li>
+<li> Select <strong>Create API Account</strong>. This will display the <strong>Create API Account</strong> page shown above.</li>
+<li> In the <strong>Name</strong> field, summarize the purpose for which you will use these credentials. (This name is for internal use only, so assign any name that you will recognize.)</li>
+<li> Copy the <strong>API Path</strong> field&rsquo;s contents and save it to a file. You will need this path to interact with the API. (If you need to later re-create this string, it is made up of: <code class="prettyprint">https://api.bigcommerce.com/stores/</code> + <code class="prettyprint">&lt;your store hash&gt;</code> + either <code class="prettyprint">/v3/</code> or <code class="prettyprint">/v2/</code>, depending on the API version you are targeting.)</li>
+<li> In the <strong>OAuth Scopes</strong> section, select at least the minimal scopes your app will require (as explained <a href="#request_scopes" target="_blank">here</a>). </li>
+<li> Select <strong>Save</strong> at the page&rsquo;s lower right-hand corner.</li>
 </ol>
 
-<h2 id="creating-oauth-credentials"><span class="jumptarget" id="oauthcred"> Creating OAuth Credentials</span></h2>
+<p>A successful save will display the pop-up shown below, containing the API credentials that your app will need for OAuth access – your <strong>Client ID</strong>, <strong>Client Secret</strong>, and <strong>Access&#160;Token</strong>. Also, a .txt file containing the same credentials will (on most browsers) download to your computer.</p>
 
-<p>When you log in to the BigCommerce Developer Portal to get OAuth credentials for the first time, you&rsquo;ll be prompted to authorize the Developer Portal application.</p>
+<p><img src="../assets/SaveCreds.png" alt="Viewing and saving OAuth credentials" height=67% width=67%></p>
+
+<aside class="warning">
+<span class="aside-warning-hd">Keep Your Credentials</span><br><br>
+There is no way to re-display this pop-up after you select <b>Done</b> to dismiss it. <br><br> 
+So make sure you store your credentials &ndash; either by copying/pasting the contents of each field out of the pop-up, or by keeping the downloaded .txt file. (To that same .txt file, we suggest adding the **API Path** field value that your stored earlier.) Otherwise, you will need to repeat all the above steps to generate new credentials.
+</aside>
+
+<h3 id="revoking-an-oauth-token"><span class="jumptarget" id="cp_oauth_revoke"> Revoking an OAuth Token </span></h3>
+
+<p>To revoke an OAuth token, use the following steps to delete the associated API account:</p>
 
 <ol>
-<li>Select <strong>My Apps</strong> in this Developer Portals&rsquo;s upper-right-hand corner, and log in to your BigCommerce account.</li>
-<li>Within the Developer Portal, select <strong>Create an app</strong>. You can give your app any name you&rsquo;d like, such as <code class="prettyprint">Test</code>.</li>
-<li>Once the app is created, select <strong>View Client ID</strong>. This will display the modal shown below, from which you can copy your <br> <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+<li> Log into the store, using the store owner&rsquo;s username/password.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>API Accounts</strong>. This will display the <strong>Store API Accounts</strong> page, shown below.</li>
+<li> In the <strong>Actions</strong> column at right, select the trash-can button next to the account you want to delete.</li>
 </ol>
 
-<p><img src="../assets/client-id+secret-modal.png" alt="BigCommerce Client ID and Secret" height=67% width=67%></p>
+<aside class="warning">
+<span class="aside-warning-hd">Delete Carefully</span><br><br>
+There is no undo, so be sure before you delete an account. You can also use the check boxes on the left side to delete multiple accounts at once &ndash; but be especially careful when using this option.
+</aside>
 
-<h2 id="making-an-api-request"><span class="jumptarget">Making an API Request</span></h2>
+<p><img src="../assets/store-api-accounts.png" alt="Creating an API account" height=100% width=100%></p>
+
+<h3 id="making-an-api-request-with-oauth"><span class="jumptarget" id="request_oauth"> Making an API Request with OAuth </span></h3>
+
+<p>To see how to quickly make initial OAuth requests using the <a href="https://www.getpostman.com/" target="_blank">Postman app</a>, please see our <a href="#postman_qs">Postman/OAuth Quickstart Guide</a>.</p>
+
+          <h2 id="creating-basic-auth-credentials"><span class="jumptarget" id="basiccred"> Creating Basic Auth Credentials </span></h2>
+
+<p>The following sections outline how to create and manage Basic Auth tokens in the BigCommerce control panel.</p>
+
+<aside class="warning">
+<span class="aside-warning-hd">Limited Support for Basic Auth </span><br><br>
+BigCommerce is gradually deprecating Basic Authentication. Apps must use <a href="#building-oauth-apps">OAuth</a> to access our v3 API.   
+Even within the v2 API, apps relying on Basic Authentication cannot access some features. (For example, the Webhooks resource requires OAuth.) Also, apps intended for sale on the BigCommerce App Marketplace must use OAuth.
+</aside>
+
+<h3 id="obtaining-an-api-token"><span class="jumptarget" id="pvt_token"> Obtaining an API Token </span></h3>
+
+<p>To get an API token, use the following steps:</p>
+
+<ol>
+<li> Log into your store&rsquo;s control panel.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>Legacy API Accounts</strong>.</li>
+<li> Select <strong>Create a Legacy API Account</strong>.</li>
+<li> Enter a <strong>Username</strong>. Reusing the app&rsquo;s name is a good way to keep track of which account corresponds to which app. After saving, you can use the API credentials listed on this page.</li>
+<li> Copy the <strong>API Path</strong> field&rsquo;s value and paste it into a text editor. You will need this value to authenticate your app.</li>
+<li> Copy the <strong>API Token</strong> field&rsquo;s value and paste it into a text editor. You will need this value to authenticate your app.</li>
+<li> Select <strong>Save</strong> if you&rsquo;re creating or changing the API account.</li>
+</ol>
+
+<h3 id="revoking-app-access"><span class="jumptarget"> Revoking App Access </span></h3>
+
+<p>To revoke app access to a store, use the following steps:</p>
+
+<ol>
+<li> Log into your store&rsquo;s control panel.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>Legacy API Accounts</strong>.</li>
+<li> Select the gears icon in the <strong>Action</strong> column, then select <strong>Edit</strong>.</li>
+<li> Select the <strong>Generate New Token</strong> button.</li>
+<li> Select the <strong>Save</strong> button.</li>
+<li> Select the check box next to the user.</li>
+<li> Select the trash-can button.</li>
+<li> Select <strong>OK</strong> in the confirmation prompt.</li>
+</ol>
+
+<h3 id="regenerating-an-api-token"><span class="jumptarget"> Regenerating an API Token </span></h3>
+
+<p>To change the API token that an app is using to access a store, use the following steps:</p>
+
+<ol>
+<li> Log into your store&rsquo;s control panel.</li>
+<li> Select <strong>Advanced Settings</strong>.</li>
+<li> Select <strong>Legacy API Accounts</strong>.</li>
+<li> Select the gears icon in the <strong>Action</strong> column, then select <strong>Edit</strong>.</li>
+<li> Select the <strong>Generate New Token</strong> button.</li>
+<li> Select the <strong>Save</strong> button.</li>
+</ol>
+
+<h3 id="making-an-api-request-with-basic-auth"><span class="jumptarget" id="request_basic"> Making an API Request with Basic Auth </span></h3>
 
 <p>Many tools are available to interact with APIs. For example, to see how to quickly make initial requests using <a href="https://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a> commands, please see our <a href="#curl-quickstart-guide">cURL Quickstart Guide</a>.</p>
 
-<h1 id="joining-the-bigcommerce-app-marketplace"><span class="jumptarget" id="joinappmkt"> Joining the BigCommerce App Marketplace</span></h1>
+          <h1 id="joining-the-app-marketplace"><span class="jumptarget" id="joinappmkt"> Joining the App Marketplace </span></h1>
 
-<p><span class="fake-h2" style="color:black;font-weight:bold"> Build Best-Of-Breed Solutions for Fast-Growing Online Businesses </span></p>
-
-<p>The following sections outline the steps required to become a vendor of <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> on the BigCommerce platform.</p>
+<p>The following sections outline the steps required to become a vendor of <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a> on the BigCommerce platform. Doing so requires a partnership application, but acceptance will authorize you to provide best-of-breed solutions to the fast-growing online businesses we host.</p>
 
 <aside class="notice">
 <span class="aside-notice-hd"> Want a Quicker Start? </span><br><br>
@@ -338,7 +440,10 @@ If you only want to develop private apps for a particular BigCommerce store, you
 
 <p>When you log into your new store, use the same email that you used when applying to become a Technology Partner.</p>
 
-<p>NOTE: Although the <strong>Create a Trial Store</strong> option&rsquo;s name indicates that the store might be temporary, it is actually permanent.</p>
+<aside class="notice">
+<span class="aside-notice-hd">Trial Stores Don&rsquo;t Expire</span><br><br>
+Although the <strong>Create a Trial Store</strong> option&rsquo;s name indicates that the store might be temporary, your store is actually permanent.
+</aside>
 
 <h2 id="create-your-draft-app"><span class="jumptarget"> Create Your Draft App </span></h2>
 
@@ -351,16 +456,18 @@ If you only want to develop private apps for a particular BigCommerce store, you
 <aside class="notice">
 <span class="aside-notice-hd">Note</span>
     <br><br>
-To access your draft app in the store, make sure the email address you enter for your sandbox store’s **Owner** is identical to the email address you use for the BigCommerce Developer Portal. </ul>
+To access your draft app in the store, make sure the email address you enter for your sandbox store’s <strong>Owner</strong> is identical to the email address you use for the BigCommerce Developer Portal. </ul>
 </aside>
+
+<h2 id="app-guidelines-and-client-libraries"><span class="jumptarget"> App Guidelines and Client Libraries </span></h2>
+
+<p>For details on designing and building your app, please see <a href="#using-oauth-intro">Building Apps with OAuth</a>.</p>
+
+<p>To facilitate app development on the BigCommerce platform, we provide <a href="#client-libraries">client libraries</a> in a variety of popular programming languages.</p>
 
 <h2 id="submit-your-app"><span class="jumptarget"> Submit Your App </span></h2>
 
 <p>Once your app is fully functional, and meets all of BigCommerce’s <a href="#app-store-approval-requirements">approval requirements</a>, submit the app from <strong>My Apps</strong>. We will get back to you as soon as we have reviewed your submission.</p>
-
-<h2 id="about-client-libraries"><span class="jumptarget"> About Client Libraries </span></h2>
-
-<p>To make facilitate app development on the BigCommerce platform, we provide <a href="#client-libraries">client libraries</a> in a variety of popular programming languages.</p>
 
           <h1 id="request-headers"><span class="jumptarget"> Request Headers </span></h1>
 
@@ -498,7 +605,7 @@ To access your draft app in the store, make sure the email address you enter for
 
 <h2 id="introduction-to-media-types"><span class="jumptarget"> Introduction to Media Types</span></h2>
 
-<p>The BigCommerce API can both accept requests and respond in JSON or XML. Requests should be encoded using the UTF-8 character set. Other character sets may have unpredictable results.</p>
+<p>The BigCommerce API can accept requests, and respond, in either JSON or XML. You should encode requests using the UTF-8 character set. (Other character sets might have unpredictable results.)</p>
 
 <aside class="warning">
 <span class="aside-warning-hd">Restricted XML Support</span><br><br>
@@ -1161,7 +1268,7 @@ Following the creation of a webhook, it can take up to one minute for BigCommerc
 
 <p>This will enable you to send our webhooks to your <code class="prettyprint">localhost</code> environments via a public URL. No production push is required.</p>
 
-          <h1 id="building-oauth-apps"><span class="jumptarget"> <a name="using-oauth-intro"></a> Building OAuth Apps </span></h1>
+          <h1 id="building-apps-with-oauth"><span class="jumptarget"> <a name="using-oauth-intro"></a> Building Apps with OAuth </span></h1>
 
 <p>OAuth apps (also known as public apps or <a href="https://www.bigcommerce.com/single-click-apps/" target="_blank">Single-Click Apps</a>) can be listed in the App Store for easy installation in all BigCommerce stores. They&#160;use OAuth to obtain an access token and to communicate with the central BigCommerce API endpoint. </p>
 
@@ -1211,13 +1318,22 @@ You can also create a “Draft” version of a Single-Click App, for use only in
 
 <p>Under the standard contract, within 30 days of collecting this revenue, you must send BigCommerce 20% and retain the remaining 80% for yourself. Once your app is published, a mandatory revenue-share reporting form will be sent to the primary contact on your partner account, at the beginning of each month.</p>
 
+<h3 id="private-apps-with-oauth"><span class="jumptarget"> Private Apps with OAuth? </span></h3>
+
+<p>Some private apps use OAuth. Please note that:</p>
+
+<ul>
+<li><p>Such apps will normally be accessible only to stores belonging to the user who created the app in the Developer Portal.</p></li>
+<li><p>To be shareable with other stores, these apps must be approved and published in the App Store.</p></li>
+</ul>
+
           <h2 id="app-registration"><span class="jumptarget"> <a name="registration"></a> App Registration </span></h2>
 
 <p>Once you have a <a href="#api-apps-first-steps">sandbox store</a>, you must register your app to get your <strong>Client ID</strong> and <strong>Client Secret</strong>.</p>
 
 <ul>
 <li><p>The <strong>Client ID</strong> value uniquely identifies your app and you will need to pass it in the header of all your requests to the Stores API.</p></li>
-<li><p>The <strong>Client Secret</strong> value is a secret that your app and BigCommerce share. You do need to pass the <strong>Client Secret</strong> value once during the <a href="#app-installation-and-update-sequence">app installation</a> sequence. Thereafter, BigCommerce uses it to sign payloads in <a href="#load-uninstall-and-user-removal-requests">load, uninstall, and remove user requests</a> and your app uses it to verify the signature to ensure that the request is coming from BigCommerce.</p></li>
+<li><p>The <strong>Client Secret</strong> value is a secret that your app and BigCommerce share. You do need to pass the <strong>Client Secret</strong> value once during the <a href="#app-installation-and-update-sequence">app installation</a> sequence. Thereafter, BigCommerce uses it to sign payloads in <a href="#load-uninstall-and-user-removal-requests">load, uninstall, and remove user requests</a>, and your app uses it to verify the signature to ensure that the request is coming from BigCommerce.</p></li>
 </ul>
 
 <p>The app registration wizard requests a number of details that you may not know just yet. You can come back and fill in the additional information later (discussed in <a href="#app-submission">App Submission</a>).</p>
@@ -2453,28 +2569,21 @@ Changing scopes once your app has been launched will require all of your current
 
 <p>11.7. Governing Law. This Agreement shall be governed by and construed in accordance with the laws of the State of Texas, without regard to conflicts of law provisions thereof. Each party acknowledges that any breach of the provisions of this Agreement may cause the other party immediate and irreparable harm for which there are no adequate remedies at law and will entitle such party to seek immediate injunctive relief, in addition to any other remedies which may be available. Any litigation pertaining to the interpretation or enforcement of this Agreement shall be filed in and heard by the Federal and State courts located in Travis County, Texas.</p>
 
-          <h1 id="building-basic-auth-apps"><span class="jumptarget"> Building Basic-Auth Apps </span></h1>
+          <h1 id="building-apps-with-basic-auth"><span class="jumptarget" id="using-basic-auth-intro"> Building Apps with Basic Auth </span></h1>
 
           <p>Basic-Auth (or &ldquo;Private&rdquo;) apps require the manual creation of an API token for each store. They are most useful for custom integrations for a single BigCommerce store. They generally use HTTP Basic Authentication (with the exception of <a href="#private-apps-with-oauth">Draft apps</a>), and communicate directly with the store&rsquo;s API endpoints.</p>
 
 <aside class="warning">
 <span class="aside-warning-hd">Limited Support for Basic Auth </span><br><br>
 BigCommerce is gradually deprecating Basic Authentication. Apps must use <a href="#building-oauth-apps">OAuth</a> to access our v3 API.   
-Even within the v2 API, apps relying on Basic Authentication cannot access some features. For example, the Webhooks resource requires OAuth.
+Even within the v2 API, apps relying on Basic Authentication cannot access some features. (For example, the Webhooks resource requires OAuth.) Also, apps intended for sale on the BigCommerce App Marketplace must use OAuth.
 </aside>
 
-<h2 id="private-apps-with-oauth"><span class="jumptarget"> Private Apps with OAuth? </span></h2>
+<h2 id="obtaining-basic-auth-api-tokens"><span class="jumptarget" id=""> Obtaining Basic Auth API Tokens </span></h2>
 
-<p>A few private apps use OAuth. These exceptions must meet the following restrictions:</p>
+<p>To obtain tokens to connect your app to a BigCommerce store using BAsic Auth, please see <a href="#basiccred">Creating Basic Auth Credentials</a>.</p>
 
-<ul>
-<li><p>To create a private app that uses OAuth, you must create it as a Draft app, on a per-user basis. This Draft app will be accessible only to stores belonging to the user who created the app in the Developer Portal.</p></li>
-<li><p>OAuth Draft apps are currently not shareable, unless they are approved and published in the App Store.</p></li>
-</ul>
-
-<p>The remainder of this &ldquo;Building Basic-Auth/Private Apps&rdquo; section applies only to Basic Authentication apps.</p>
-
-<h2 id="making-requests"><span class="jumptarget"> Making Requests </span></h2>
+<h2 id="making-basic-auth-requests"><span class="jumptarget"> Making Basic Auth Requests </span></h2>
 
 <p>To allow an app to connect to a store using Basic Authentication, the store owner must manually generate an API key and provide this to the app developer along with a base path and user name.</p>
 
@@ -2488,51 +2597,6 @@ Even within the v2 API, apps relying on Basic Authentication cannot access some 
 </ul>
 
 <p>If the user name and/or API token are invalid or missing, the app will get a <code class="prettyprint">401 Unauthorized</code> response.</p>
-
-<h2 id="obtaining-an-api-token"><span class="jumptarget" id="pvt_token"> Obtaining an API Token </span></h2>
-
-<p>To get an API token, complete the following steps.</p>
-
-<ol>
-<li> Log into the store.</li>
-<li> Click <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>Legacy API Accounts</strong>.</li>
-<li> Click <strong>Create a Legacy API Account</strong>.</li>
-<li> Type the name of the user in the <strong>Username</strong> box.</li>
-<li> Copy the contents of the <strong>API Path</strong> box and paste this value into a text editor.</li>
-<li> Copy the contents of the <strong>API Token</strong> box and paste this value into a text editor.</li>
-<li> Click the <strong>Save</strong> button.</li>
-<li> Provide the user name, API base path, and API token to the app developer using a secure channel.</li>
-</ol>
-
-<h2 id="revoking-app-access"><span class="jumptarget"> Revoking App Access </span></h2>
-
-<p>To revoke app access to a store, complete the following steps.</p>
-
-<ol>
-<li> Log into the store.</li>
-<li> Click <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>Legacy API Accounts</strong>.</li>
-<li> Click the gears icon in the <strong>Action</strong> column and select <strong>Edit</strong>.</li>
-<li> Click the <strong>Generate New Token</strong> button.</li>
-<li> Select the <strong>Save</strong> button.</li>
-<li> Select the check box next to the user.</li>
-<li> Click the trash can button.</li>
-<li> Click <strong>OK</strong> in the confirmation prompt.</li>
-</ol>
-
-<h2 id="regenerating-an-api-token"><span class="jumptarget"> Regenerating an API Token </span></h2>
-
-<p>To change the API token that an app is using to access a store, complete the following steps.</p>
-
-<ol>
-<li> Log into the store.</li>
-<li> Click <strong>Advanced Settings</strong>.</li>
-<li> Select <strong>Legacy API Accounts</strong>.</li>
-<li> Click the gears icon in the <strong>Action</strong> column and select <strong>Edit</strong>.</li>
-<li> Click the <strong>Generate New Token</strong> button.</li>
-<li> Select the <strong>Save</strong> button.</li>
-</ol>
 
           <h2 id="rate-limits-basic-auth"><span class="jumptarget"> Rate Limits – Basic Auth </span></h2>
 
@@ -2873,6 +2937,67 @@ Private apps <em>not</em> in the App Store can continue to use Basic Authenticat
 <p>Which yields the following:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">"option_id"</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span><span class="nt">"option_set_id"</span><span class="p">:</span><span class="mi">27</span><span class="p">,</span><span class="nt">"display_name"</span><span class="p">:</span><span class="s2">"Simpson family"</span><span class="p">,</span><span class="nt">"sort_order"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="nt">"is_required"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="nt">"option"</span><span class="p">:{</span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://store.mybigcommerce.com-bwvr466.mybigcommerce.com/api/v2/options/33.json"</span><span class="p">,</span><span class="nt">"resource"</span><span class="p">:</span><span class="s2">"/options/33"</span><span class="p">}}</span><span class="w">
 </span></code></pre>
+
+          <h1 id="postman-oauth-quickstart-guide"><span class="jumptarget" id="postman_qs"> Postman/OAuth Quickstart Guide </span></h1>
+
+<p>This section shows you how to quickly get started exercising BigCommerce APIs, using the <a href="https://www.getpostman.com/" target="_blank">Postman app</a>.</p>
+
+<p>To get started, you&rsquo;ll need OAuth credentials to supply to Postman. BigCommerce uses OAuth 2.0. </p>
+
+<h2 id="creating-oauth2-0-credentials"><span class="jumptarget"> Creating OAuth2.0 Credentials </span></h2>
+
+<p>Create your OAuth 2.0 credentials as described above under <a href="#cp_oauth_get">Obtaining OAuth Tokens</a>. (Depending on what scopes you set, you will be limited in what objects you can request. You can view scope information <a href="/api/#oauth-scopes">here</a>.)</p>
+
+<h2 id="postman-setup"><span class="jumptarget"> Postman Setup </span></h2>
+
+<p>You&rsquo;ll do the next steps in the Postman app.</p>
+
+<h3 id="select-no-auth"><span class="jumptarget"> Select No Auth </span></h3>
+
+<p>In Postman, set the <strong>Type</strong> drop-down list to <strong>No Auth</strong> (so as to create only the OAuth headers that you need). This will display the form shown below:</p>
+
+<p><img src="../assets/postman-noauth.png" /></p>
+
+<h3 id="populate-auth-headers"><span class="jumptarget"> Populate Auth Headers </span></h3>
+
+<p>Select the <strong>Headers</strong> tab to display the form shown below: </p>
+
+<p><img src="../assets/postman-headers.png" /></p>
+
+<p>Next, add these two key/value pairs, using the OAuth credentials you obtained in the BigCommerce control panel:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">X-Auth-Client</code></td>
+<td>The <strong>Client ID</strong> you obtained when you <a href="/#cp_oauth_get">created your OAuth token</a>.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">X-Auth-Token</code></td>
+<td>The <strong>Access Token</strong> string you obtained when you <a href="#cp_oauth_get">created your OAuth token</a>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="sending-a-request"><span class="jumptarget" id="post_setup"> Sending a Request </span></h2>
+
+<p>We have created a collection of Postman requests for our v3 API, which you can import by clicking the button below:</p>
+
+<p><a href="https://app.getpostman.com/run-collection/0911a7fefbc14ed2e4cb"><img alt="Run in Postman" src="https://run.pstmn.io/button.svg" /></a></p>
+
+<p>To use this collection, you&rsquo;ll need to enter your OAuth credentials, as explained above under <a href="#post_setup">Postman Setup</a>.</p>
+
+<p>You&rsquo;ll also need to enter your store&rsquo;s API Path, as displayed in the <a href="#cp_oauth_get">control panel</a>. You can do so in either of these days:</p>
+
+<ul>
+<li><p>Within each endpoint, replace the variable <code class="prettyprint">{{store_hash}}</code>; or </p></li>
+<li><p>Add a new environment, in which you create a  <code class="prettyprint">store_hash</code> key, then set its value to the alpahnumeric string from your API Path. (For&#160;details on setting up a Postman environment, see <a href="https://www.getpostman.com/docs/environments">this Postman documentation</a>.)</p></li>
+</ul>
+
+<p>Now you can send and receive information through an OAuth API connection with BigCommerce. If you&rsquo;d like to register webhooks through Postman, please see <a href="/api/#creating-webhooks-sending-the-post-request">Creating Webhooks: Sending the POST Request</a>. </p>
 
           <h1 id="building-storefront-apps"><span class="jumptarget"> <a name="storefront-apps-intro"></a> Building Storefront Apps </span></h1>
 

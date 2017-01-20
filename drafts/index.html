@@ -179,7 +179,7 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
         <div class="search">
           <form>
             <input type="text" class="search" required id="input-search" placeholder="Search">
-            <input type="reset" class="reset-form" value="X">
+            <button type="reset" class="reset-form"><i class="fa fa-times"></i></button>
           </form>
         </div>
         <ul class="search-results"></ul>
@@ -199,14 +199,25 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
       <div class="content">
         <h1 id="draft-new-api-content"><span class="jumptarget"> Draft New API Content </span></h1>
 
-          <h1 id="managing-oauth-tokens-control-panel"><span class="jumptarget" id=""> Managing OAuth Tokens (Control Panel) </span></h1>
+          <h1 id="managing-api-credentials"><span class="jumptarget" id="apicred"> Managing API Credentials</span></h1>
 
-<aside class="warning">
-<span class="aside-warning-hd">Draft New CP > OAuth Instructions</span><br><br>
-This will replace <em>subsections</em> of: <a href="https://developer.bigcommerce.com/api/#making-requests" target="_blank">https://developer.bigcommerce.com/api/#making-requests</a>.
+<p>You have two options for obtaining and managing credentials that will connect your app with your BigCommerce store:</p>
+
+<ul>
+<li><p><a href="#cp_oauth_get">Obtaining OAuth Tokens</a>: We recommend OAuth, because this authentication method is compatible with all current and planned BigCommerce APIs. Also, OAuth is required for apps intended to be <a href="#">sold on the BigCommerce App Marketplace</a>.</p></li>
+<li><p><a href="#basiccred">Creating Basic Auth Credentials</a>: Basic Auth is still supported as a legacy option for <a href="##building-basic-auth-apps">private apps</a> (apps developed for a single BigCommerce store). However, although Basic Auth is compatible with most of our v2 API, it is inccompatible with <a href="##webhooks-overview">webhooks</a>, and incompatible with our <a href="https://github.com/bigcommerce/api/blob/master/docs/v3-catalog.md" target="_blank">v3 API</a>.</p></li>
+</ul>
+
+<h2 id="authenticating-with-oauth"><span class="jumptarget" id="cp_oauth_manage"> Authenticating with OAuth </span></h2>
+
+<p>The following sections outline how to create and manage OAuth tokens in the BigCommerce control panel.</p>
+
+<aside class="notice">
+<span class="notice"> Future-Proof with OAuth </span><br><br>
+We strongly recommend building all BigCommerce apps with OAuth. OAuth is compatible with all current and planned BigCommerce APIs, including v2 Webhooks and our v3 API. Also, any apps intended for sale on the BigCommerce App Marketplace must use OAuth. BigCommerce is gradually deprecating its legacy support for <a href="#basiccred">Basic Authentication</a>.
 </aside>
 
-<h2 id="obtaining-an-oauth-token"><span class="jumptarget" id="cp_oauth_get"> Obtaining an OAuth Token </span></h2>
+<h3 id="obtaining-oauth-tokens"><span class="jumptarget" id="cp_oauth_get"> Obtaining OAuth Tokens </span></h3>
 
 <p>You can create and manage OAuth tokens in the BigCommerce control panel by creating an API account, as described below. (Only the <a href="https://support.bigcommerce.com/articles/Public/Store-Owner" target="_blank">store&#160;owner</a> can create API accounts; accounts are limited to 50 per store.) </p>
 
@@ -235,7 +246,7 @@ There is no way to re-display this pop-up after you select <b>Done</b> to dismis
 So make sure you store your credentials &ndash; either by copying/pasting the contents of each field out of the pop-up, or by keeping the downloaded .txt file. (To that same .txt file, we suggest adding the **API Path** field value that your stored earlier.) Otherwise, you will need to repeat all the above steps to generate new credentials.
 </aside>
 
-<h2 id="revoking-an-oauth-token"><span class="jumptarget" id="cp_oauth_revoke"> Revoking an OAuth Token </span></h2>
+<h3 id="revoking-an-oauth-token"><span class="jumptarget" id="cp_oauth_revoke"> Revoking an OAuth Token </span></h3>
 
 <p>To revoke an OAuth token, use the following steps to delete the associated API account:</p>
 
@@ -253,15 +264,19 @@ There is no undo, so be sure before you delete an account. You can also use the 
 
 <p><img src="../assets/store-api-accounts.png" alt="Creating an API account" height=100% width=100%></p>
 
-          <h1 id="postman-oauth-quick-start"><span class="jumptarget"> Postman/OAuth Quick Start </span></h1>
+<h3 id="making-an-api-request-with-oauth"><span class="jumptarget" id="request_oauth"> Making an API Request with OAuth </span></h3>
 
-<p>This section shows you how to quickly get started exercising BigCommerce APIs, using the <a href="https://www.getpostman.com/">Postman app</a>.</p>
+<p>To see how to quickly make initial OAuth requests using the <a href="https://www.getpostman.com/" target="_blank">Postman app</a>, please see our <a href="#postman_qs">Postman/OAuth Quickstart Guide</a>.</p>
+
+          <h1 id="postman-oauth-quickstart-guide"><span class="jumptarget" id="postman_qs"> Postman/OAuth Quickstart Guide </span></h1>
+
+<p>This section shows you how to quickly get started exercising BigCommerce APIs, using the <a href="https://www.getpostman.com/" target="_blank">Postman app</a>.</p>
 
 <p>To get started, you&rsquo;ll need OAuth credentials to supply to Postman. BigCommerce uses OAuth 2.0. </p>
 
 <h2 id="creating-oauth2-0-credentials"><span class="jumptarget"> Creating OAuth2.0 Credentials </span></h2>
 
-<p>Create yur OAuth 2.0 credentials as described above in <a href="#cp_oauth_get">this section</a>. (Depending on what scopes you set, you will be limited in what objects you can request. You can view scope information <a href="/api/#oauth-scopes">here</a>.)</p>
+<p>Create your OAuth 2.0 credentials as described above under <a href="#cp_oauth_get">Obtaining OAuth Tokens</a>. (Depending on what scopes you set, you will be limited in what objects you can request. You can view scope information <a href="/api/#oauth-scopes">here</a>.)</p>
 
 <h2 id="postman-setup"><span class="jumptarget"> Postman Setup </span></h2>
 

@@ -192,6 +192,14 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
 
 <h2 id="january"><span class="jumptarget"> January </span></h2>
 
+<h3 id="oauth-tokens-via-control-panel"><span class="jumptarget"> OAuth Tokens via Control Panel </span></h3>
+
+<p>The BigCommerce control panel&rsquo;s new <strong>Advanced Settings</strong> &gt; <strong>API Accounts</strong> option allows you to directly generate and revoke OAuth tokens and their associated user accounts. For details on using these new options with your apps, please see our new documentation on <a href="/api/#cp_oauth_get" target="_blank">Obtaining OAuth Tokens</a>. </p>
+
+<h3 id="stencil-new-template-property-replaces-deprecated-template_file"><span class="jumptarget"> Stencil: New template Property Replaces Deprecated template_file </span></h3>
+
+<p>BigCommerce has deprecated the Stencil themes platform&rsquo;s global <code class="prettyprint">template_file</code> property. Its replacement is a new <code class="prettyprint">template</code> property, which returns correct page types for custom template files. To pick up this correction, you must update your Stencil CLI installation. For details and links, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
+
 <h3 id="stencil-cornerstone-1-4-2-theme-released"><span class="jumptarget"> Stencil Cornerstone 1.4.2 Theme Released </span></h3>
 
 <p>Version <a href="https://stencil.bigcommerce.com/docs/cornerstone-14x-theme-release-notes#142">1.4.2</a> of Stencil&rsquo;s default Cornerstone theme is now available. To deter spam submissions through the storefront Contact form, this update replaces the Contact template&rsquo;s CAPTCHA challenge with a Google reCAPTCHA v1 challenge. For the PR #/commit # to apply this fix, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
@@ -207,6 +215,10 @@ mixpanel.init("da7735ceefea56e7901902007745e30e",{api_host:"https://api.mixpanel
           <h1 id="2016"><span class="jumptarget"> 2016 </span></h1>
 
 <h2 id="december"><span class="jumptarget"> December </span></h2>
+
+<h3 id="stencil-now-supports-optimized-one-page-checkout">Stencil Now Supports Optimized One-Page Checkout</h3>
+
+<p><b>2016-12-19:</b> The Stencil framework now supports <a href="https://support.bigcommerce.com/articles/Public/Optimized-Single-Page-Checkout" target="_blank">Optimized One-Page Checkout</a>. To enable this option, you must first update your Stencil CLI installation, and then ensure that your <code class="prettyprint">config.json</code> file includes the <code class="prettyprint">customized_checkout</code> value. For details and links, please see the <a href="https://stencil.bigcommerce.com/docs/release-notes" target="_blank">Stencil framework release notes</a>.</p>
 
 <h3 id="stencil-product-gt-ratings-count">Stencil Product &gt; Ratings Count</h3>
 

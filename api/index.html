@@ -281,9 +281,9 @@ This section is intended for developers who want to immediately start developing
 
 <p>The following sections outline how to create and manage OAuth tokens in the BigCommerce control panel.</p>
 
-<aside class="notice">
-<span class="notice"> Future-Proof with OAuth </span><br><br>
-We strongly recommend building all BigCommerce apps with OAuth. OAuth is compatible with all current and planned BigCommerce APIs, including v2 Webhooks and our v3 API. Also, any apps intended for sale on the BigCommerce App Marketplace must use OAuth. BigCommerce is gradually deprecating its legacy support for <a href="#basiccred">Basic Authentication</a>.
+<aside class="success">
+<span class="aside-success-hd"> Future-Proof with OAuth </span><br><br>
+We strongly recommend that you build all BigCommerce apps using OAuth. OAuth is compatible with all current and planned BigCommerce APIs, including v2 Webhooks and our v3 API. Also, any apps intended for sale on the BigCommerce App Marketplace must use OAuth. BigCommerce is gradually deprecating its legacy support for <a href="#basiccred">Basic Authentication</a>.
 </aside>
 
 <h3 id="obtaining-oauth-tokens"><span class="jumptarget" id="cp_oauth_get"> Obtaining OAuth Tokens </span></h3>
@@ -333,11 +333,11 @@ There is no undo, so be sure before you delete an account. You can also use the 
 
 <p><img src="../assets/store-api-accounts.png" alt="Creating an API account" height=100% width=100%></p>
 
-<h3 id="making-an-api-request-with-oauth"><span class="jumptarget" id="request_oauth"> Making an API Request with OAuth </span></h3>
+<h3 id="oauth-api-requests"><span class="jumptarget" id="request_oauth"> OAuth API Requests </span></h3>
 
 <p>To see how to quickly make initial OAuth requests using the <a href="https://www.getpostman.com/" target="_blank">Postman app</a>, please see our <a href="#postman_qs">Postman/OAuth Quickstart Guide</a>.</p>
 
-          <h2 id="creating-basic-auth-credentials"><span class="jumptarget" id="basiccred"> Creating Basic Auth Credentials </span></h2>
+          <h2 id="creating-basic-auth-credentials"><span class="jumptarget" id="basiccred"> Creating Basic-Auth Credentials </span></h2>
 
 <p>The following sections outline how to create and manage Basic Auth tokens in the BigCommerce control panel.</p>
 
@@ -391,7 +391,7 @@ Even within the v2 API, apps relying on Basic Authentication cannot access some 
 <li> Select the <strong>Save</strong> button.</li>
 </ol>
 
-<h3 id="making-an-api-request-with-basic-auth"><span class="jumptarget" id="request_basic"> Making an API Request with Basic Auth </span></h3>
+<h3 id="basic-auth-api-requests"><span class="jumptarget" id="request_basic"> Basic-Auth API Requests </span></h3>
 
 <p>Many tools are available to interact with APIs. For example, to see how to quickly make initial requests using <a href="https://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a> commands, please see our <a href="#curl-quickstart-guide">cURL Quickstart Guide</a>.</p>
 
@@ -2579,11 +2579,11 @@ BigCommerce is gradually deprecating Basic Authentication. Apps must use <a href
 Even within the v2 API, apps relying on Basic Authentication cannot access some features. (For example, the Webhooks resource requires OAuth.) Also, apps intended for sale on the BigCommerce App Marketplace must use OAuth.
 </aside>
 
-<h2 id="obtaining-basic-auth-api-tokens"><span class="jumptarget" id=""> Obtaining Basic Auth API Tokens </span></h2>
+<h2 id="obtaining-basic-auth-api-tokens"><span class="jumptarget" id=""> Obtaining Basic-Auth API Tokens </span></h2>
 
-<p>To obtain tokens to connect your app to a BigCommerce store using BAsic Auth, please see <a href="#basiccred">Creating Basic Auth Credentials</a>.</p>
+<p>To obtain tokens to connect your app to a BigCommerce store using Basic Auth, please see <a href="#basiccred">Creating Basic Auth Credentials</a>.</p>
 
-<h2 id="making-basic-auth-requests"><span class="jumptarget"> Making Basic Auth Requests </span></h2>
+<h2 id="making-basic-auth-requests"><span class="jumptarget"> Making Basic-Auth Requests </span></h2>
 
 <p>To allow an app to connect to a store using Basic Authentication, the store owner must manually generate an API key and provide this to the app developer along with a base path and user name.</p>
 
